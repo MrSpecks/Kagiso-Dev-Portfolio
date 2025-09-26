@@ -1,73 +1,132 @@
-# Welcome to your Lovable project
+# 🌐 Developer Portfolio
 
-## Project info
+A modern, responsive developer portfolio built with **React**, **Tailwind CSS**, **Supabase**, and **React Query**. Designed to be recruiter-friendly, clean, and easily extensible.
 
-**URL**: https://lovable.dev/projects/b3b9b211-a7e4-4886-87c3-41bdf19f4e58
+This portfolio highlights certifications, projects, and professional experience while offering a sleek dark/light theme toggle, interactive skill displays, and integrated backend data from Supabase.
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🚀 Tech Stack
 
-**Use Lovable**
+* **Frontend:** React + React Router
+* **Styling:** Tailwind CSS + custom gradients
+* **Backend:** Supabase (PostgreSQL + Auth + Storage)
+* **Data Fetching:** React Query (`@tanstack/react-query`)
+* **Icons:** Lucide React
+* **Deployment:** Vercel
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/b3b9b211-a7e4-4886-87c3-41bdf19f4e58) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 📄 Pages
 
-**Use your preferred IDE**
+### 🏠 Home Page
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+* **Hero Section** with name, tagline, CTA, and floating **skills cloud**.
+* **Stats Section** with cards for:
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+  * Projects Completed (static count for now).
+  * Certifications Earned (dynamic count from Supabase).
+  * Years of Experience.
+* **Technical Skills Section** using animated badges for your stack.
+* **Call-to-Action Section** inviting collaboration and linking to Contact page.
 
-Follow these steps:
+### 👤 About Page
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+* **Personal Story** with narrative on career journey.
+* **Experience Timeline** showcasing roles, companies, dates, and descriptions.
+* **Education Section** with institutions, programs, and details.
+* **Interests & Hobbies** as interactive badges.
+* Clean card-based layout for readability and recruiter-friendliness.
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+---
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 🛠️ Supabase Integration
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+This project uses Supabase for certifications and projects data.
+
+**Certifications Fetch Example:**
+
+```js
+const { data, error } = await supabase
+  .from("certifications")
+  .select("*");
+```
+
+* Each certification includes:
+
+  * `title`, `provider`, `date`, `description`, `file_url`.
+* Displayed dynamically as responsive cards with hover states.
+
+**Certifications Count on Home:**
+
+```js
+const { data: certifications } = useQuery({
+  queryKey: ["certifications-count"],
+  queryFn: async () => {
+    const { data, error } = await supabase
+      .from("certifications")
+      .select("id", { count: "exact" });
+    if (error) throw error;
+    return data;
+  },
+});
+```
+
+---
+
+## 🎨 Styling Guidelines
+
+* **Dark Mode:** Grey-to-dark gradient background.
+* **Light Mode:** Clean off-white background.
+* **Cards:** Rounded, with hover shadows and smooth transitions.
+* **Consistency:** Tailwind’s grid/flex layouts ensure clean spacing.
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+# Clone the repo
+git clone https://github.com/yourusername/portfolio.git
+cd portfolio
+
+# Install dependencies
+npm install
+
+# Add environment variables
+cp .env.example .env
+# Fill in your Supabase URL + Anon Key
+
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+---
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## 🌍 Deployment
 
-**Use GitHub Codespaces**
+1. Push to GitHub.
+2. Connect repo to [Vercel](https://vercel.com/).
+3. Add environment variables in Vercel dashboard:
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+   * `NEXT_PUBLIC_SUPABASE_URL`
+   * `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+4. Deploy — and you’re live!
 
-## What technologies are used for this project?
+---
 
-This project is built with:
+## 📌 Roadmap
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+*
 
-## How can I deploy this project?
+---
 
-Simply open [Lovable](https://lovable.dev/projects/b3b9b211-a7e4-4886-87c3-41bdf19f4e58) and click on Share -> Publish.
+## 📜 License
 
-## Can I connect a custom domain to my Lovable project?
+MIT License. Feel free to fork, modify, and build on top of this portfolio.
 
-Yes, you can!
+---
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## 📸 Screenshots
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+*(Optional: Add screenshots here to give recruiters a quick visual of your site)*
