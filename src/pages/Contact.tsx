@@ -41,19 +41,19 @@ const Contact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "alex@example.com",
-      href: "mailto:alex@example.com",
+      value: "kagisomfusi@outlook.com",
+      href: "mailto:kagisomfusi@outlook.com",
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
+      value: "+27 (075) 130-4807",
+      href: "tel:+270751304807",
     },
     {
       icon: MapPin,
       label: "Location",
-      value: "San Francisco, CA",
+      value: "Johannesburg, GP",
       href: "#",
     },
   ];
@@ -62,17 +62,12 @@ const Contact = () => {
     {
       icon: Github,
       label: "GitHub",
-      href: "https://github.com",
+      href: "https://github.com/MrSpecks",
     },
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com",
-    },
-    {
-      icon: Twitter,
-      label: "Twitter",
-      href: "https://twitter.com",
+      href: "https://www.linkedin.co/in/kagiso-m-95b329224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     },
   ];
 

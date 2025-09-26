@@ -21,7 +21,7 @@ const ChatbotButton = () => {
       {/* Floating Chat Button */}
       <Button
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 animate-pulse-glow"
+        className="fixed bottom-6 right-6 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-3000 animate-pulse-glow"
         size="icon"
       >
         {isOpen ? <X className="h-6 w-6" /> : <MessageCircle className="h-6 w-6" />}
@@ -33,15 +33,15 @@ const ChatbotButton = () => {
           <div className="flex flex-col h-full">
             {/* Header */}
             <div className="border-b border-border pb-3 mb-3">
-              <h3 className="font-semibold">Portfolio Assistant</h3>
-              <p className="text-sm text-muted-foreground">Ask me anything about my work!</p>
+              <h3 className="font-semibold">Kagiso's AI Assistant</h3>
+              <p className="text-sm text-muted-foreground">Ask me anything about Kagiso's work!</p>
             </div>
 
             {/* Messages Area */}
             <div className="flex-1 space-y-4 overflow-y-auto">
               <div className="bg-primary/10 rounded-lg p-3">
                 <p className="text-sm">
-                  Hi! I'm a placeholder chatbot. Feel free to explore the portfolio and check out my projects and certifications!
+                  What's up? I'm Kagiso's AI assistant. Dive in! Ask me anything about Kagiso's projects, skills, or certifications - I'm trained on it all.
                 </p>
               </div>
             </div>

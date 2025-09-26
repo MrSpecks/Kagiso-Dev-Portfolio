@@ -5,34 +5,59 @@ import { Calendar, MapPin, GraduationCap, Briefcase } from "lucide-react";
 const About = () => {
   const experience = [
     {
-      title: "Senior Full-Stack Developer",
-      company: "Tech Innovations Inc.",
-      period: "2023 - Present",
-      location: "Remote",
-      description: "Leading development of scalable web applications using React, Node.js, and cloud technologies.",
+      title: "UI/UX Designer & Systems Developer",
+      company: "SPS Software",
+      period: "2025 - Present",
+      location: "GP, Remote",
+      description: "I engineered intelligent AI workflows and streamlined the development of scalable web applications using React, Node.js, and cloud technologies, delivering business value through system automations.",
     },
     {
-      title: "Full-Stack Developer",
-      company: "Digital Solutions Co.",
-      period: "2021 - 2023",
-      location: "San Francisco, CA",
-      description: "Developed and maintained multiple client projects using modern web technologies.",
+      title: "Systems Administrator Skills Program",
+      company: "Afrikka Tikkun Services",
+      period: "2024",
+      location: "Randburg, GP",
+      description: "I developed and built cruicial proficiency in cloud, project management and systems administration, strengthening my capability to contribute to scalable enterprise-grade cloud projects.",
     },
     {
-      title: "Frontend Developer",
-      company: "StartupXYZ",
-      period: "2020 - 2021",
-      location: "Austin, TX",
-      description: "Built responsive user interfaces and improved application performance.",
+      title: "Client Services Representative",
+      company: "First National Bank",
+      period: "2019 - 2023",
+      location: "Johannesburg, GP",
+      description: "I leveraged ~9700 hours of direct client support to build deep operational expertise in banking workflows, which led to the proactive identification of recurring customer pain points suitable for AI-driven automation.",
+    },
+    {
+      title: "Junior JAVA Developer Intern",
+      company: "First National Bank",
+      period: "2018 - 2019",
+      location: "Randburg, GP",
+      description: "I contributed production-ready code in an agile DevOps environment, gaining hands-on exposure to full-stack development principles and enhancing my proficiency in Java, Git and Atlassian toolsets.",
     },
   ];
 
   const education = [
     {
-      degree: "Bachelor of Computer Science",
-      institution: "University of Technology",
-      period: "2016 - 2020",
-      description: "Focused on software engineering and web development",
+      degree: "Systems Admin Skills Training",
+      institution: "Digital Youth ICT Academy",
+      period: "2024",
+      description: "This program provided a strong foundation in systems administration, which directly contributed to securing my Microsoft Azure Fundamentals and IBM Project Management Foundations certifications among others, and building crucial cloud and system deployment skills",
+    },
+    {
+      degree: "Higher Certificate, Information Technology: Systems Development",
+      institution: "CTU Training Solutions",
+      period: "2018 - 2019",
+      description: "I earned my Higher Certificate in Information Technology specializing in Systems Devevelopment with distinctions, solidifying my foundational development skills through an intensive JAVA Programming Bootcamp",
+    },
+    {
+      degree: "Bachelor of Science (BSc), Information Technology",
+      institution: "Richfield Graduate Institute of Technology",
+      period: "2017",
+      description: "I successfully completed the first year of my Bachelor of Science in Information Technology with distinctions, confirming a strong academic aptitude for complex IT concepts and foundational systems knowledge.",
+    },
+    {
+      degree: "National Senior Certificate (Matric)",
+      institution: "Florida Park High School",
+      period: "2016",
+      description: "I achieved the National Senior Certificate with a Bachelors pass and two distinctions, successfully launching my academic career with a strong performance and proving capacity for high academic achievement.",
     },
   ];
 
@@ -40,9 +65,9 @@ const About = () => {
     "Open Source Contributing",
     "Machine Learning",
     "Cloud Architecture",
-    "Mobile Development",
+    "Tech Research",
     "DevOps & Automation",
-    "Tech Blogging",
+    "Exercise & Fitness",
   ];
 
   return (
@@ -52,7 +77,7 @@ const About = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">About Me</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Passionate developer with a love for creating innovative solutions and pushing the boundaries of web technology.
+            Passionate systems developer with a love for creating scalable, innovative solutions and leveraging AI to push the boundaries of resilient, cloud-native architecture.
           </p>
         </div>
 
@@ -62,9 +87,9 @@ const About = () => {
             <h2 className="text-2xl font-bold mb-6">My Journey</h2>
             <div className="space-y-4 text-muted-foreground">
               <p>
-                I started my journey in software development during college, where I discovered my passion for creating 
-                digital solutions that make a real impact. What began as curiosity about how websites work evolved into 
-                a career dedicated to building exceptional user experiences.
+                I discovered my passion for technology in high school, which led me to pursue a career in IT and software development. 
+                Over the years, I've built expertise across cloud computing, AI, cybersecurity, and full-stack development, 
+                always with a focus on creating solutions that drive real impact.
               </p>
               <p>
                 Throughout my career, I've had the opportunity to work with diverse teams and technologies, from startups 
@@ -72,8 +97,10 @@ const About = () => {
                 user-centric design, and continuous learning.
               </p>
               <p>
-                Today, I specialize in full-stack development with a focus on React, Node.js, and cloud technologies. 
-                I believe in the power of technology to solve complex problems and am always excited to take on new challenges.
+                I thrive at the intersection of innovation and execution, blending technical skill with user-centric design 
+                and strategic problem-solving. 
+                Today, I build scalable, future-ready systems and am constantly exploring emerging technologies to shape 
+                the next wave of digital solutions.
               </p>
             </div>
           </Card>
@@ -151,8 +178,8 @@ const About = () => {
               ))}
             </div>
             <p className="text-muted-foreground mt-6">
-              When I'm not coding, you can find me exploring new technologies, contributing to open source projects, 
-              or sharing knowledge through tech blogs and community meetups.
+              When I'm not coding, you can find me researching and exploring new technologies, contributing to open source projects,
+              or simply working out and keeping fit, optimizing my biological operating system for peak performance.
             </p>
           </Card>
         </div>

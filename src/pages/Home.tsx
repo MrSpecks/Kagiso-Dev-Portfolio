@@ -21,8 +21,9 @@ const Home = () => {
 
   const skills = [
     "React", "TypeScript", "Node.js", "Python", "Supabase",
-    "Tailwind CSS", "PostgreSQL", "Docker", "AWS", "Git",
-    "GraphQL", "Next.js", "Express", "MongoDB", "Redis"
+    "Tailwind CSS", "PostgreSQL", "Gen AI", "Docker", "Azure", "Git",
+    "Javascript", "Next.js", "Express", "Agentic AI", "Java", "Vercel",
+    "HTML", "CSS", "REST APIs", "N8N", "CI/CD", "RAG", "Figma",
   ];
 
   return (
@@ -33,12 +34,12 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="hero-text">
             <h1 className="text-5xl md:text-7xl font-bold mb-6">
-              Hello, I'm <span className="text-primary-glow">Alex</span>
+              Hello, I'm <span className="text-primary-glow">Kagiso</span>
             </h1>
           </div>
           <div className="hero-text">
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-              Full-Stack Developer & Tech Enthusiast crafting exceptional digital experiences
+              AI & Systems Developer crafting exceptional digital experiences
             </p>
           </div>
           <div className="hero-text">
@@ -51,16 +52,21 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Floating Skills Cloud */}
+{/* Floating Skills Cloud */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-20 left-10 skill-tag">React</div>
-          <div className="absolute top-32 right-20 skill-tag">TypeScript</div>
-          <div className="absolute top-48 left-1/4 skill-tag">Node.js</div>
-          <div className="absolute top-60 right-1/3 skill-tag">Python</div>
-          <div className="absolute bottom-40 left-20 skill-tag">Supabase</div>
-          <div className="absolute bottom-32 right-10 skill-tag">Tailwind</div>
-          <div className="absolute bottom-60 left-1/3 skill-tag">PostgreSQL</div>
-          <div className="absolute top-40 right-1/4 skill-tag">AWS</div>
+          <div className="absolute top-[15%] left-[10%] skill-tag">React</div>
+          <div className="absolute top-[25%] right-[15%] skill-tag">TypeScript</div>
+          <div className="absolute top-[40%] left-[5%] skill-tag">Node.js</div>
+          <div className="absolute bottom-[20%] right-[10%] skill-tag">Python</div>
+          <div className="absolute bottom-[10%] left-[20%] skill-tag">Supabase</div>
+          <div className="absolute top-[5%] right-[25%] skill-tag">Tailwind</div>
+          <div className="absolute top-[50%] left-[25%] skill-tag">Docker</div>
+          <div className="absolute bottom-[30%] right-[20%] skill-tag">N8N</div>
+          <div className="absolute top-[30%] right-[5%] skill-tag">RAG</div>
+          <div className="absolute bottom-[5%] left-[40%] skill-tag">Git</div>
+          <div className="absolute top-[60%] left-[15%] skill-tag">Next.js</div>
+          <div className="absolute bottom-[40%] left-[5%] skill-tag">Gen AI</div>
+          <div className="absolute top-[10%] left-[30%] skill-tag">Azure</div>
         </div>
       </section>
 
@@ -72,7 +78,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">15+</h3>
+              <h3 className="text-3xl font-bold mb-2">8+</h3>
               <p className="text-muted-foreground">Projects Completed</p>
             </Card>
             
@@ -88,7 +94,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">3+</h3>
+              <h3 className="text-3xl font-bold mb-2">7+</h3>
               <p className="text-muted-foreground">Years Experience</p>
             </Card>
           </div>
@@ -100,7 +106,7 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Technical Skills</h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            A comprehensive toolkit for building modern web applications
+            A comprehensive and versatile skillset for building modern web applications and agentic solutions
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
