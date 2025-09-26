@@ -60,7 +60,7 @@ const Home = () => {
           <div className="absolute bottom-[20%] right-[10%] skill-tag">Python</div>
           <div className="absolute bottom-[10%] left-[20%] skill-tag">Supabase</div>
           <div className="absolute top-[5%] right-[25%] skill-tag">Tailwind</div>
-          <div className="absolute top-[50%] left-[25%] skill-tag">Docker</div>
+          <div className="absolute top-[85%] right-[25%] skill-tag">Docker</div>
           <div className="absolute bottom-[30%] right-[20%] skill-tag">N8N</div>
           <div className="absolute top-[30%] right-[5%] skill-tag">RAG</div>
           <div className="absolute bottom-[5%] left-[40%] skill-tag">Git</div>
@@ -100,6 +100,27 @@ const Home = () => {
           </div>
         </div>
       </section>
+      
+            {/* About Preview */}
+    <section className="py-20 bg-background">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
+        <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+          I am an experienced Systems & AI Developer with a proven record in full-stack development and 
+          robust cloud systems. My expertise lies in LLM engineering and advanced cloud architecture, 
+          which I leverage to design and implement scalable, secure, and future-proof solutions. 
+          I am passionately focused on integrating cutting-edge AI technology to solve complex 
+          problems and drive measurable impact. My ambition is to blend this deep technical expertise 
+          with a strategic mindset, continually pushing the boundaries of 
+          innovation to unlock the potential of what resilient systems can achieve.
+        </p>
+        <Link to="/about">
+          <Button size="lg" className="group">
+            Read More
+          </Button>
+        </Link>
+      </div>
+    </section>
 
       {/* Skills Section */}
       <section className="py-20 bg-muted/30">
