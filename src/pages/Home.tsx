@@ -104,9 +104,9 @@ const Home = () => {
       {/* Skills Section */}
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">Technical Skills</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">Tech Stack</h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            A comprehensive and versatile skillset for building modern web applications and agentic solutions
+            A comprehensive and versatile toolset for building modern web applications and agentic solutions
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">

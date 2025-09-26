@@ -45,7 +45,7 @@ const About = () => {
       degree: "Higher Certificate, Information Technology: Systems Development",
       institution: "CTU Training Solutions",
       period: "2018 - 2019",
-      description: "I earned my Higher Certificate in Information Technology specializing in Systems Devevelopment with distinctions, solidifying my foundational development skills through an intensive JAVA Programming Bootcamp",
+      description: "I earned my Higher Certificate in Information Technology specializing in Systems Development with distinctions, solidifying my foundational development skills through an intensive JAVA Programming Bootcamp",
     },
     {
       degree: "Bachelor of Science (BSc), Information Technology",
