@@ -12,7 +12,7 @@ const Projects = () => {
       tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
       demo_url: "https://demo-aibrochure.example.com",
       repo_url: "https://github.com/MrSpecks/LLM-Engineering-Projects/tree/main/AI-Brochure-Maker",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/AI-Brochure-maker.jpg",
       category: "AI Tool"
     },
     {
@@ -22,7 +22,7 @@ const Projects = () => {
       tech_stack: ["Python", "Jupyter Notebook", "OpenAI API", "Streamlit"],
       demo_url: "https://Question%26Answer.example.com",
       repo_url: "https://github.com/MrSpecks/LLM-Engineering-Projects/tree/main/Question%26Answer-bot",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/Code-Assistant.jpg",
       category: "AI Tool"
     },
     {
@@ -32,7 +32,7 @@ const Projects = () => {
       tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
       demo_url: "https://websitescraper%26summarizer.example.com",
       repo_url: "https://github.com/MrSpecks/LLM-Engineering-Projects/tree/main/Webscrapper-summarizer",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/Webscraper-Summarizer.jpg",
       category: "AI Tool"
     },
     {
@@ -42,7 +42,7 @@ const Projects = () => {
       tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
       demo_url: "https://portfolio.example.com",
       repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/website-preview.jpg",
       category: "Website"
     },
     {
@@ -55,7 +55,7 @@ const Projects = () => {
       tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
       demo_url: "https://chat-app.example.com",
       repo_url: "https://github.com/username/chat-app",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/RAG-agent.jpg",
       category: "Web App"
     },
     {
@@ -68,7 +68,7 @@ const Projects = () => {
       tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
       demo_url: "https://flexliving-reviews-dashboard-n1rnorflb-mrspecks-projects.vercel.app/",
       repo_url: "https://github.com/MrSpecks/flexliving-reviews-dashboard",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/reviews-dashboard.jpg",
       category: "Web App"
     },
     {
@@ -80,7 +80,7 @@ const Projects = () => {
       tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
       demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
       repo_url: "https://github.com/MrSpecks/NeoShell",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/python-tools.jpg",
       category: "Web Tool"
     },
     {
@@ -91,7 +91,7 @@ const Projects = () => {
       tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
       demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
       repo_url: "https://github.com/MrSpecks/ReconX",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/OSINT-Tool.jpg",
       category: "Web Tool"
     },
     {
@@ -101,7 +101,7 @@ const Projects = () => {
       tech_stack: ["React", "Node.js", "Swagger", "Docker"],
       demo_url: "https://api-docs.example.com",
       repo_url: "https://github.com/MrSpecks/api-docs",
-      screenshot_url: "/api/placeholder/600/400",
+      screenshot_url: "/API-Documentation-Tool.jpg",
       category: "Tool"
     }
   ];
@@ -141,9 +141,11 @@ const Projects = () => {
             <Card key={project.id} className="project-card group">
               {/* Project Image */}
               <div className="relative overflow-hidden rounded-lg mb-4 bg-muted">
-                <div className="w-full h-48 bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
-                  {getCategoryIcon(project.category)}
-                  <span className="ml-2 text-sm text-muted-foreground">{project.category}</span>
+                <div
+                  className="w-full h-48 bg-cover bg-center"
+                  style={{ backgroundImage: `url(${project.screenshot_url})` }}
+                >
+                  {/* Removed category icon and text to make space for the image */}
                 </div>
               </div>
 

@@ -39,7 +39,7 @@ const Home = () => {
           </div>
           <div className="hero-text">
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-              AI & Systems Developer crafting exceptional digital experiences
+              An AI & Systems Developer crafting exceptional digital experiences
             </p>
           </div>
           <div className="hero-text">
@@ -106,13 +106,17 @@ const Home = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
         <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-          I am an experienced Systems & AI Developer with a proven record in full-stack development and 
-          robust cloud systems. My expertise lies in LLM engineering and advanced cloud architecture, 
-          which I leverage to design and implement scalable, secure, and future-proof solutions. 
-          I am passionately focused on integrating cutting-edge AI technology to solve complex 
-          problems and drive measurable impact. My ambition is to blend this deep technical expertise 
-          with a strategic mindset, continually pushing the boundaries of 
-          innovation to unlock the potential of what resilient systems can achieve.
+          My journey into tech hasn't been a straight line. I didn't take the traditional route. Instead, I carved
+          my own path by building, failing, and building again. Over the last 7 years, that persistence has shaped 
+          into a Systems & AI Developer who thrives at the intersection of cloud, AI, and automation.
+        </p>
+        <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+          I specialize in LLM engineering and multi-cloud architecture, turning complex ideas into solutions that acctually
+          scale and deliver measurable value. But for me, it's not just about the code or the architecture - it's about the
+          impact. I believe technology should make businesses smarter, people's lives easier, and the future nore accessible.
+        </p>
+        <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+          While you're here, I hope you enjoy exploring this portfolio as much as I enjoyed creating it.
         </p>
         <Link to="/about">
           <Button size="lg" className="group">
