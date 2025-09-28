@@ -9,7 +9,7 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold mb-4">Kagiso Mfusi</h3>
             <p className="text-muted-foreground">
-               An AI & Systems Developer focused on creatting exceptional digital experiences.
+               An AI & Systems Developer focused on creating exceptional digital experiences.
             </p>
           </div>
 
