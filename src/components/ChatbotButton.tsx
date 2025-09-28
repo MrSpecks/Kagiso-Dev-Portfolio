@@ -1,3 +1,4 @@
+// /src/components/ChatBotButton.tsx
 "use client";
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send } from "lucide-react";
@@ -34,28 +35,64 @@ const ChatbotButton = () => {
     setMessage("");
     setLoading(true);
 
+    // 1. Initialize a new assistant message for streaming
+    setMessages((prev) => [...prev, { role: "assistant", content: "" }]);
+
     try {
-      // Change the API endpoint to your Express server route
-      const res = await fetch("http://localhost:5000/api/ask", {
+      // FIX: Changed hardcoded 'http://localhost:5000/api/ask' to a relative path '/api/ask'.
+      // This is the correct way to call serverless functions deployed alongside the site (e.g., on Vercel/Netlify).
+      const res = await fetch("/api/ask", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ question: userMessage }),
       });
 
-      const data = await res.json();
+      if (!res.ok || !res.body) {
+        throw new Error("Failed to fetch from agent API.");
+      }
 
-      const agentReply = data.answer || "Sorry, I couldn't find an answer.";
+      // 2. Set up the streaming reader
+      const reader = res.body.getReader();
+      const decoder = new TextDecoder();
+      let streamFinished = false;
 
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: agentReply },
-      ]);
+      while (!streamFinished) {
+        const { value, done } = await reader.read();
+        if (done) {
+          streamFinished = true;
+          break;
+        }
+
+        const chunk = decoder.decode(value, { stream: true });
+        
+        // 3. Update the last assistant message with the new chunk
+        setMessages((prev) => {
+          const lastMessage = prev[prev.length - 1];
+          // Ensure we are only appending to the assistant's stream
+          if (lastMessage.role === "assistant") {
+            const updatedContent = lastMessage.content + chunk;
+            return [
+              ...prev.slice(0, prev.length - 1),
+              { role: "assistant", content: updatedContent },
+            ];
+          }
+          return prev;
+        });
+      }
+
     } catch (err) {
-      console.error(err);
-      setMessages((prev) => [
-        ...prev,
-        { role: "assistant", content: "Error contacting AI agent." },
-      ]);
+      console.error("Agent Error:", err);
+      // Fallback: update the very last message with the error
+      setMessages((prev) => {
+        const lastMessage = prev[prev.length - 1];
+        if (lastMessage.role === "assistant") {
+           return [
+             ...prev.slice(0, prev.length - 1),
+             { role: "assistant", content: "Error contacting AI agent." },
+           ];
+        }
+        return prev;
+      });
     } finally {
       setLoading(false);
     }
@@ -90,15 +127,16 @@ const ChatbotButton = () => {
                 key={idx}
                 className={`p-2 rounded-lg max-w-[75%] ${
                   msg.role === "user"
-                    ? "bg-blue-100 self-end"
-                    : "bg-gray-100 self-start"
+                    ? "bg-blue-100 self-end ml-auto" // Added ml-auto for alignment
+                    : "bg-gray-100 self-start mr-auto" // Added mr-auto for alignment
                 }`}
               >
-                <p className="text-sm text-black">{msg.content}</p>
+                <p className="text-sm text-black whitespace-pre-wrap">{msg.content}</p> {/* Added whitespace-pre-wrap */}
               </div>
             ))}
             {loading && (
-              <div className="p-2 rounded-lg max-w-[75%] bg-gray-100 self-start">
+              // Display loading indicator if the last message is still being streamed
+              <div className="p-2 rounded-lg max-w-[75%] bg-gray-100 self-start mr-auto">
                 <p className="text-sm text-black">AI is typing...</p>
               </div>
             )}
@@ -114,7 +152,7 @@ const ChatbotButton = () => {
               onKeyPress={(e) => e.key === "Enter" && handleSend()}
               className="flex-1"
             />
-            <Button onClick={handleSend} size="icon" disabled={loading}>
+            <Button onClick={handleSend} size="icon" disabled={loading || !message.trim()}>
               <Send className="h-4 w-4" />
             </Button>
           </div>
