@@ -1,10 +1,8 @@
-// /api/ask.js
-// FIX: Import the built-in 'Readable' class from the 'stream' module
-import { Readable } from 'stream'; 
+// /api/ask.js - Updated to handle streaming and Async Iterator
+import { Readable, Transform } from 'stream'; // ADD Transform import
 import { askAgent } from "../lib/queryAgent.js";
 
 export const config = {
-  // Disable the default Next.js/Vercel body parsing
   api: {
     bodyParser: false, 
   },
@@ -16,7 +14,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Manual body parsing for when bodyParser is disabled
+    // Manual body parsing
     const chunks = [];
     for await (const chunk of req) {
       chunks.push(chunk);
@@ -28,28 +26,45 @@ export default async function handler(req, res) {
       return res.status(400).end("Question is required");
     }
 
-    // 1. Call askAgent function, which returns a WHATWG ReadableStream
-    const whatwgReadableStream = await askAgent(question);
+    // 1. Get the agent's response (either string or AsyncIterator)
+    const agentResponse = await askAgent(question);
 
-    // 2. FIX: Convert the WHATWG stream to a Node.js Readable stream
-    // Readable.from() is the standard way to wrap a Web Stream for piping.
-    const nodeReadableStream = Readable.from(whatwgReadableStream);
+    // 2. Handle Casual (String) Response
+    if (typeof agentResponse === 'string') {
+        res.setHeader('Content-Type', 'text/plain');
+        return res.status(200).end(agentResponse);
+    }
+    
+    // 3. Streaming Response (agentResponse is the Async Iterator)
+    
+    // Transformer to clean the chunk objects from the LLM and extract pure text
+    const transformStream = new Transform({
+        objectMode: true, // The input chunks are JavaScript objects
+        transform(chunk, encoding, callback) {
+            // Extract the text content from the LLM's response object structure
+            const textChunk = chunk.choices[0]?.delta?.content || "";
+            if (textChunk) {
+                // Push the plain text string out
+                this.push(textChunk);
+            }
+            callback();
+        }
+    });
 
-    // 3. Set necessary HTTP headers for streaming
+    // Set necessary HTTP headers for streaming
     res.setHeader('Content-Type', 'text/plain');
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     res.status(200);
 
-    // 4. Pipe the Node.js ReadableStream (which now has the .pipe method) 
-    // directly to the response stream.
-    nodeReadableStream.pipe(res);
+    // Pipe the flow: AsyncIterator -> Node Readable -> Transformer (text) -> Response
+    Readable.from(agentResponse) 
+        .pipe(transformStream)  // Extracts the 'content' text from the LLM chunk object
+        .pipe(res);             // Pipes the clean text to the client
 
   } catch (err) {
     console.error("API error:", err);
-    
-    // Set response headers for error and write error message
     res.setHeader('Content-Type', 'text/plain');
     res.status(500).end("Error contacting AI agent.");
   }
