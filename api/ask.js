@@ -1,10 +1,10 @@
 // /api/ask.js
+// FIX: Import the built-in 'Readable' class from the 'stream' module
+import { Readable } from 'stream'; 
 import { askAgent } from "../lib/queryAgent.js";
 
 export const config = {
   // Disable the default Next.js/Vercel body parsing
-  // This is often required when you want to stream responses,
-  // as it avoids buffer limits that conflict with long-lived streams.
   api: {
     bodyParser: false, 
   },
@@ -16,8 +16,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    // Since bodyParser is disabled, we need to read the body manually.
-    // This is common for Vercel/Next.js when using the streaming API config.
+    // Manual body parsing for when bodyParser is disabled
     const chunks = [];
     for await (const chunk of req) {
       chunks.push(chunk);
@@ -29,22 +28,23 @@ export default async function handler(req, res) {
       return res.status(400).end("Question is required");
     }
 
-    // 1. Call the new askAgent function, which returns a ReadableStream
-    const readableStream = await askAgent(question);
+    // 1. Call askAgent function, which returns a WHATWG ReadableStream
+    const whatwgReadableStream = await askAgent(question);
 
-    // 2. Set necessary HTTP headers for streaming
+    // 2. FIX: Convert the WHATWG stream to a Node.js Readable stream
+    // Readable.from() is the standard way to wrap a Web Stream for piping.
+    const nodeReadableStream = Readable.from(whatwgReadableStream);
+
+    // 3. Set necessary HTTP headers for streaming
     res.setHeader('Content-Type', 'text/plain');
     res.setHeader('Transfer-Encoding', 'chunked');
     res.setHeader('Cache-Control', 'no-cache');
     res.setHeader('Connection', 'keep-alive');
     res.status(200);
 
-    // 3. Pipe the ReadableStream directly to the response stream
-    // This connects the LLM output directly to the HTTP response
-    readableStream.pipe(res);
-
-    // The stream piping handles the end of the response, 
-    // so we don't need a manual res.end() here.
+    // 4. Pipe the Node.js ReadableStream (which now has the .pipe method) 
+    // directly to the response stream.
+    nodeReadableStream.pipe(res);
 
   } catch (err) {
     console.error("API error:", err);
