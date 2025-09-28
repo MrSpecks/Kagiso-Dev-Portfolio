@@ -13,7 +13,7 @@ const About = () => {
     },
     {
       title: "Systems Administrator Skills Program",
-      company: "Afrikka Tikkun Services",
+      company: "Afrika Tikkun Services",
       period: "2024",
       location: "Randburg, GP",
       description: "I developed and built cruicial proficiency in cloud, project management and systems administration, strengthening my capability to contribute to scalable enterprise-grade cloud projects.",
