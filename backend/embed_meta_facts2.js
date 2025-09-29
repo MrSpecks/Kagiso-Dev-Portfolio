@@ -78,6 +78,7 @@ async function getJinaEmbedding(input) {
 // --- 2. Anchor Chunks Definition ---
 
 const metaFacts = [
+    // --- Original Facts ---
     {
         title: "Quantitative Summary",
         content: "Kagiso Mfusi's quantitative professional summary is as follows: Kagiso has **31 total certifications earned** across AI, cloud infrastructure, and software development, which includes key expertise in Oracle AI, Microsoft Azure, and Python Machine Learning. Kagiso has **8+ projects completed and showcased** in the portfolio, including the Personal Portfolio RAG Agent, an AI Brochure Maker, and an OSINT Reconnaissance Tool. Kagiso has **over 7 years of total experience** in systems development, cloud architecture, and full-stack development, with specialization in LLM engineering."
@@ -93,6 +94,39 @@ const metaFacts = [
     {
         title: "Kagiso's Professional Narrative, Experience, Education, and Hobbies",
         content: "Kagiso Mfusi's detailed professional profile, experience, education, and interests: Professional Narrative: Kagiso is a passionate systems developer with a love for creating scalable, innovative solutions and leveraging AI to push the boundaries of resilient, cloud-native architecture. His journey, which began in high school, has led to expertise across cloud computing, AI, cybersecurity, and full-stack development, emphasizing clean code, user-centric design, and strategic problem-solving. Experience: UI/UX Designer & Systems Developer at SPS Software (2025 - Present, GP, Remote), where he engineered intelligent AI workflows using React, Node.js, and cloud technologies. Systems Administrator Skills Program at Afrika Tikkun Services (2024, Randburg, GP), developing crucial proficiency in cloud, project management, and systems administration. Client Services Representative at First National Bank (2019 - 2023, Johannesburg, GP), where he leveraged ~9700 hours of direct client support to identify recurring customer pain points suitable for AI-driven automation. Junior JAVA Developer Intern at First National Bank (2018 - 2019, Randburg, GP), contributing production-ready code in an agile DevOps environment and enhancing proficiency in Java, Git, and Atlassian toolsets. Education: Systems Admin Skills Training from Digital Youth ICT Academy (2024) which helped secure Microsoft Azure Fundamentals and IBM Project Management Foundations certifications. Higher Certificate in IT: Systems Development from CTU Training Solutions (2018 - 2019) with distinctions, including an intensive JAVA Programming Bootcamp. Completed the first year of a Bachelor of Science (BSc), IT at Richfield Graduate Institute of Technology (2017) with distinctions. Graduated with a National Senior Certificate (Matric) from Florida Park High School (2016) with a Bachelors pass and two distinctions. Interests & Hobbies: Open Source Contributing, Machine Learning, Cloud Architecture, Tech Research, DevOps & Automation, and Exercise & Fitness, focusing on optimizing his 'biological operating system for peak performance'."
+    },
+    // --- New Technical Capability Facts derived from rag_capabilities_summary.md ---
+    {
+        title: "RAG Pipeline Architecture (Proficiency: 9/10)",
+        content: "Demonstrated: Successful end-to-end implementation of the RAG model: Embedding $\rightarrow$ Storage $\rightarrow$ Retrieval $\rightarrow$ Context Augmentation $\rightarrow$ LLM Generation. This is the core success of the project, proven by the agent's ability to answer complex, grounded queries."
+    },
+    {
+        title: "Vector Embedding with Jina-Embeddings-v3 (Proficiency: 9/10)",
+        content: "Demonstrated: Direct, functional code implementation (`embed_meta_facts.js`) to call the Jina AI API, correctly using `Bearer` token authentication and specifying the `jina-embeddings-v3` model with the appropriate `retrieval.passage` task for high-accuracy semantic encoding."
+    },
+    {
+        title: "Supabase/PostgreSQL Vector Database Implementation (Proficiency: 9/10)",
+        content: "Demonstrated: Strategic choice and implementation of a scalable, production-grade vector database solution (PostgreSQL with the `vector` extension). This capability is central to storing the high-dimensional vectors efficiently for rapid search operations."
+    },
+    {
+        title: "Semantic Search using Cosine Similarity (Proficiency: 9/10)",
+        content: "Demonstrated: Deep architectural understanding and implementation of the core retrieval mechanism. The system effectively translates the user's natural language query into a vector and performs a **Cosine Similarity** calculation against the entire database to retrieve semantically relevant context chunks."
+    },
+    {
+        title: "Vercel Serverless Deployment & Orchestration (Proficiency: 9/10)",
+        content: "Demonstrated: Successful orchestration of a complex, stateful pipeline (requiring API keys and external database connections) within Vercel's serverless environment. This proves expertise in deploying high-performance, scalable backend logic optimized for low latency."
+    },
+    {
+        title: "LLM Strategy & Integration using OpenRouter (Proficiency: 8/10)",
+        content: "Demonstrated: Strategic decision to use an LLM routing layer (OpenRouter) instead of a single API provider. This showcases advanced thinking regarding **model resilience, cost optimization, and failover**, ensuring the agent remains functional and economical under various loads."
+    },
+    {
+        title: "Node.js/TypeScript API Orchestration (Proficiency: 8/10)",
+        content: "Demonstrated: Writing clean, robust, and asynchronous JavaScript/Node.js code (`embed_meta_facts.js`) to manage secure `https` API calls, handle response parsing, and perform database transactions. This validates core proficiency in backend development for AI services."
+    },
+    {
+        title: "Data Structuring & Engineering for RAG (Proficiency: 8/10)",
+        content: "Demonstrated: Intentional design of highly dense, multi-faceted data chunks (`metaFacts`) optimized specifically for high-precision vector retrieval. The data model uses unique IDs and a `source_type` (`meta_fact`) for reliable data governance and retrieval filtering."
     }
 ];
 
