@@ -26,7 +26,7 @@ async function embedProjects() {
     for (let project of projects) {
       const input = `${project.title} - ${project.description}`;
       const embeddingResponse = await client.embeddings.create({
-        model: "text-embedding-ada-002",
+        model: "jina-embeddings-v3-small-en",
         input,
       });
 

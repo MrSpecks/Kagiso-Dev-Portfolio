@@ -1,14 +1,86 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-import { supabase } from "./supabaseClient.js";
-import OpenAI from "openai";
+// Standard Node imports for file operations
 import fs from "fs";
 import path from "path";
+import https from "https"; // Required for Jina API call
+
+// Supabase and UUID imports
+import { supabase } from "./supabaseClient.js"; // Assume this provides an initialized Supabase client
 import { v4 as uuidv4 } from "uuid";
 
-// Initialize OpenAI client with API key from environment variables
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Initialize API constants from environment variables
+// NOTE: Ensure JINA_API_KEY is defined in your .env file
+const JINA_API_KEY = process.env.JINA_API_KEY;
+
+// --- Jina API Helper Function ---
+
+/**
+ * Fetches the embedding for a given text input using the Jina API.
+ * @param {string} input The text content to embed.
+ * @returns {Promise<number[]>} A promise that resolves to the embedding vector (array of numbers).
+ */
+async function getJinaEmbedding(input) {
+    if (!JINA_API_KEY) {
+        throw new Error("JINA_API_KEY is not set in environment variables.");
+    }
+
+    return new Promise((resolve, reject) => {
+        const options = {
+            hostname: 'api.jina.ai',
+            path: '/v1/embeddings',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JINA_API_KEY}`
+            }
+        };
+
+        const payload = {
+            "model": "jina-embeddings-v3",
+            "task": "retrieval.passage",
+            "input": [input]
+        };
+
+        const req = https.request(options, (res) => {
+            let chunks = [];
+            res.on('data', (d) => {
+                chunks.push(d);
+            });
+
+            res.on('end', () => {
+                const body = Buffer.concat(chunks).toString();
+
+                if (res.statusCode !== 200) {
+                    try {
+                        const errorResult = JSON.parse(body);
+                        return reject(new Error(`Jina API Error (${res.statusCode}): ${errorResult.detail || body}`));
+                    } catch {
+                        return reject(new Error(`Jina API Error (${res.statusCode}): ${body}`));
+                    }
+                }
+
+                try {
+                    const result = JSON.parse(body);
+                    const embedding = result.data[0].embedding;
+                    resolve(embedding);
+                } catch (e) {
+                    reject(new Error("Failed to parse Jina API response: " + e.message + "\nRaw Body: " + body));
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            reject(error);
+        });
+
+        req.write(JSON.stringify(payload));
+        req.end();
+    });
+}
+
+// --- END: Jina API Helper Function ---
 
 /**
  * Aggressively cleans raw TypeScript/JSX code content to produce dense,
@@ -80,8 +152,11 @@ function cleanCodeForRAG(rawCodeContent) {
 
 
 async function embedProjectsPage() {
+    let embedding = null;
+    let lastError = null;
+
     try {
-        // Path to your Projects.tsx file
+        // Path to your Projects.tsx page
         const projectsPath = path.join("../src/pages/Projects.tsx");
         const rawProjectsContent = fs.readFileSync(projectsPath, "utf-8");
 
@@ -96,19 +171,42 @@ async function embedProjectsPage() {
             return;
         }
 
-        // Use the cleaned content for the embedding
-        const embeddingResponse = await client.embeddings.create({
-            model: "text-embedding-ada-002",
-            input: cleanedContent, // IMPORTANT: Using cleanedContent for embedding
-        });
-
-        const embedding = embeddingResponse.data[0].embedding;
-
+        // --- Embedding with Exponential Backoff (Jina Logic) ---
+        const MAX_RETRIES = 5;
+        let attempt = 0;
+        
+        while (attempt < MAX_RETRIES) {
+            try {
+                // Use the Jina API helper function
+                embedding = await getJinaEmbedding(cleanedContent);
+                console.log(`\t[SUCCESS] Embedding generated on attempt ${attempt + 1}.`);
+                break; // Success!
+            } catch (err) {
+                lastError = err;
+                attempt++;
+                if (attempt >= MAX_RETRIES) {
+                    console.error(`\t[FAILURE] Failed to embed Projects page after ${MAX_RETRIES} attempts. Error:`, lastError.message || lastError);
+                    // If max retries reached, we break and proceed to the final check (where embedding is null)
+                    break;
+                }
+                // Wait using exponential backoff: 1s, 2s, 4s, 8s, 16s...
+                const delay = Math.pow(2, attempt) * 1000;
+                await new Promise(resolve => setTimeout(resolve, delay));
+            }
+        }
+        
+        if (!embedding) {
+            // If embedding is still null after retries, skip database insert
+            console.log("Skipping database insert due to embedding failure.");
+            return;
+        }
+        
+        // --- Database Insertion ---
         // Store the CLEANED content in the database for the LLM to read later
-        const { data, error } = await supabase.from("embeddings").insert({
+        const { error } = await supabase.from("embeddings").insert({
             id: uuidv4(),
-            source_type: "projects_page", // Updated source type
-            source_id: "projects", // Updated source id
+            source_type: "projects_page", // Target: projects_page
+            source_id: "projects", // Target: projects
             content: cleanedContent, // IMPORTANT: Storing cleanedContent in the 'content' field
             embedding,
         });
@@ -120,7 +218,8 @@ async function embedProjectsPage() {
         console.log(cleanedContent.substring(0, 500) + '...');
 
     } catch (err) {
-        console.error("Error embedding Projects page:", err);
+        // Catch errors from fetching file, cleaning, or database insert
+        console.error("Critical Error embedding Projects page:", err.message || err);
     }
 }
 

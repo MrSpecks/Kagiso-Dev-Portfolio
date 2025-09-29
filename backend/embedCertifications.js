@@ -9,7 +9,7 @@ async function embedData() {
   for (let cert of certs) {
     const input = `${cert.title} - ${cert.description}`;
     const embedding = await client.embeddings.create({
-      model: "text-embedding-ada-002",
+      model: "jina-embeddings-v3-small-en",
       input
     });
     await supabase.from("embeddings").insert({

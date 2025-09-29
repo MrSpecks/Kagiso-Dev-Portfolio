@@ -2,11 +2,80 @@ import dotenv from "dotenv";
 dotenv.config();
 
 import { supabase } from "./supabaseClient.js";
-import OpenAI from "openai";
 import { v4 as uuidv4 } from "uuid";
+import https from "https"; // Import the native https module
 
-// Initialize OpenAI client with API key from environment variables
-const client = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+// Initialize API constants from environment variables
+const JINA_API_KEY = process.env.JINA_API_KEY;
+
+// --- Jina API Helper Function (Copied from embed_processor.js) ---
+
+/**
+ * Fetches the embedding for a given text input using the Jina API.
+ * This function is wrapped in a Promise to allow async/await usage.
+ * @param {string} input The text content to embed.
+ * @returns {Promise<number[]>} A promise that resolves to the embedding vector (array of numbers).
+ */
+async function getJinaEmbedding(input) {
+    if (!JINA_API_KEY) {
+        throw new Error("JINA_API_KEY is not set in environment variables.");
+    }
+    
+    return new Promise((resolve, reject) => {
+        const options = {
+            hostname: 'api.jina.ai',
+            path: '/v1/embeddings',
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${JINA_API_KEY}`
+            }
+        };
+
+        // The API expects an array of inputs, even for a single string.
+        const payload = {
+            "model": "jina-embeddings-v3", // Using a stable model name
+            "task": "retrieval.passage", 
+            "input": [input]
+        };
+
+        const req = https.request(options, (res) => {
+            let chunks = [];
+            res.on('data', (d) => {
+                chunks.push(d);
+            });
+
+            res.on('end', () => {
+                const body = Buffer.concat(chunks).toString();
+                
+                if (res.statusCode !== 200) {
+                    try {
+                        const errorResult = JSON.parse(body);
+                        return reject(new Error(`Jina API Error (${res.statusCode}): ${errorResult.detail || body}`));
+                    } catch {
+                        return reject(new Error(`Jina API Error (${res.statusCode}): ${body}`));
+                    }
+                }
+                
+                try {
+                    const result = JSON.parse(body);
+                    // Extract the embedding array from the first result object
+                    const embedding = result.data[0].embedding;
+                    resolve(embedding);
+                } catch (e) {
+                    reject(new Error("Failed to parse Jina API response: " + e.message + "\nRaw Body: " + body));
+                }
+            });
+        });
+
+        req.on('error', (error) => {
+            reject(error);
+        });
+
+        req.write(JSON.stringify(payload));
+        req.end();
+    });
+}
 
 // Static content derived from manually scraped Certifications page,
 // bypassing the empty content issue from reading the live component file.
@@ -81,12 +150,12 @@ Foundational programming principles taught through an engaging Vibe coding appro
 
 Accelerate Development with Artificial Intelligence and Cursor
 LinkedIn Learning
-June 2025
+May 2025
 Learn how to speed up development workflows by integrating AI capabilities with Cursor.
 
 Scrum: Advanced
 LinkedIn Learning
-June 2025
+May 2025
 Advanced Scrum practices for scaling agile teams and complex projects.
 
 Tech on the Go: No-Code For Coders
@@ -186,6 +255,8 @@ function cleanContent(rawTextContent) {
     return cleanText;
 }
 
+// --- Main Embedding Function ---
+
 async function embedCertificationsPage() {
     try {
         console.log("Cleaning and Embedding Certifications page content...");
@@ -198,12 +269,8 @@ async function embedCertificationsPage() {
             return;
         }
 
-        const embeddingResponse = await client.embeddings.create({
-            model: "text-embedding-ada-002",
-            input: cleanedContent,
-        });
-
-        const embedding = embeddingResponse.data[0].embedding;
+        // Use the new custom function to get the embedding (Replaced OpenAI call)
+        const embedding = await getJinaEmbedding(cleanedContent);
 
         // Store the CLEANED content in the database
         const { data, error } = await supabase.from("embeddings").insert({
@@ -219,9 +286,10 @@ async function embedCertificationsPage() {
         console.log("Certifications page embedded successfully!");
         console.log(`\n--- Cleaned Content Summary (${cleanedContent.length} chars) ---`);
         console.log(cleanedContent.substring(0, 500) + '...');
+        console.log(`Embedding dimensions: ${embedding.length}`);
 
     } catch (err) {
-        console.error("Error embedding Certifications page:", err);
+        console.error("Error embedding Certifications page:", err.message);
     }
 }
 
