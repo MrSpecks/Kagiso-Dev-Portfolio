@@ -15,22 +15,23 @@ Deployed on Vercel Serverless Functions and integrated with Supabase (Postgres +
 
 ##  ⚡ Capabilities & Proficiency
 
-### Capability	Evidence & Implementation	Rating (0–10)
+### Capability	Evidence & Implementation	Rating 
 
- - RAG pipeline architecture	End-to-end pipeline: embedding → storage → retrieval → context augmentation → LLM generation. Agent answers grounded queries reliably.	9
- - Vector embedding (Jina/HuggingFace)	Embedding scripts produce high-quality semantic vectors (embed_meta_facts.js). Secure Bearer authentication, correct model/task usage.	9
+ - **RAG pipeline architecture	End-to-end pipeline:** embedding → storage → retrieval → context augmentation → LLM generation. Agent answers grounded queries reliably.	
 
- - Supabase / PostgreSQL vector DB	Production choice: Postgres + pgvector extension for scalable, SQL-native retrieval.	9
+ - **Vector embedding (Jina/HuggingFace):**	Embedding scripts produce high-quality semantic vectors (embed_meta_facts.js). Secure Bearer authentication, correct model/task usage.	
 
- - Semantic search (cosine similarity)	Query vectorization + cosine similarity ranking (Top-K). Fast, accurate server-side retrieval.	9
+ - **Supabase / PostgreSQL vector DB	Production choice:** Postgres + pgvector extension for scalable, SQL-native retrieval.	
 
- - Serverless deployment (Vercel)	Entire RAG pipeline hosted in serverless functions; secure key handling and low latency.	9
+ - **Semantic search (cosine similarity):**	Query vectorization + cosine similarity ranking (Top-K). Fast, accurate server-side retrieval.	
 
- - LLM routing (OpenRouter)	Model routing + failover across providers. Improves resilience and cost efficiency.	8
+ - **Serverless deployment (Vercel):** Entire RAG pipeline hosted in serverless functions; secure key handling and low latency.	
+
+ - **LLM routing (OpenRouter):	** Model routing + failover across providers. Improves resilience and cost efficiency.	
  
- - API orchestration (Node.js / TypeScript)	Clean async code for embeddings, DB IO, and LLM calls. Strong error handling and retries.	8
+ - **API orchestration (Node.js / TypeScript):**	Clean async code for embeddings, DB IO, and LLM calls. Strong error handling and retries.	
 
- - Data engineering	Dense, structured metaFacts optimized for precision. Includes unique IDs and source_type for governance.	8
+ - **Data engineering:**	Dense, structured metaFacts optimized for precision. Includes unique IDs and source_type for governance.	
 
 
 
@@ -90,7 +91,7 @@ Reusable blueprint for production-ready RAG systems in business contexts.
 
 ## 🔗 Live Demo
 
-👉 Visit Portfolio (Insert your portfolio site link here)
+👉 Visit Portfolio (https://kagiso-dev-portfolio-z55k-7eayijlg3-mrspecks-projects.vercel.app/)
 
 
 ---
