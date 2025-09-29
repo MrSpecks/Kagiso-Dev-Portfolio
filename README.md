@@ -1,132 +1,102 @@
-# 🌐 Developer Portfolio
+u# Personal Portfolio RAG Agent
+## Author: Kagiso Mfusi — Full-stack Cloud & AI Engineer
 
-A modern, responsive developer portfolio built with **React**, **Tailwind CSS**, **Supabase**, and **React Query**. Designed to be recruiter-friendly, clean, and easily extensible.
-
-This portfolio highlights certifications, projects, and professional experience while offering a sleek dark/light theme toggle, interactive skill displays, and integrated backend data from Supabase.
 
 ---
 
-## 🚀 Tech Stack
+## 📌 Introduction
 
-* **Frontend:** React + React Router
-* **Styling:** Tailwind CSS + custom gradients
-* **Backend:** Supabase (PostgreSQL + Auth + Storage)
-* **Data Fetching:** React Query (`@tanstack/react-query`)
-* **Icons:** Lucide React
-* **Deployment:** Vercel
+The Personal Portfolio RAG Agent is a live, production-ready demonstration of end-to-end AI system engineering. More than a Q&A bot, it acts as a knowledge-grounded expert on my professional profile — ingesting portfolio content, converting it to vector embeddings, retrieving relevant context, and generating grounded responses via an LLM routing layer.
+
+Deployed on Vercel Serverless Functions and integrated with Supabase (Postgres + pgvector), this project demonstrates a full pipeline from design to resilient execution.
+
 
 ---
 
-## 📄 Pages
+##  ⚡ Capabilities & Proficiency
 
-### 🏠 Home Page
+### Capability	Evidence & Implementation	Rating 
 
-* **Hero Section** with name, tagline, CTA, and floating **skills cloud**.
-* **Stats Section** with cards for:
+ - **RAG pipeline architecture	End-to-end pipeline:** embedding → storage → retrieval → context augmentation → LLM generation. Agent answers grounded queries reliably.	
 
-  * Projects Completed (static count for now).
-  * Certifications Earned (dynamic count from Supabase).
-  * Years of Experience.
-* **Technical Skills Section** using animated badges for your stack.
-* **Call-to-Action Section** inviting collaboration and linking to Contact page.
+ - **Vector embedding (Jina/HuggingFace):**	Embedding scripts produce high-quality semantic vectors (embed_meta_facts.js). Secure Bearer authentication, correct model/task usage.	
 
-### 👤 About Page
+ - **Supabase / PostgreSQL vector DB	Production choice:** Postgres + pgvector extension for scalable, SQL-native retrieval.	
 
-* **Personal Story** with narrative on career journey.
-* **Experience Timeline** showcasing roles, companies, dates, and descriptions.
-* **Education Section** with institutions, programs, and details.
-* **Interests & Hobbies** as interactive badges.
-* Clean card-based layout for readability and recruiter-friendliness.
+ - **Semantic search (cosine similarity):**	Query vectorization + cosine similarity ranking (Top-K). Fast, accurate server-side retrieval.	
 
----
+ - **Serverless deployment (Vercel):** Entire RAG pipeline hosted in serverless functions; secure key handling and low latency.	
 
-## 🛠️ Supabase Integration
+ - **LLM routing (OpenRouter):	** Model routing + failover across providers. Improves resilience and cost efficiency.	
+ 
+ - **API orchestration (Node.js / TypeScript):**	Clean async code for embeddings, DB IO, and LLM calls. Strong error handling and retries.	
 
-This project uses Supabase for certifications and projects data.
+ - **Data engineering:**	Dense, structured metaFacts optimized for precision. Includes unique IDs and source_type for governance.	
 
-**Certifications Fetch Example:**
 
-```js
-const { data, error } = await supabase
-  .from("certifications")
-  .select("*");
-```
-
-* Each certification includes:
-
-  * `title`, `provider`, `date`, `description`, `file_url`.
-* Displayed dynamically as responsive cards with hover states.
-
-**Certifications Count on Home:**
-
-```js
-const { data: certifications } = useQuery({
-  queryKey: ["certifications-count"],
-  queryFn: async () => {
-    const { data, error } = await supabase
-      .from("certifications")
-      .select("id", { count: "exact" });
-    if (error) throw error;
-    return data;
-  },
-});
-```
 
 ---
 
-## 🎨 Styling Guidelines
+## 🛠️ Architecture & Execution Summary
 
-* **Dark Mode:** Grey-to-dark gradient background.
-* **Light Mode:** Clean off-white background.
-* **Cards:** Rounded, with hover shadows and smooth transitions.
-* **Consistency:** Tailwind’s grid/flex layouts ensure clean spacing.
+**1. Embedding**
+Portfolio data (About, CV, projects, certifications) is chunked and converted into dense vectors via Jina/HuggingFace embeddings. Unique IDs ensure traceability.
 
----
 
-## 📦 Installation & Setup
+**2. Storage & Retrieval**
+Embeddings stored in Supabase/Postgres with pgvector. Queries run Top-K cosine similarity searches to find relevant context.
 
-```bash
-# Clone the repo
-git clone https://github.com/yourusername/portfolio.git
-cd portfolio
 
-# Install dependencies
-npm install
+**3. Context Augmentation**
+Retrieved chunks are assembled into a context payload. Source tags are appended for traceability.
 
-# Add environment variables
-cp .env.example .env
-# Fill in your Supabase URL + Anon Key
 
-# Start development server
-npm run dev
-```
+**4. LLM Generation**
+Context + user query are passed to an LLM via OpenRouter, with strict system instructions enforcing grounded answers only from retrieved data.
+
+
+**5. Deployment & Ops**
+Hosted on Vercel serverless functions with GitHub CI/CD for automated builds and embeddings refresh workflows.
+
+
+
 
 ---
 
-## 🌍 Deployment
+## ✅ Production Considerations
 
-1. Push to GitHub.
-2. Connect repo to [Vercel](https://vercel.com/).
-3. Add environment variables in Vercel dashboard:
+ - **Accuracy & Grounding** → strict prompts + retrieval eliminate hallucinations.
 
-   * `NEXT_PUBLIC_SUPABASE_URL`
-   * `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-4. Deploy — and you’re live!
+ - **Scalability** → serverless endpoints + Supabase scale seamlessly.
 
----
+ - **Security** → API keys and Supabase role keys are server-side only.
 
-## 📌 Roadmap
+ - **Extensibility** → easily ingest GitHub repos, blogs, or docs into the same pipeline.
 
-*
+
 
 ---
 
-## 📜 License
+## 🚀 Outcomes
 
-MIT License. Feel free to fork, modify, and build on top of this portfolio.
+Demonstrated mastery of modern RAG pipelines, serverless deployment, and AI orchestration.
+
+Functional portfolio feature that recruiters and peers can interact with in real-time.
+
+Reusable blueprint for production-ready RAG systems in business contexts.
+
+
 
 ---
 
-## 📸 Screenshots
+## 🔗 Live Demo
 
-*(Optional: Add screenshots here to give recruiters a quick visual of your site)*
+👉 [Visit Portfolio](#) *(https://kagiso-dev-portfolio-z55k-7eayijlg3-mrspecks-projects.vercel.app/)*
+
+
+---
+
+## 📄 License
+
+This project is part of my personal portfolio. Feel free to explore, but reproduction of the full system for commercial use is not permitted without permission.
+
