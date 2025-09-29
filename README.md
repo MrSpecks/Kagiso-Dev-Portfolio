@@ -1,4 +1,4 @@
-# Personal Portfolio RAG Agent
+u# Personal Portfolio RAG Agent
 ## Author: Kagiso Mfusi — Full-stack Cloud & AI Engineer
 
 
@@ -91,7 +91,7 @@ Reusable blueprint for production-ready RAG systems in business contexts.
 
 ## 🔗 Live Demo
 
-👉 Visit Portfolio (https://kagiso-dev-portfolio-z55k-7eayijlg3-mrspecks-projects.vercel.app/)
+👉 [Visit Portfolio](#) *(https://kagiso-dev-portfolio-z55k-7eayijlg3-mrspecks-projects.vercel.app/)*
 
 
 ---
