@@ -1,4 +1,4 @@
-u# Personal Portfolio RAG Agent
+# Personal Portfolio RAG Agent
 ## Author: Kagiso Mfusi — Full-stack Cloud & AI Engineer
 
 
