@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
+import ChartRadarGrid from "@/components/ChartRadarGridFill";
 import { format } from "date-fns";
 
 

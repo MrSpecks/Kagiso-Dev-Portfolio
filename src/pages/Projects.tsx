@@ -55,7 +55,7 @@ export const projects = [
         title: "Personal Portfolio RAG Agent",
         description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. It's trained on my own site content and connected to Supabase for persistent learning. The agent not only answers visitor questions but also logs unknown queries to Supabase, creating a feedback loop that helps me continuously improve its knowledge base",
         tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
-        demo_url: "https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app",
+        demo_url: "https://kagiso-dev-portfolio-z55k-fa6c2gtm8-mrspecks-projects.vercel.app",
         repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
         screenshot_url: "/Portfolio-RAG-Agent.png",
         category: "Web App"

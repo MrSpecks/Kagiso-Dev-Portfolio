@@ -24,7 +24,7 @@ interface ChartProps {
 	chartConfig: ChartConfig;
 }
 
-const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
+export const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
 	return (
 		<Card>
 			<CardHeader>
