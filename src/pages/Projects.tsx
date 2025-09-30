@@ -1,7 +1,163 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, Github, Code, Smartphone, Globe } from "lucide-react";
+import { Link } from "react-router-dom";
+import * as React from "react";
+import { ArrowRight, ListChecks, Database, Workflow, Cloud, Search, Cpu, ExternalLink, Github, Code, Smartphone, Globe } from "lucide-react";
+
+// Utility for concatenating class names (mimicking the provided 'cn')
+const cn = (...classes: (string | boolean | undefined | null)[]) => classes.filter(Boolean).join(' ');
+
+// --- Table Components (Provided by User) ---
+
+const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
+  ({ className, ...props }, ref) => (
+    <div className="relative w-full overflow-auto rounded-lg border">
+      <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
+    </div>
+  ),
+);
+Table.displayName = "Table";
+
+const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
+  ({ className, ...props }, ref) => <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />,
+);
+TableHeader.displayName = "TableHeader";
+
+const TableBody = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
+  ({ className, ...props }, ref) => (
+    <tbody ref={ref} className={cn("[&_tr:last-child]:border-0", className)} {...props} />
+  ),
+);
+TableBody.displayName = "TableBody";
+
+const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTMLTableRowElement>>(
+  ({ className, ...props }, ref) => (
+    <tr
+      ref={ref}
+      className={cn("border-b transition-colors data-[state=selected]:bg-gray-100 hover:bg-gray-50/50", className)}
+      {...props}
+    />
+  ),
+);
+TableRow.displayName = "TableRow";
+
+const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<HTMLTableCellElement>>(
+  ({ className, ...props }, ref) => (
+    <th
+      ref={ref}
+      className={cn(
+        "h-12 px-4 text-left align-middle font-semibold text-gray-700 bg-gray-50 [&:has([role=checkbox])]:pr-0",
+        className,
+      )}
+      {...props}
+    />
+  ),
+);
+TableHead.displayName = "TableHead";
+
+const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(
+  ({ className, ...props }, ref) => (
+    <td ref={ref} className={cn("p-4 align-top text-gray-800", className)} {...props} />
+  ),
+);
+TableCell.displayName = "TableCell";
+
+const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(
+  ({ className, ...props }, ref) => (
+    <caption ref={ref} className={cn("mt-4 text-sm text-gray-500", className)} {...props} />
+  ),
+);
+TableCaption.displayName = "TableCaption";
+
+
+// Mapping icons to capabilities for better visual appeal
+const CAPABILITY_ICONS: Record<string, React.ElementType> = {
+    'RAG Pipeline Architecture': Workflow,
+    'Vector Embedding (Jina-Embeddings-v3)': ListChecks,
+    'Supabase/PostgreSQL Vector DB': Database,
+    'Semantic Search (Cosine Similarity)': Search,
+    'Vercel Serverless Deployment': Cloud,
+    'LLM Strategy & Integration (OpenRouter)': Cpu,
+    'Node.js/TypeScript API Orchestration': ListChecks,
+    'Data Structuring & Engineering': Database,
+};
+
+// Data extracted from the RAG Agent Technical Capabilities Write Up.pdf
+const RAG_TECHNICAL_DATA = [
+    {
+        capability: "RAG Pipeline Architecture",
+        explanation: "Successful end-to-end implementation of the RAG model: Embedding → Storage Retrieval → Context Augmentation → LLM Generation. This is the core success of the project, proven by the agent's ability to answer complex, grounded queries.",
+        rating: 9,
+        icon: 'RAG Pipeline Architecture',
+    },
+    {
+        capability: "Vector Embedding (Jina-Embeddings-v3)",
+        explanation: "Direct, functional code implementation (`embed_meta_facts.js`) to call the Jina AI API, correctly using Bearer token authentication and specifying the `jina-embeddings-v3` model with the appropriate `retrieval.passage` task for high-accuracy semantic encoding.",
+        rating: 9,
+        icon: 'Vector Embedding (Jina-Embeddings-v3)',
+    },
+    {
+        capability: "Supabase/PostgreSQL Vector DB",
+        explanation: "Strategic choice and implementation of a scalable, production-grade vector database solution (PostgreSQL with the vector extension). This capability is central to storing high-dimensional vectors efficiently for rapid search operations.",
+        rating: 9,
+        icon: 'Supabase/PostgreSQL Vector DB',
+    },
+    {
+        capability: "Semantic Search (Cosine Similarity)",
+        explanation: "Deep architectural understanding and implementation of the core retrieval mechanism. The system effectively translates the user's natural language query into a vector and performs a Cosine Similarity calculation against the entire database to retrieve semantically relevant context chunks.",
+        rating: 9,
+        icon: 'Semantic Search (Cosine Similarity)',
+    },
+    {
+        capability: "Vercel Serverless Deployment",
+        explanation: "Successful orchestration of a complex, stateful pipeline (requiring API keys and external database connections) within Vercel's serverless environment. This proves expertise in deploying high-performance, scalable backend logic optimized for low latency.",
+        rating: 9,
+        icon: 'Vercel Serverless Deployment',
+    },
+    {
+        capability: "LLM Strategy & Integration (OpenRouter)",
+        explanation: "Strategic decision to use an LLM routing layer (OpenRouter) instead of a single API provider. This showcases advanced thinking regarding model resilience, cost optimization, and failover, ensuring the agent remains functional and economical under various loads.",
+        rating: 8,
+        icon: 'LLM Strategy & Integration (OpenRouter)',
+    },
+    {
+        capability: "Node.js/TypeScript API Orchestration",
+        explanation: "Writing clean, robust, and asynchronous JavaScript/Node.js code (`embed_meta_facts.js`) to manage secure https API calls, handle response parsing, and perform database transactions. This validates core proficiency in backend development for AI services.",
+        rating: 8,
+        icon: 'Node.js/TypeScript API Orchestration',
+    },
+    {
+        capability: "Data Structuring & Engineering",
+        explanation: "Intentional design of highly dense, multi-faceted data chunks (metaFacts) optimized specifically for high-precision vector retrieval. The data model uses unique IDs and a source_type (`meta_fact`) for reliable data governance and retrieval filtering.",
+        rating: 8,
+        icon: 'Data Structuring & Engineering',
+    },
+];
+
+const CapabilityRow = ({ capability, explanation, rating, icon }: typeof RAG_TECHNICAL_DATA[0]) => {
+    const IconComponent = CAPABILITY_ICONS[icon] || ListChecks;
+    const ratingColor = rating >= 9 ? 'text-green-600 font-bold' : 'text-orange-500 font-semibold';
+    
+    return (
+        <TableRow>
+            <TableCell className="font-medium text-lg text-indigo-700 w-[20%]">
+                <div className="flex items-center space-x-3">
+                    <IconComponent className="w-5 h-5 text-indigo-500 flex-shrink-0" />
+                    <span>{capability}</span>
+                </div>
+            </TableCell>
+            <TableCell className="w-[65%] text-gray-700 text-base leading-relaxed">
+                {explanation}
+            </TableCell>
+            <TableCell className={`text-center w-[15%] ${ratingColor} text-2xl`}>
+                {rating}/10
+            </TableCell>
+        </TableRow>
+    );
+};
+
+// --- Project Data ---
 
 export const projects = [
   {
@@ -116,12 +272,13 @@ export const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen pt-20 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 p-6 md:p-10 font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+        
         {/* Header */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
-          <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             A showcase of my recent work and side projects. Each project represents different challenges 
             and technologies I've worked with.
           </p>
@@ -132,22 +289,21 @@ export const Projects = () => {
           {projects.map((project) => (
             <Card key={project.id} className="project-card group">
               {/* Project Image */}
-              <div className="relative overflow-hidden rounded-lg mb-4 bg-muted">
+              <div className="relative overflow-hidden rounded-t-lg mb-0 bg-gray-200">
                 <div
                   className="w-full h-48 bg-cover bg-center"
                   style={{ backgroundImage: `url(${project.screenshot_url})` }}
                 >
-                  {/* Removed category icon and text to make space for the image */}
                 </div>
               </div>
 
               {/* Project Content */}
               <div className="space-y-4 p-4">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-muted-foreground text-sm line-clamp-3">
+                  <p className="text-gray-500 text-sm line-clamp-3">
                     {project.description}
                   </p>
                 </div>
@@ -155,7 +311,7 @@ export const Projects = () => {
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs">
+                    <Badge key={tech} variant="secondary" className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200">
                       {tech}
                     </Badge>
                   ))}
@@ -163,7 +319,7 @@ export const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 pt-2">
-                  <Button variant="outline" size="sm" asChild className="flex-1">
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-indigo-300 text-indigo-700 hover:bg-indigo-50">
                     <a
                       href={project.demo_url}
                       target="_blank"
@@ -174,7 +330,7 @@ export const Projects = () => {
                       Demo
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild className="flex-1">
+                  <Button variant="outline" size="sm" asChild className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50">
                     <a
                       href={project.repo_url}
                       target="_blank"
@@ -191,17 +347,53 @@ export const Projects = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
-          <Card className="p-8 bg-primary/5 border-primary/20">
-            <h2 className="text-2xl font-bold mb-4">Interested in Working Together?</h2>
-            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto">
-              These projects represent just a sample of my work. I'm always excited to take on new challenges 
-              and collaborate on innovative solutions.
+        {/* --- RAG Agent Technical Capabilities Section --- */}
+        <section id="rag-capabilities" className="max-w-7xl mx-auto bg-white p-8 rounded-xl shadow-2xl mt-16">
+            <h2 className="text-3xl font-bold text-indigo-700 mb-4 flex items-center">
+                <ListChecks className="w-7 h-7 mr-3" />
+                Project Highlight: RAG Agent Technical Capabilities
+            </h2>
+            <p className="text-gray-700 mb-8 text-lg leading-relaxed border-l-4 border-indigo-200 pl-4 bg-indigo-50/50 p-4 rounded-lg">
+                The Personal Portfolio **RAG Agent** is the ultimate demonstration of full-stack AI system development. It transcends a simple Q&A bot to function as a self-updating, knowledge-grounded expert on the professional profile. This project showcases mastery across the modern AI pipeline, from secure cloud architecture and robust vector database implementation to advanced LLM routing strategies.
             </p>
-            <Button>
-              Let's Discuss Your Project
-            </Button>
+
+            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+                Proficiency Ratings Table
+            </h3>
+
+            <Table>
+                <TableCaption>
+                    Technical capabilities and architectural decisions implemented in the RAG Agent, rated on technical depth and functional execution.
+                </TableCaption>
+                <TableHeader>
+                    <TableRow>
+                        <TableHead className="w-[20%]">Capability</TableHead>
+                        <TableHead className="w-[65%]">Explanation and Demonstration</TableHead>
+                        <TableHead className="w-[15%] text-center">Rating (Out of 10)</TableHead>
+                    </TableRow>
+                </TableHeader>
+                <TableBody>
+                    {RAG_TECHNICAL_DATA.map((data, index) => (
+                        <CapabilityRow key={index} {...data} />
+                    ))}
+                </TableBody>
+            </Table>
+        </section>
+
+        {/* Call to Action */}
+        <div className="text-center mt-16 mb-12">
+          <Card className="p-8 bg-indigo-50 border-indigo-200 shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-gray-900">Interested in Working Together?</h2>
+            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+              These projects represent just a sample of my work. I'm always excited to take on new challenges 
+               and collaborate on innovative solutions.
+            </p>
+            <Link to="/contact">
+              <Button size="lg" className="group bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-md">
+                Get In Touch
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </Card>
         </div>
       </div>
@@ -210,4 +402,3 @@ export const Projects = () => {
 };
 
 export default Projects;
-
