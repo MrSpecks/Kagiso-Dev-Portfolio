@@ -70,36 +70,6 @@ export const projects = [
         screenshot_url: "/Property-Reviews-Dashboard.png",
         category: "Web App"
     },
-    {
-        id: 7,
-        title: "CMS Reconnaisance Tool",
-        description: "This tool is a high-performance, intelligent CMS Reconnaissance tool designed for authorized penetration testing engagements. It detects the backend technologies used by a wide range of websites (including PHP, JSP, Java EE, React, Vue, WordPress, and custom stacks)",
-        tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
-        demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
-        repo_url: "https://github.com/MrSpecks/NeoShell",
-        screenshot_url: "/python-tools.jpg",
-        category: "Web Tool"
-    },
-    {
-        id: 8,
-        title: "OSINT Tool",
-        description: "ReconX is an open-source, powerful reconnaissance and OSINT (Open-Source Intelligence) tool designed to streamline and automate the process of gathering critical information.",
-        tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
-        demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
-        repo_url: "https://github.com/MrSpecks/ReconX",
-        screenshot_url: "/OSINT-Tool.jpg",
-        category: "Web Tool"
-    },
-    {
-        id: 9,
-        title: "API Documentation Tool (In Development)",
-        description: "An interactive API documentation generator that automatically creates beautiful docs from OpenAPI specifications with testing capabilities.",
-        tech_stack: ["React", "Node.js", "Swagger", "Docker"],
-        demo_url: "https://api-docs.example.com",
-        repo_url: "https://github.com/MrSpecks/api-docs",
-        screenshot_url: "/API-Documentation-Tool.jpg",
-        category: "Tool"
-    }
 ];
  
 export const Projects = () => {
