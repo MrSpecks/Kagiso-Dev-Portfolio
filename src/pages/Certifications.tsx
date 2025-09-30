@@ -4,17 +4,17 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
-import ChartRadarGrid from "@/components/ChartRadarGridFill";
+import ChartRadarGridFill from "@/components/ChartRadarGridFill";
 import { format } from "date-fns";
 
 
-const ChartRadarGridFill = () => (
-    <div className="flex justify-center items-center h-80 rounded-x p-6">
-        <p className="text-xl font-semibold text-primary/70">
-            [ChartRadarGridFill Placeholder]
-        </p>
-    </div>
-);
+// const ChartRadarGridFill = () => (
+//     <div className="flex justify-center items-center h-80 rounded-x p-6">
+//         <p className="text-xl font-semibold text-primary/70">
+//             [ChartRadarGridFill Placeholder]
+//         </p>
+//     </div>
+// );
 const Certifications = () => {
   const { data: certifications, isLoading, error } = useQuery({
     queryKey: ["certifications"],
@@ -67,7 +67,7 @@ const Certifications = () => {
 
         {/* START: Radar Chart Component Placement (New Section) */}
         <div className="mb-16">
-            <ChartRadarGridFill />
+            <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))', }, }} />
         </div>
 
         {/* Certifications Grid */}
