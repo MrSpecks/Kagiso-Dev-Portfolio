@@ -1,7 +1,6 @@
-// /src/components/ChatBotButton.tsx
 "use client";
 import { useState, useRef, useEffect } from "react";
-import { MessageCircle, X, Send } from "lucide-react";
+import { MessageCircle, X, Send, Cpu, User } from "lucide-react"; // Added Cpu and User icons
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -112,34 +111,61 @@ const ChatbotButton = () => {
       {/* Chat Window */}
       {isOpen && (
         <Card className="fixed bottom-24 right-6 w-80 h-96 p-4 shadow-xl animate-slide-in flex flex-col">
-          {/* Header */}
-          <div className="border-b border-border pb-2 mb-2">
-            <h3 className="font-semibold">Kae's AI Assistant</h3>
-            <p className="text-sm text-muted-foreground text-black">
-              Ask me anything about Kagiso's work!
-            </p>
+          
+          {/* Header (with Agent Icon) */}
+          <div className="border-b border-border pb-2 mb-4 flex items-center">
+            <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0" />
+            <div>
+                <h3 className="font-bold text-indigo-700">Kae's AI Assistant</h3>
+                <p className="text-xs text-gray-500">
+                    Ask me anything about Kagiso's work!
+                </p>
+            </div>
           </div>
 
           {/* Messages */}
-          <div className="flex-1 overflow-y-auto space-y-2 text-black">
+          <div className="flex-1 overflow-y-auto space-y-3 py-1 text-black">
             {messages.map((msg, idx) => (
               <div
                 key={idx}
-                className={`p-2 rounded-lg max-w-[75%] ${
-                  msg.role === "user"
-                    ? "bg-blue-100 self-end ml-auto" // Added ml-auto for alignment
-                    : "bg-gray-100 self-start mr-auto" // Added mr-auto for alignment
+                className={`flex items-start ${
+                  msg.role === "user" ? "justify-end" : "justify-start"
                 }`}
               >
-                <p className="text-sm text-black whitespace-pre-wrap">{msg.content}</p> {/* Added whitespace-pre-wrap */}
+                {/* Assistant Avatar */}
+                {msg.role === "assistant" && (
+                    <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0 p-0.5 rounded-full bg-indigo-50" />
+                )}
+
+                {/* Message Bubble */}
+                <div
+                    className={`p-3 max-w-[80%] shadow-sm text-sm break-words ${
+                        msg.role === "user"
+                            ? "bg-blue-500 text-white rounded-xl rounded-br-sm"
+                            : "bg-gray-100 text-gray-800 rounded-xl rounded-tl-sm"
+                    }`}
+                >
+                    <p className="whitespace-pre-wrap">{msg.content}</p>
+                </div>
+
+                {/* User Avatar */}
+                {msg.role === "user" && (
+                    <User className="h-6 w-6 text-gray-500 ml-2 flex-shrink-0 p-0.5 rounded-full bg-gray-200" />
+                )}
               </div>
             ))}
+            
+            {/* Loading Indicator */}
             {loading && (
-              // Display loading indicator if the last message is still being streamed
-              <div className="p-2 rounded-lg max-w-[75%] bg-gray-100 self-start mr-auto">
-                <p className="text-sm text-black">AI is typing...</p>
-              </div>
+                <div className="flex justify-start items-start">
+                    {/* Loading Assistant Avatar */}
+                    <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0 p-0.5 rounded-full bg-indigo-50 animate-pulse" />
+                    <div className="p-3 rounded-xl rounded-tl-sm bg-gray-100 text-gray-500 shadow-sm">
+                        <p className="text-sm">AI is typing...</p>
+                    </div>
+                </div>
             )}
+
             <div ref={messagesEndRef} />
           </div>
 

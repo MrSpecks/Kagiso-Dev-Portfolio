@@ -12,7 +12,8 @@ const cn = (...classes: (string | boolean | undefined | null)[]) => classes.filt
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    <div className="relative w-full overflow-auto rounded-lg border">
+    // Added dark mode border
+    <div className="relative w-full overflow-auto rounded-lg border dark:border-gray-700">
       <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
     </div>
   ),
@@ -20,7 +21,7 @@ const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableE
 Table.displayName = "Table";
 
 const TableHeader = React.forwardRef<HTMLTableSectionElement, React.HTMLAttributes<HTMLTableSectionElement>>(
-  ({ className, ...props }, ref) => <thead ref={ref} className={cn("[&_tr]:border-b", className)} {...props} />,
+  ({ className, ...props }, ref) => <thead ref={ref} className={cn("[&_tr]:border-b dark:[&_tr]:border-gray-700", className)} {...props} />,
 );
 TableHeader.displayName = "TableHeader";
 
@@ -35,7 +36,8 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
   ({ className, ...props }, ref) => (
     <tr
       ref={ref}
-      className={cn("border-b transition-colors data-[state=selected]:bg-gray-100 hover:bg-gray-50/50", className)}
+      // Added dark:border-gray-700, and dark mode hover/select states
+      className={cn("border-b transition-colors data-[state=selected]:bg-gray-100/50 dark:data-[state=selected]:bg-gray-800/50 hover:bg-gray-50/50 dark:hover:bg-gray-700/50 dark:border-gray-700", className)}
       {...props}
     />
   ),
@@ -46,8 +48,9 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
   ({ className, ...props }, ref) => (
     <th
       ref={ref}
+      // Added dark mode background and text
       className={cn(
-        "h-12 px-4 text-left align-middle font-semibold text-gray-700 bg-gray-50 [&:has([role=checkbox])]:pr-0",
+        "h-12 px-4 text-left align-middle font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 [&:has([role=checkbox])]:pr-0",
         className,
       )}
       {...props}
@@ -58,14 +61,16 @@ TableHead.displayName = "TableHead";
 
 const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(
   ({ className, ...props }, ref) => (
-    <td ref={ref} className={cn("p-4 align-top text-gray-800", className)} {...props} />
+    // Added dark mode text color
+    <td ref={ref} className={cn("p-4 align-top text-gray-800 dark:text-gray-300", className)} {...props} />
   ),
 );
 TableCell.displayName = "TableCell";
 
 const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(
   ({ className, ...props }, ref) => (
-    <caption ref={ref} className={cn("mt-4 text-sm text-gray-500", className)} {...props} />
+    // Added dark mode text color
+    <caption ref={ref} className={cn("mt-4 text-sm text-gray-500 dark:text-gray-400", className)} {...props} />
   ),
 );
 TableCaption.displayName = "TableCaption";
@@ -137,17 +142,19 @@ const RAG_TECHNICAL_DATA = [
 
 const CapabilityRow = ({ capability, explanation, rating, icon }: typeof RAG_TECHNICAL_DATA[0]) => {
     const IconComponent = CAPABILITY_ICONS[icon] || ListChecks;
-    const ratingColor = rating >= 9 ? 'text-green-600 font-bold' : 'text-orange-500 font-semibold';
+    const ratingColor = rating >= 9 ? 'text-green-600 font-bold dark:text-green-400' : 'text-orange-500 font-semibold dark:text-orange-300';
     
     return (
         <TableRow>
-            <TableCell className="font-medium text-lg text-indigo-700 w-[20%]">
+            {/* Added dark mode text color */}
+            <TableCell className="font-medium text-lg text-indigo-700 dark:text-indigo-400 w-[20%]">
                 <div className="flex items-center space-x-3">
                     <IconComponent className="w-5 h-5 text-indigo-500 flex-shrink-0" />
                     <span>{capability}</span>
                 </div>
             </TableCell>
-            <TableCell className="w-[65%] text-gray-700 text-base leading-relaxed">
+            {/* Added dark mode text color */}
+            <TableCell className="w-[65%] text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                 {explanation}
             </TableCell>
             <TableCell className={`text-center w-[15%] ${ratingColor} text-2xl`}>
@@ -160,96 +167,96 @@ const CapabilityRow = ({ capability, explanation, rating, icon }: typeof RAG_TEC
 // --- Project Data ---
 
 export const projects = [
-  {
-    id: 1,
-    title: "AI Brochure Maker",
-    description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
-    tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
-    demo_url: "https://brochure-maker.streamlit.app/",
-    repo_url: "https://github.com/MrSpecks/Brochure-Maker",
-    screenshot_url: "/Brochure-Maker.png",
-    category: "AI Tool"
-  },
-  {
-    id: 2,
-    title: "AI Q&A Code Assistant",
-    description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
-    tech_stack: ["Python", "Jupyter Notebook", "OpenAI API", "Streamlit"],
-    demo_url: "https://qna-code-assistant.streamlit.app/",
-    repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
-    screenshot_url: "/Q&A-Bot.png",
-    category: "AI Tool"
-  },
-  {
-    id: 3,
-    title: "Website Scraper & Summarizer",
-    description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
-    tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
-    demo_url: "https://website-summaryzer.streamlit.app/",
-    repo_url: "https://github.com/MrSpecks/Website-Summarizer",
-    screenshot_url: "/Website-scraper-summarizer.png",
-    category: "AI Tool"
-  },
-  {
-    id: 4,
-    title: "Personal Portfolio Website",
-    description: "A modern, responsive portfolio website showcasing projects and skills. Built with React, featuring smooth animations and dark mode support.",
-    tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
-    demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
-    repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
-    screenshot_url: "/website-preview.jpg",
-    category: "Website"
-  },
-  {
-    id: 5,
-    title: "Personal Portfolio RAG Agent",
-    description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. It's trained on my own site content and connected to Supabase for persistent learning. The agent not only answers visitor questions but also logs unknown queries to Supabase, creating a feedback loop that helps me continuously improve its knowledge base",
-    tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
-    demo_url: "https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app",
-    repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
-    screenshot_url: "/Portfolio-RAG-Agent.png",
-    category: "Web App"
-  },
-  {
-    id: 6,
-    title: "Property Reviews Dashboard",
-    description: "A modern reviews management dashboard built to help property managers track and improve guest experience. The app integrates with a reviews API, normalizes data across multiple channels, and provides an interface to filter, approve, and publish guest feedback. Only manager-approved reviews appear on the public property page, ensuring trust and consistency.",
-    tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
-    demo_url: "https://flexliving-reviews-hub.vercel.app/",
-    repo_url: "https://github.com/MrSpecks/property-reviews-hub",
-    screenshot_url: "/Property-Reviews-Dashboard.png",
-    category: "Web App"
-  },
-  {
-    id: 7,
-    title: "CMS Reconnaisance Tool",
-    description: "This tool is a high-performance, intelligent CMS Reconnaissance tool designed for authorized penetration testing engagements. It detects the backend technologies used by a wide range of websites (including PHP, JSP, Java EE, React, Vue, WordPress, and custom stacks)",
-    tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
-    demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
-    repo_url: "https://github.com/MrSpecks/NeoShell",
-    screenshot_url: "/python-tools.jpg",
-    category: "Web Tool"
-  },
-  {
-    id: 8,
-    title: "OSINT Tool",
-    description: "ReconX is an open-source, powerful reconnaissance and OSINT (Open-Source Intelligence) tool designed to streamline and automate the process of gathering critical information.",
-    tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
-    demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
-    repo_url: "https://github.com/MrSpecks/ReconX",
-    screenshot_url: "/OSINT-Tool.jpg",
-    category: "Web Tool"
-  },
-  {
-    id: 9,
-    title: "API Documentation Tool (In Development)",
-    description: "An interactive API documentation generator that automatically creates beautiful docs from OpenAPI specifications with testing capabilities.",
-    tech_stack: ["React", "Node.js", "Swagger", "Docker"],
-    demo_url: "https://api-docs.example.com",
-    repo_url: "https://github.com/MrSpecks/api-docs",
-    screenshot_url: "/API-Documentation-Tool.jpg",
-    category: "Tool"
-  }
+    {
+      id: 1,
+      title: "AI Brochure Maker",
+      description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
+      tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
+      demo_url: "https://brochure-maker.streamlit.app/",
+      repo_url: "https://github.com/MrSpecks/Brochure-Maker",
+      screenshot_url: "/Brochure-Maker.png",
+      category: "AI Tool"
+    },
+    {
+      id: 2,
+      title: "AI Q&A Code Assistant",
+      description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
+      tech_stack: ["Python", "Jupyter Notebook", "OpenAI API", "Streamlit"],
+      demo_url: "https://qna-code-assistant.streamlit.app/",
+      repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
+      screenshot_url: "/Q&A-Bot.png",
+      category: "AI Tool"
+    },
+    {
+      id: 3,
+      title: "Website Scraper & Summarizer",
+      description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
+      tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
+      demo_url: "https://website-summaryzer.streamlit.app/",
+      repo_url: "https://github.com/MrSpecks/Website-Summarizer",
+      screenshot_url: "/Website-scraper-summarizer.png",
+      category: "AI Tool"
+    },
+    {
+      id: 4,
+      title: "Personal Portfolio Website",
+      description: "A modern, responsive portfolio website showcasing projects and skills. Built with React, featuring smooth animations and dark mode support.",
+      tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
+      demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
+      repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
+      screenshot_url: "/website-preview.jpg",
+      category: "Website"
+    },
+    {
+      id: 5,
+      title: "Personal Portfolio RAG Agent",
+      description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. It's trained on my own site content and connected to Supabase for persistent learning. The agent not only answers visitor questions but also logs unknown queries to Supabase, creating a feedback loop that helps me continuously improve its knowledge base",
+      tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
+      demo_url: "https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app",
+      repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
+      screenshot_url: "/Portfolio-RAG-Agent.png",
+      category: "Web App"
+    },
+    {
+      id: 6,
+      title: "Property Reviews Dashboard",
+      description: "A modern reviews management dashboard built to help property managers track and improve guest experience. The app integrates with a reviews API, normalizes data across multiple channels, and provides an interface to filter, approve, and publish guest feedback. Only manager-approved reviews appear on the public property page, ensuring trust and consistency.",
+      tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
+      demo_url: "https://flexliving-reviews-hub.vercel.app/",
+      repo_url: "https://github.com/MrSpecks/property-reviews-hub",
+      screenshot_url: "/Property-Reviews-Dashboard.png",
+      category: "Web App"
+    },
+    {
+      id: 7,
+      title: "CMS Reconnaisance Tool",
+      description: "This tool is a high-performance, intelligent CMS Reconnaissance tool designed for authorized penetration testing engagements. It detects the backend technologies used by a wide range of websites (including PHP, JSP, Java EE, React, Vue, WordPress, and custom stacks)",
+      tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
+      demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
+      repo_url: "https://github.com/MrSpecks/NeoShell",
+      screenshot_url: "/python-tools.jpg",
+      category: "Web Tool"
+    },
+    {
+      id: 8,
+      title: "OSINT Tool",
+      description: "ReconX is an open-source, powerful reconnaissance and OSINT (Open-Source Intelligence) tool designed to streamline and automate the process of gathering critical information.",
+      tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
+      demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
+      repo_url: "https://github.com/MrSpecks/ReconX",
+      screenshot_url: "/OSINT-Tool.jpg",
+      category: "Web Tool"
+    },
+    {
+      id: 9,
+      title: "API Documentation Tool (In Development)",
+      description: "An interactive API documentation generator that automatically creates beautiful docs from OpenAPI specifications with testing capabilities.",
+      tech_stack: ["React", "Node.js", "Swagger", "Docker"],
+      demo_url: "https://api-docs.example.com",
+      repo_url: "https://github.com/MrSpecks/api-docs",
+      screenshot_url: "/API-Documentation-Tool.jpg",
+      category: "Tool"
+    }
 ];
 
 export const Projects = () => {
@@ -272,13 +279,16 @@ export const Projects = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-6 md:p-10 font-sans">
+    // Updated main container background and text color for dark mode
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 md:p-10 font-sans text-gray-800 dark:text-gray-200 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
         
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          {/* Updated header text color for dark mode */}
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Projects</h1>
+          {/* Updated paragraph text color for dark mode */}
+          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A showcase of my recent work and side projects. Each project represents different challenges 
             and technologies I've worked with.
           </p>
@@ -289,7 +299,7 @@ export const Projects = () => {
           {projects.map((project) => (
             <Card key={project.id} className="project-card group">
               {/* Project Image */}
-              <div className="relative overflow-hidden rounded-t-lg mb-0 bg-gray-200">
+              <div className="relative overflow-hidden rounded-t-lg mb-0 bg-gray-200 dark:bg-gray-700">
                 <div
                   className="w-full h-48 bg-cover bg-center"
                   style={{ backgroundImage: `url(${project.screenshot_url})` }}
@@ -300,10 +310,11 @@ export const Projects = () => {
               {/* Project Content */}
               <div className="space-y-4 p-4">
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition-colors">
+                  <h3 className="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition-colors dark:text-white dark:group-hover:text-indigo-400">
                     {project.title}
                   </h3>
-                  <p className="text-gray-500 text-sm line-clamp-3">
+                  {/* Updated description text color for dark mode */}
+                  <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
                     {project.description}
                   </p>
                 </div>
@@ -311,7 +322,12 @@ export const Projects = () => {
                 {/* Tech Stack */}
                 <div className="flex flex-wrap gap-2">
                   {project.tech_stack.map((tech) => (
-                    <Badge key={tech} variant="secondary" className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200">
+                    <Badge 
+                      key={tech} 
+                      variant="secondary" 
+                      // Custom dark mode badge colors for better visibility
+                      className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900 dark:text-indigo-300 dark:hover:bg-indigo-800"
+                    >
                       {tech}
                     </Badge>
                   ))}
@@ -319,7 +335,13 @@ export const Projects = () => {
 
                 {/* Action Buttons */}
                 <div className="flex gap-2 pt-2">
-                  <Button variant="outline" size="sm" asChild className="flex-1 border-indigo-300 text-indigo-700 hover:bg-indigo-50">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    asChild 
+                    // Custom dark mode button colors
+                    className="flex-1 border-indigo-300 text-indigo-700 hover:bg-indigo-50 dark:border-indigo-600 dark:text-indigo-300 dark:hover:bg-indigo-800"
+                  >
                     <a
                       href={project.demo_url}
                       target="_blank"
@@ -330,7 +352,13 @@ export const Projects = () => {
                       Demo
                     </a>
                   </Button>
-                  <Button variant="outline" size="sm" asChild className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50">
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    asChild 
+                    // Custom dark mode button colors
+                    className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                  >
                     <a
                       href={project.repo_url}
                       target="_blank"
@@ -348,16 +376,20 @@ export const Projects = () => {
         </div>
 
         {/* --- RAG Agent Technical Capabilities Section --- */}
-        <section id="rag-capabilities" className="max-w-7xl mx-auto bg-white p-8 rounded-xl shadow-2xl mt-16">
-            <h2 className="text-3xl font-bold text-indigo-700 mb-4 flex items-center">
+        {/* Updated section background for dark mode */}
+        <section id="rag-capabilities" className="max-w-7xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl mt-16">
+            {/* Updated header text color for dark mode */}
+            <h2 className="text-3xl font-bold text-indigo-700 dark:text-indigo-400 mb-4 flex items-center">
                 <ListChecks className="w-7 h-7 mr-3" />
                 Project Highlight: RAG Agent Technical Capabilities
             </h2>
-            <p className="text-gray-700 mb-8 text-lg leading-relaxed border-l-4 border-indigo-200 pl-4 bg-indigo-50/50 p-4 rounded-lg">
+            {/* Updated paragraph text and background for dark mode */}
+            <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed border-l-4 border-indigo-200 dark:border-indigo-600 pl-4 bg-indigo-50/50 dark:bg-indigo-900/50 p-4 rounded-lg">
                 The Personal Portfolio **RAG Agent** is the ultimate demonstration of full-stack AI system development. It transcends a simple Q&A bot to function as a self-updating, knowledge-grounded expert on the professional profile. This project showcases mastery across the modern AI pipeline, from secure cloud architecture and robust vector database implementation to advanced LLM routing strategies.
             </p>
 
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4">
+            {/* Updated header text color for dark mode */}
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
                 Proficiency Ratings Table
             </h3>
 
@@ -382,11 +414,14 @@ export const Projects = () => {
 
         {/* Call to Action */}
         <div className="text-center mt-16 mb-12">
-          <Card className="p-8 bg-indigo-50 border-indigo-200 shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-gray-900">Interested in Working Together?</h2>
-            <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+          {/* Updated card background and border for dark mode */}
+          <Card className="p-8 bg-indigo-50 dark:bg-gray-800 border-indigo-200 dark:border-indigo-900 shadow-lg">
+            {/* Updated header text color for dark mode */}
+            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Interested in Working Together?</h2>
+            {/* Updated paragraph text color for dark mode */}
+            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
               These projects represent just a sample of my work. I'm always excited to take on new challenges 
-               and collaborate on innovative solutions.
+              and collaborate on innovative solutions.
             </p>
             <Link to="/contact">
               <Button size="lg" className="group bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-md">
