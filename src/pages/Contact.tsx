@@ -67,7 +67,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.co/in/kagiso-m-95b329224?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
+      href: "https://www.linkedin.co/in/kagiso-m-95b329224",
     },
   ];
 
