@@ -3,108 +3,100 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, Github, Code, Smartphone, Globe } from "lucide-react";
 
-const Projects = () => {
-  const projects = [
-    {
-      id: 1,
-      title: "AI Brochure Maker",
-      description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
-      tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
-      demo_url: "https://brochure-maker.streamlit.app/",
-      repo_url: "https://github.com/MrSpecks/Brochure-Maker",
-      screenshot_url: "/Brochure-Maker.png",
-      category: "AI Tool"
-    },
-    {
-      id: 2,
-      title: "AI Q&A Code Assistant",
-      description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
-      tech_stack: ["Python", "Jupyter Notebook", "OpenAI API", "Streamlit"],
-      demo_url: "https://qna-code-assistant.streamlit.app/",
-      repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
-      screenshot_url: "/Q&A-Bot.png",
-      category: "AI Tool"
-    },
-    {
-      id: 3,
-      title: "Website Scraper & Summarizer",
-      description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
-      tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
-      demo_url: "https://website-summaryzer.streamlit.app/",
-      repo_url: "https://github.com/MrSpecks/Website-Summarizer",
-      screenshot_url: "/Website-scraper-summarizer.png",
-      category: "AI Tool"
-    },
-    {
-      id: 4,
-      title: "Personal Portfolio Website",
-      description: "A modern, responsive portfolio website showcasing projects and skills. Built with React, featuring smooth animations and dark mode support.",
-      tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
-      demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
-      repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
-      screenshot_url: "/website-preview.jpg",
-      category: "Website"
-    },
-    {
-      id: 5,
-      title: "Personal Portfolio RAG Agent",
-      description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. \
-      It's trained on my own site content and connected to Supabase for persistent learning. \
-      The agent not only answers visitor questions but also logs unknown queries to Supabase, \
-      creating a feedback loop that helps me continuously improve its knowledge base",
-      tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
-      demo_url: "https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app/",
-      repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
-      screenshot_url: "/Portfolio-RAG-Agent.png",
-      category: "Web App"
-    },
-    {
-      id: 6,
-      title: "Property Reviews Dashboard",
-      description: "A modern reviews management dashboard built to help property managers track and improve \
-      guest experience. The app integrates with a reviews API, normalizes data across multiple channels, \
-      and provides an interface to filter, approve, and publish guest feedback. Only manager-approved \
-      reviews appear on the public property page, ensuring trust and consistency.",
-      tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
-      demo_url: "https://flexliving-reviews-hub.vercel.app/",
-      repo_url: "https://github.com/MrSpecks/property-reviews-hub",
-      screenshot_url: "/Property-Reviews-Dashboard.png",
-      category: "Web App"
-    },
-    {
-      id: 7,
-      title: "CMS Reconnaisance Tool",
-      description: "This tool is a high-performance, intelligent CMS Reconnaissance tool \
-      designed for authorized penetration testing engagements. It detects the backend technologies \
-      used by a wide range of websites (including PHP, JSP, Java EE, React, Vue, WordPress, and custom stacks)",
-      tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
-      demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
-      repo_url: "https://github.com/MrSpecks/NeoShell",
-      screenshot_url: "/python-tools.jpg",
-      category: "Web Tool"
-    },
-    {
-      id: 8,
-      title: "OSINT Tool",
-      description: "ReconX is an open-source, powerful reconnaissance and OSINT (Open-Source Intelligence)\
-      tool designed to streamline and automate the process of gathering critical information.",
-      tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
-      demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
-      repo_url: "https://github.com/MrSpecks/ReconX",
-      screenshot_url: "/OSINT-Tool.jpg",
-      category: "Web Tool"
-    },
-    {
-      id: 9,
-      title: "API Documentation Tool (In Development)",
-      description: "An interactive API documentation generator that automatically creates beautiful docs from OpenAPI specifications with testing capabilities.",
-      tech_stack: ["React", "Node.js", "Swagger", "Docker"],
-      demo_url: "https://api-docs.example.com",
-      repo_url: "https://github.com/MrSpecks/api-docs",
-      screenshot_url: "/API-Documentation-Tool.jpg",
-      category: "Tool"
-    }
-  ];
+export const projects = [
+  {
+    id: 1,
+    title: "AI Brochure Maker",
+    description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
+    tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
+    demo_url: "https://brochure-maker.streamlit.app/",
+    repo_url: "https://github.com/MrSpecks/Brochure-Maker",
+    screenshot_url: "/Brochure-Maker.png",
+    category: "AI Tool"
+  },
+  {
+    id: 2,
+    title: "AI Q&A Code Assistant",
+    description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
+    tech_stack: ["Python", "Jupyter Notebook", "OpenAI API", "Streamlit"],
+    demo_url: "https://qna-code-assistant.streamlit.app/",
+    repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
+    screenshot_url: "/Q&A-Bot.png",
+    category: "AI Tool"
+  },
+  {
+    id: 3,
+    title: "Website Scraper & Summarizer",
+    description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
+    tech_stack: ["Python", "Jupyter Notebook", "BeautifulSoup", "OpenAI API"],
+    demo_url: "https://website-summaryzer.streamlit.app/",
+    repo_url: "https://github.com/MrSpecks/Website-Summarizer",
+    screenshot_url: "/Website-scraper-summarizer.png",
+    category: "AI Tool"
+  },
+  {
+    id: 4,
+    title: "Personal Portfolio Website",
+    description: "A modern, responsive portfolio website showcasing projects and skills. Built with React, featuring smooth animations and dark mode support.",
+    tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
+    demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
+    repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
+    screenshot_url: "/website-preview.jpg",
+    category: "Website"
+  },
+  {
+    id: 5,
+    title: "Personal Portfolio RAG Agent",
+    description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. It's trained on my own site content and connected to Supabase for persistent learning. The agent not only answers visitor questions but also logs unknown queries to Supabase, creating a feedback loop that helps me continuously improve its knowledge base",
+    tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
+    demo_url: "https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app",
+    repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
+    screenshot_url: "/Portfolio-RAG-Agent.png",
+    category: "Web App"
+  },
+  {
+    id: 6,
+    title: "Property Reviews Dashboard",
+    description: "A modern reviews management dashboard built to help property managers track and improve guest experience. The app integrates with a reviews API, normalizes data across multiple channels, and provides an interface to filter, approve, and publish guest feedback. Only manager-approved reviews appear on the public property page, ensuring trust and consistency.",
+    tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
+    demo_url: "https://flexliving-reviews-hub.vercel.app/",
+    repo_url: "https://github.com/MrSpecks/property-reviews-hub",
+    screenshot_url: "/Property-Reviews-Dashboard.png",
+    category: "Web App"
+  },
+  {
+    id: 7,
+    title: "CMS Reconnaisance Tool",
+    description: "This tool is a high-performance, intelligent CMS Reconnaissance tool designed for authorized penetration testing engagements. It detects the backend technologies used by a wide range of websites (including PHP, JSP, Java EE, React, Vue, WordPress, and custom stacks)",
+    tech_stack: ["Python", "Typescript", "Javascript", "CSS"],
+    demo_url: "https://neo-shell-f0yv5z9in-mrspecks-projects.vercel.app/",
+    repo_url: "https://github.com/MrSpecks/NeoShell",
+    screenshot_url: "/python-tools.jpg",
+    category: "Web Tool"
+  },
+  {
+    id: 8,
+    title: "OSINT Tool",
+    description: "ReconX is an open-source, powerful reconnaissance and OSINT (Open-Source Intelligence) tool designed to streamline and automate the process of gathering critical information.",
+    tech_stack: ["Python", "BeautifulSoup", "Javascript", "Domain API"],
+    demo_url: "https://reconX-f0yv5z9in-mrspecks-projects.vercel.app/",
+    repo_url: "https://github.com/MrSpecks/ReconX",
+    screenshot_url: "/OSINT-Tool.jpg",
+    category: "Web Tool"
+  },
+  {
+    id: 9,
+    title: "API Documentation Tool (In Development)",
+    description: "An interactive API documentation generator that automatically creates beautiful docs from OpenAPI specifications with testing capabilities.",
+    tech_stack: ["React", "Node.js", "Swagger", "Docker"],
+    demo_url: "https://api-docs.example.com",
+    repo_url: "https://github.com/MrSpecks/api-docs",
+    screenshot_url: "/API-Documentation-Tool.jpg",
+    category: "Tool"
+  }
+];
+
+export const Projects = () => {
 
   const getCategoryIcon = (category: string) => {
     switch (category) {
@@ -150,7 +142,7 @@ const Projects = () => {
               </div>
 
               {/* Project Content */}
-              <div className="space-y-4">
+              <div className="space-y-4 p-4">
                 <div>
                   <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
                     {project.title}
@@ -218,3 +210,4 @@ const Projects = () => {
 };
 
 export default Projects;
+
