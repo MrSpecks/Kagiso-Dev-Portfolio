@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
 import ChartRadarGridFill from "@/components/ChartRadarGridFill";
+import { Link } from "react-router-dom";
 import { format } from "date-fns";
 
 
@@ -157,9 +158,11 @@ const Certifications = () => {
               I believe in staying current with the latest technologies and best practices. 
               These certifications represent my commitment to professional growth and excellence.
             </p>
-            <Button variant="outline">
-              View All Achievements
+          <Link to="/about">
+            <Button size="lg" className="group">
+              View All Experience
             </Button>
+          </Link>
           </Card>
         </div>
       </div>

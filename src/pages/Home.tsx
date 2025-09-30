@@ -51,7 +51,7 @@ const Home = () => {
           </div>
           <div className="hero-text">
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-              An AI & Systems Developer crafting exceptional digital experiences
+              AI & Systems Developer crafting exceptional digital experiences
             </p>
           </div>
           <div className="hero-text">
