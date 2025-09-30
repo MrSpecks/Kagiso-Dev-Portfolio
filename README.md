@@ -91,7 +91,7 @@ Reusable blueprint for production-ready RAG systems in business contexts.
 
 ## 🔗 Live Demo
 
-👉 [Visit Portfolio](https://kagiso-dev-portfolio-z55k-mz7ygnu5u-mrspecks-projects.vercel.app) 
+👉 [Visit Portfolio](https://kagiso-dev-portfolio-z55k-git-main-mrspecks-projects.vercel.app?_vercel_share=maG2HsmnEJCAwxgekgTfbyGLJGkS84A4) 
 
 
 ---
