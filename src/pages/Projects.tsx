@@ -5,15 +5,16 @@ import { Link } from "react-router-dom";
 import * as React from "react";
 import { ArrowRight, ListChecks, Database, Workflow, Cloud, Search, Cpu, ExternalLink, Github, Code, Smartphone, Globe } from "lucide-react";
 
-// Utility for concatenating class names (mimicking the provided 'cn')
+// Utility for concatenating class names (mimicking 'cn' typically found in lib/utils)
 const cn = (...classes: (string | boolean | undefined | null)[]) => classes.filter(Boolean).join(' ');
 
-// --- Table Components (Provided by User) ---
+// =================================================================
+// --- Custom Table Components for RAG Section (Shadcn-like) ---
+// Since these are not imported from "@/components/ui/table", they are defined here for the section.
 
 const Table = React.forwardRef<HTMLTableElement, React.HTMLAttributes<HTMLTableElement>>(
   ({ className, ...props }, ref) => (
-    // Added dark mode border
-    <div className="relative w-full overflow-auto rounded-lg border dark:border-gray-700">
+    <div className="relative w-full overflow-auto rounded-xl border dark:border-gray-700 shadow-md">
       <table ref={ref} className={cn("w-full caption-bottom text-sm", className)} {...props} />
     </div>
   ),
@@ -36,8 +37,8 @@ const TableRow = React.forwardRef<HTMLTableRowElement, React.HTMLAttributes<HTML
   ({ className, ...props }, ref) => (
     <tr
       ref={ref}
-      // Added dark:border-gray-700, and dark mode hover/select states
-      className={cn("border-b transition-colors data-[state=selected]:bg-gray-100/50 dark:data-[state=selected]:bg-gray-800/50 hover:bg-gray-50/50 dark:hover:bg-gray-700/50 dark:border-gray-700", className)}
+      // Note: Added dark mode classes for border and hover state
+      className={cn("border-b transition-colors data-[state=selected]:bg-gray-100/50 dark:data-[state=selected]:bg-gray-800/50 hover:bg-gray-50/50 dark:hover:bg-gray-800/50 dark:border-gray-700", className)}
       {...props}
     />
   ),
@@ -48,9 +49,9 @@ const TableHead = React.forwardRef<HTMLTableCellElement, React.ThHTMLAttributes<
   ({ className, ...props }, ref) => (
     <th
       ref={ref}
-      // Added dark mode background and text
+      // Note: Added dark mode classes for background and text
       className={cn(
-        "h-12 px-4 text-left align-middle font-semibold text-gray-700 dark:text-gray-300 bg-gray-50 dark:bg-gray-700 [&:has([role=checkbox])]:pr-0",
+        "h-12 px-4 text-left align-middle font-semibold text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-900/50 [&:has([role=checkbox])]:pr-0",
         className,
       )}
       {...props}
@@ -61,7 +62,7 @@ TableHead.displayName = "TableHead";
 
 const TableCell = React.forwardRef<HTMLTableCellElement, React.TdHTMLAttributes<HTMLTableCellElement>>(
   ({ className, ...props }, ref) => (
-    // Added dark mode text color
+    // Note: Added dark mode text color and aligned to top
     <td ref={ref} className={cn("p-4 align-top text-gray-800 dark:text-gray-300", className)} {...props} />
   ),
 );
@@ -69,14 +70,17 @@ TableCell.displayName = "TableCell";
 
 const TableCaption = React.forwardRef<HTMLTableCaptionElement, React.HTMLAttributes<HTMLTableCaptionElement>>(
   ({ className, ...props }, ref) => (
-    // Added dark mode text color
+    // Note: Added dark mode text color
     <caption ref={ref} className={cn("mt-4 text-sm text-gray-500 dark:text-gray-400", className)} {...props} />
   ),
 );
 TableCaption.displayName = "TableCaption";
 
 
-// Mapping icons to capabilities for better visual appeal
+// =================================================================
+// --- RAG Agent Data & Components ---
+
+// Mapping icons to capabilities
 const CAPABILITY_ICONS: Record<string, React.ElementType> = {
     'RAG Pipeline Architecture': Workflow,
     'Vector Embedding (Jina-Embeddings-v3)': ListChecks,
@@ -84,11 +88,11 @@ const CAPABILITY_ICONS: Record<string, React.ElementType> = {
     'Semantic Search (Cosine Similarity)': Search,
     'Vercel Serverless Deployment': Cloud,
     'LLM Strategy & Integration (OpenRouter)': Cpu,
-    'Node.js/TypeScript API Orchestration': ListChecks,
+    'Node.js/TypeScript API Orchestration': Code,
     'Data Structuring & Engineering': Database,
 };
 
-// Data extracted from the RAG Agent Technical Capabilities Write Up.pdf
+// Data for the RAG technical capabilities table
 const RAG_TECHNICAL_DATA = [
     {
         capability: "RAG Pipeline Architecture",
@@ -146,14 +150,12 @@ const CapabilityRow = ({ capability, explanation, rating, icon }: typeof RAG_TEC
     
     return (
         <TableRow>
-            {/* Added dark mode text color */}
             <TableCell className="font-medium text-lg text-indigo-700 dark:text-indigo-400 w-[20%]">
                 <div className="flex items-center space-x-3">
-                    <IconComponent className="w-5 h-5 text-indigo-500 flex-shrink-0" />
+                    <IconComponent className="w-5 h-5 text-indigo-500 dark:text-indigo-400 flex-shrink-0" />
                     <span>{capability}</span>
                 </div>
             </TableCell>
-            {/* Added dark mode text color */}
             <TableCell className="w-[65%] text-gray-700 dark:text-gray-300 text-base leading-relaxed">
                 {explanation}
             </TableCell>
@@ -164,6 +166,8 @@ const CapabilityRow = ({ capability, explanation, rating, icon }: typeof RAG_TEC
     );
 };
 
+
+// =================================================================
 // --- Project Data ---
 
 export const projects = [
@@ -259,6 +263,9 @@ export const projects = [
     }
 ];
 
+// =================================================================
+// --- Main Projects Component ---
+
 export const Projects = () => {
 
   const getCategoryIcon = (category: string) => {
@@ -278,17 +285,21 @@ export const Projects = () => {
     }
   };
 
+  // Helper to apply dark mode styling to Card content
+  const CardContentStyles = "space-y-4 p-4 dark:bg-gray-800 rounded-b-xl";
+  const CardTitleStyles = "text-xl font-semibold mb-2 group-hover:text-primary transition-colors dark:text-gray-100 dark:group-hover:text-indigo-400";
+  const CardDescriptionStyles = "text-muted-foreground text-sm line-clamp-3 dark:text-gray-400";
+  const ButtonOutlineStyles = "flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700";
+
   return (
-    // Updated main container background and text color for dark mode
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 p-6 md:p-10 font-sans text-gray-800 dark:text-gray-200 transition-colors duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10">
+    // Reverted main container style to the minimal original one
+    <div className="min-h-screen pt-20 pb-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="text-center mb-16">
-          {/* Updated header text color for dark mode */}
-          <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">Projects</h1>
-          {/* Updated paragraph text color for dark mode */}
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
+          <h1 className="text-4xl md:text-5xl font-bold mb-6 dark:text-white">Projects</h1>
+          <p className="text-xl text-muted-foreground max-w-3xl mx-auto dark:text-gray-400">
             A showcase of my recent work and side projects. Each project represents different challenges 
             and technologies I've worked with.
           </p>
@@ -297,24 +308,33 @@ export const Projects = () => {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project) => (
-            <Card key={project.id} className="project-card group">
+            <Card key={project.id} className="project-card group hover:shadow-xl transition-shadow dark:bg-gray-800 dark:border-gray-700">
               {/* Project Image */}
-              <div className="relative overflow-hidden rounded-t-lg mb-0 bg-gray-200 dark:bg-gray-700">
+              <div className="relative overflow-hidden rounded-t-xl mb-0 bg-muted dark:bg-gray-700">
                 <div
                   className="w-full h-48 bg-cover bg-center"
                   style={{ backgroundImage: `url(${project.screenshot_url})` }}
                 >
+                  {/* Category Badge overlay on image */}
+                  <div className="absolute top-3 right-3">
+                    <Badge 
+                        variant="secondary" 
+                        className="flex items-center space-x-1 bg-white/80 backdrop-blur-sm text-gray-800 dark:bg-gray-900/80 dark:text-gray-200 border border-gray-200 dark:border-gray-700"
+                    >
+                        {getCategoryIcon(project.category)}
+                        <span>{project.category}</span>
+                    </Badge>
+                  </div>
                 </div>
               </div>
 
               {/* Project Content */}
-              <div className="space-y-4 p-4">
+              <div className={CardContentStyles}>
                 <div>
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition-colors dark:text-white dark:group-hover:text-indigo-400">
+                  <h3 className={CardTitleStyles}>
                     {project.title}
                   </h3>
-                  {/* Updated description text color for dark mode */}
-                  <p className="text-gray-500 dark:text-gray-400 text-sm line-clamp-3">
+                  <p className={CardDescriptionStyles}>
                     {project.description}
                   </p>
                 </div>
@@ -325,8 +345,7 @@ export const Projects = () => {
                     <Badge 
                       key={tech} 
                       variant="secondary" 
-                      // Custom dark mode badge colors for better visibility
-                      className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900 dark:text-indigo-300 dark:hover:bg-indigo-800"
+                      className="text-xs bg-indigo-100 text-indigo-700 hover:bg-indigo-200 dark:bg-indigo-900/50 dark:text-indigo-300 dark:hover:bg-indigo-800/50"
                     >
                       {tech}
                     </Badge>
@@ -339,8 +358,7 @@ export const Projects = () => {
                     variant="outline" 
                     size="sm" 
                     asChild 
-                    // Custom dark mode button colors
-                    className="flex-1 border-indigo-300 text-indigo-700 hover:bg-indigo-50 dark:border-indigo-600 dark:text-indigo-300 dark:hover:bg-indigo-800"
+                    className={ButtonOutlineStyles}
                   >
                     <a
                       href={project.demo_url}
@@ -356,8 +374,7 @@ export const Projects = () => {
                     variant="outline" 
                     size="sm" 
                     asChild 
-                    // Custom dark mode button colors
-                    className="flex-1 border-gray-300 text-gray-700 hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-700"
+                    className={ButtonOutlineStyles}
                   >
                     <a
                       href={project.repo_url}
@@ -376,20 +393,16 @@ export const Projects = () => {
         </div>
 
         {/* --- RAG Agent Technical Capabilities Section --- */}
-        {/* Updated section background for dark mode */}
-        <section id="rag-capabilities" className="max-w-7xl mx-auto bg-white dark:bg-gray-800 p-8 rounded-xl shadow-2xl mt-16">
-            {/* Updated header text color for dark mode */}
+        <section id="rag-capabilities" className="max-w-7xl mx-auto bg-white dark:bg-gray-900 p-8 rounded-2xl shadow-2xl mt-16 border border-gray-100 dark:border-gray-800">
             <h2 className="text-3xl font-bold text-indigo-700 dark:text-indigo-400 mb-4 flex items-center">
                 <ListChecks className="w-7 h-7 mr-3" />
                 Project Highlight: RAG Agent Technical Capabilities
             </h2>
-            {/* Updated paragraph text and background for dark mode */}
-            <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed border-l-4 border-indigo-200 dark:border-indigo-600 pl-4 bg-indigo-50/50 dark:bg-indigo-900/50 p-4 rounded-lg">
+            <p className="text-gray-700 dark:text-gray-300 mb-8 text-lg leading-relaxed border-l-4 border-indigo-200 dark:border-indigo-600 pl-4 bg-indigo-50/50 dark:bg-gray-800/50 p-4 rounded-lg">
                 The Personal Portfolio **RAG Agent** is the ultimate demonstration of full-stack AI system development. It transcends a simple Q&A bot to function as a self-updating, knowledge-grounded expert on the professional profile. This project showcases mastery across the modern AI pipeline, from secure cloud architecture and robust vector database implementation to advanced LLM routing strategies.
             </p>
 
-            {/* Updated header text color for dark mode */}
-            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-4">
+            <h3 className="text-2xl font-semibold text-gray-800 dark:text-gray-100 mb-6 border-b border-gray-200 dark:border-gray-700 pb-2">
                 Proficiency Ratings Table
             </h3>
 
@@ -399,9 +412,9 @@ export const Projects = () => {
                 </TableCaption>
                 <TableHeader>
                     <TableRow>
-                        <TableHead className="w-[20%]">Capability</TableHead>
-                        <TableHead className="w-[65%]">Explanation and Demonstration</TableHead>
-                        <TableHead className="w-[15%] text-center">Rating (Out of 10)</TableHead>
+                        <TableHead className="w-[25%]">Capability</TableHead>
+                        <TableHead className="w-[55%]">Explanation and Demonstration</TableHead>
+                        <TableHead className="w-[20%] text-center">Rating (Out of 10)</TableHead>
                     </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -412,19 +425,17 @@ export const Projects = () => {
             </Table>
         </section>
 
+
         {/* Call to Action */}
         <div className="text-center mt-16 mb-12">
-          {/* Updated card background and border for dark mode */}
           <Card className="p-8 bg-indigo-50 dark:bg-gray-800 border-indigo-200 dark:border-indigo-900 shadow-lg">
-            {/* Updated header text color for dark mode */}
-            <h2 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Interested in Working Together?</h2>
-            {/* Updated paragraph text color for dark mode */}
-            <p className="text-gray-600 dark:text-gray-400 mb-6 max-w-2xl mx-auto">
+            <h2 className="text-2xl font-bold mb-4 dark:text-white">Interested in Working Together?</h2>
+            <p className="text-muted-foreground mb-6 max-w-2xl mx-auto dark:text-gray-400">
               These projects represent just a sample of my work. I'm always excited to take on new challenges 
               and collaborate on innovative solutions.
             </p>
             <Link to="/contact">
-              <Button size="lg" className="group bg-indigo-600 hover:bg-indigo-700 transition-colors shadow-md">
+              <Button size="lg" className="group bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600">
                 Get In Touch
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Button>
