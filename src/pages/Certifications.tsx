@@ -6,6 +6,14 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
 import { format } from "date-fns";
 
+
+const ChartRadarGridFill = () => (
+    <div className="flex justify-center items-center h-80 rounded-x p-6">
+        <p className="text-xl font-semibold text-primary/70">
+            [ChartRadarGridFill Placeholder]
+        </p>
+    </div>
+);
 const Certifications = () => {
   const { data: certifications, isLoading, error } = useQuery({
     queryKey: ["certifications"],
@@ -54,6 +62,11 @@ const Certifications = () => {
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
             Professional certifications and achievements that showcase my commitment to continuous learning and expertise.
           </p>
+        </div>
+
+        {/* START: Radar Chart Component Placement (New Section) */}
+        <div className="mb-16">
+            <ChartRadarGridFill />
         </div>
 
         {/* Certifications Grid */}

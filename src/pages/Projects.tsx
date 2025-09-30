@@ -152,7 +152,7 @@ export const Projects = () => {
                                 <tr>
                                     <th scope="col" className="px-4 py-3 min-w-[150px] md:min-w-[200px]">Capability</th>
                                     <th scope="col" className="px-4 py-3 min-w-[300px]">Explanation and Demonstration</th>
-                                    <th scope="col" className="px-4 py-3 text-center min-w-[100px]">Rating (1-10)</th>
+                                    <th scope="col" className="px-4 py-3 text-center min-w-[100px]">Rating <br />(1-10)</th>
                                 </tr>
                             </thead>
                             <tbody>
