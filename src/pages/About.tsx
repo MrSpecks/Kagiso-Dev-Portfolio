@@ -24,6 +24,7 @@ interface EducationItem {
     title: string; // Qualification Title
     institution: string;
     period: string;
+    location: string;
     description: string; // Short description for the list view
     responsibilities: string[]; // Detailed list of modules/activities
     impact: string[]; // Academic/personal impact for the modal
@@ -125,7 +126,7 @@ const About = () => {
       title: "Junior JAVA Developer Intern",
       company: "First National Bank - FNB",
       period: "2018 - 2019",
-      location: "Johannesburg, GP",
+      location: "Randburg, GP",
       description: "Gained foundational experience in enterprise software development, focusing on backend systems and secure coding practices within the financial technology sector.",
       responsibilities: [ // CORRECTED: Removed duplicate 'respons'
         "Assisted senior developers in maintaining and debugging legacy JAVA enterprise applications.",
@@ -148,6 +149,7 @@ const About = () => {
       title: "Systems Administration Skills Program",
       institution: "Digital Youth ICT Academy",
       period: "2024",
+      location: "Johannesburg, GP",
       description: "I developed and built crucial proficiency in cloud, project management and systems administration, which directly contributed to securing my Microsoft Azure Fundamentals and IBM Project Management Foundations certifications among others, strengthening my capability to contribute to scalable enterprise-grade cloud projects.",
       responsibilities: [
         "Completed intensive training focused on cloud migration, resource administration, identity and access management, governance and cost optimization.",
@@ -167,6 +169,7 @@ const About = () => {
       title: "National Certificate: Information Technology: Systems Development",
       institution: "CTU Training Solutions",
       period: "2019",
+      location: "Johannesburg, GP",
       description: "I earned my Higher Certificate in Information Technology specializing in Systems Development with distinctions, solidifying my foundational development skills through an intensive work-integrated-learning JAVA Programming Bootcamp",
       responsibilities: [
         "Mastered fundamental programming concepts and logic with a focus on JAVA development.",
@@ -187,6 +190,7 @@ const About = () => {
       title: "Bachelor of Science in Information Technology (BSc)",
       institution: "Richfield Graduate Institute of Technology",
       period: "2017 - 2018",
+      location: "Johannesburg, GP",
       description: "I successfully completed the first year of my Bachelor of Science in Information Technology with distinctions, confirming a strong academic aptitude for complex IT concepts and foundational systems knowledge.",
       responsibilities: [
         "Built a strong foundational IT knowledge base in Networking and Operating Systems.",
@@ -206,6 +210,7 @@ const About = () => {
       title: "National Senior Certificate - Matric",
       institution: "Florida Park High School",
       period: "2016",
+      location: "Johannesburg, GP",
       description: "Achieved the required academic foundation for university entrance, focusing on Mathematics, Business Studies, and Computer Application Technology (CAT).",
       responsibilities: [
         "Achieved distinction in Business Studies and Life Orientation, and strong results in Accounting and Computer Application Technology.",
@@ -289,6 +294,7 @@ const About = () => {
                   <div className="flex items-center text-muted-foreground text-sm mb-3">
                     <Calendar className="mr-2 h-4 w-4 shrink-0" />
                     {exp.period}
+                    <span className="mx-2">•</span>
                     <MapPin className="mr-2 h-4 w-4 shrink-0" />
                     {exp.location}
                   </div>
@@ -322,6 +328,9 @@ const About = () => {
                   <div className="flex items-center text-muted-foreground text-sm mb-3">
                     <Calendar className="mr-2 h-4 w-4 shrink-0" />
                     {edu.period}
+                    <span className="mx-2">•</span>
+                    <MapPin className="mr-2 h-4 w-4 shrink-0" />
+                    {edu.location}
                   </div>
                   <p className="text-muted-foreground line-clamp-2">{edu.description}</p>
                   <p className="text-sm text-primary/70 mt-3 font-medium">Click for details</p>
