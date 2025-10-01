@@ -1,20 +1,25 @@
 import { useState } from "react";
+// Removed useEffect, useForm, and ValidationError imports
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter } from "lucide-react";
-import { useToast } from "@/hooks/use-toast";
+import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
+import { useToast } from "@/hooks/use-toast"; 
 
 const Contact = () => {
+  // Define the Formspree endpoint URL directly
+  const FORM_ENDPOINT = "https://formspree.io/f/xldpnryl"; 
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     subject: "",
     message: "",
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  // Local state is used again to manage the submission status
+  const [isSubmitting, setIsSubmitting] = useState(false); 
   const { toast } = useToast();
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -26,16 +31,48 @@ const Contact = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    setTimeout(() => {
-      toast({
-        title: "Message sent!",
-        description: "Thank you for your message. I'll get back to you soon.",
+    try {
+      // 1. Send the data to the Formspree endpoint using the standard Fetch API
+      const response = await fetch(FORM_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData), 
       });
-      setFormData({ name: "", email: "", subject: "", message: "" });
+
+      if (response.ok) {
+        // 2. Success feedback and form reset
+        toast({
+          title: "Message sent!",
+          description: "Thank you for your message. I'll get back to you soon.",
+        });
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        // 3. Handle errors reported by Formspree (e.g., rate limit, required field)
+        const data = await response.json();
+        const errorMessage = data.error || "An unknown error occurred on submission.";
+        toast({
+          title: "Submission failed",
+          description: `Error: ${errorMessage}`,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      // 4. Handle network/connection errors
+      console.error("Submission Error:", error);
+      toast({
+        title: "Submission failed",
+        description: "Could not connect to the server. Please check your network.",
+        variant: "destructive",
+      });
+    } finally {
+      // 5. Always stop loading state
       setIsSubmitting(false);
-    }, 1000);
+    }
   };
+  
+  // --- Contact Info and Social Links remain unchanged ---
 
   const contactInfo = [
     {
@@ -70,7 +107,7 @@ const Contact = () => {
       href: "https://www.linkedin.co/in/kagiso-m-95b329224",
     },
   ];
-
+  
   return (
     <div className="min-h-screen pt-20 pb-12">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -87,6 +124,7 @@ const Contact = () => {
           {/* Contact Form */}
           <Card className="p-8">
             <h2 className="text-2xl font-bold mb-6">Send a Message</h2>
+            {/* The form uses the custom handleSubmit with fetch logic */}
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
@@ -99,6 +137,7 @@ const Contact = () => {
                     required
                     className="mt-2"
                   />
+                  {/* Removed Formspree ValidationError component */}
                 </div>
                 <div>
                   <Label htmlFor="email">Email</Label>
@@ -111,6 +150,7 @@ const Contact = () => {
                     required
                     className="mt-2"
                   />
+                  {/* Removed Formspree ValidationError component */}
                 </div>
               </div>
               
@@ -137,9 +177,14 @@ const Contact = () => {
                   rows={6}
                   className="mt-2"
                 />
+                {/* Removed Formspree ValidationError component */}
               </div>
               
-              <Button type="submit" className="w-full" disabled={isSubmitting}>
+              <Button 
+                type="submit" 
+                className="w-full" 
+                disabled={isSubmitting} // Use local state
+              >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
             </form>
