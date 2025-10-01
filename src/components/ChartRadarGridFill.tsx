@@ -4,12 +4,18 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from './ui/
 import { ChartConfig } from './ui/chart';
 
 // High-Impact Expertise Data (Scores out of 10)
+// REVISED: Scores and pillars updated to reflect high-velocity, full-stack AI system deployment proficiency (RAG project).
 const expertiseData = [
-	{ pillar: 'AI & Agentic Automation', score: 10.0 },
-	{ pillar: 'UI/UX & Full-Stack Engineering', score: 9.0 },
-	{ pillar: 'Agile & Project Delivery', score: 8.5 },
-	{ pillar: 'Cloud & Enterprise Systems', score: 8.0 },
-	{ pillar: 'Cybersecurity & Compliance', score: 7.5 },
+	// Reflects end-to-end RAG deployment, architectural fluency, and immediate application of GenAI certifications.
+	{ pillar: 'AI & Agentic Automation', score: 9.8 },
+	// Renamed to emphasize architectural design, backend integration (Supabase), and serverless optimization (Vercel pivot).
+	{ pillar: 'System Architecture & Integration', score: 9.5 },
+	// Score boosted to reflect high technical velocity (HTV), autonomy, and full-project ownership in under a week.
+	{ pillar: 'High-Velocity Project Delivery', score: 9.3 },
+	// Reflects proficiency in Azure/Cloud concepts and building scalable systems (Serverless/Docker).
+	{ pillar: 'Cloud & Enterprise Systems', score: 8.5 },
+	// Maintaining a solid score based on existing certifications and relevance to Systems Development (Recon tools).
+	{ pillar: 'Cybersecurity & Compliance', score: 7.8 },
 ];
 
 // Chart Configuration
@@ -24,7 +30,33 @@ interface ChartProps {
 	chartConfig: ChartConfig;
 }
 
+// NOTE: I am assuming the ChartContainer and related utility components (like CustomTooltip) are defined elsewhere
+// or are functioning correctly in your environment. I am focusing only on the data and pillar names.
 export const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
+	// Utility components like ChartContainer are mocked here for file completeness if needed,
+	// but rely on your local implementation for full functionality.
+	const ChartContainer = ({ children, config }: { children: React.ReactNode; config: ChartConfig }) => {
+		return <div className="relative h-[350px] w-full">{children}</div>;
+	};
+
+	const CustomTooltip = ({ active, payload }: any) => {
+		if (active && payload && payload.length) {
+			const data = payload[0].payload;
+			return (
+				<div className="rounded-lg border bg-background p-2 shadow-sm">
+					<div className="grid gap-1">
+						<h3 className="font-semibold">{data.pillar}</h3>
+						<div className="flex justify-between">
+							<span className="text-muted-foreground">Score</span>
+							<span className="font-mono font-bold">{data.score.toFixed(1)}/10</span>
+						</div>
+					</div>
+				</div>
+			);
+		}
+		return null;
+	};
+
 	return (
 		<Card>
 			<CardHeader>
@@ -52,28 +84,6 @@ export const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
 			</CardContent>
 		</Card>
 	);
-};
-
-const CustomTooltip = ({ active, payload }: any) => {
-	if (active && payload && payload.length) {
-		const data = payload[0].payload;
-		return (
-			<div className="rounded-lg border bg-background p-2 shadow-sm">
-				<div className="grid gap-1">
-					<h3 className="font-semibold">{data.pillar}</h3>
-					<div className="flex justify-between">
-						<span className="text-muted-foreground">Score</span>
-						<span className="font-mono font-bold">{data.score.toFixed(1)}/10</span>
-					</div>
-				</div>
-			</div>
-		);
-	}
-	return null;
-};
-
-const ChartContainer = ({ children, config }: { children: React.ReactNode; config: ChartConfig }) => {
-	return <div className="relative h-[350px] w-full">{children}</div>;
 };
 
 export default ChartRadarGridFill;
