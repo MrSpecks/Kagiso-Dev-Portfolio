@@ -1,0 +1,42 @@
+/* Wrapper now takes the parent size and centers content flexibly */
+.tech-cloud-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* fill parent container instead of full viewport */
+  position: relative; /* relative so absolute children are inside this */
+  padding: 8rem 0; /* vertical padding for spacing */   
+}
+
+/* Perspective container for 3D effect */
+.tech-cloud-perspective {
+  perspective: 900px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The cloud itself is centered using flex, no absolute */
+.tech-cloud {
+  width: 300px;
+  height: 300px;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* for absolute positioned icons */
+}
+
+/* Individual icons */
+.tech-icon {
+  position: absolute; /* still absolute for 3D translation */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform-style: preserve-3d;
+}

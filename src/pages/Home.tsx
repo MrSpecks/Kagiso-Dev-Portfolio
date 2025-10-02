@@ -5,6 +5,7 @@ import { ArrowRight, Award, Code, User, ExternalLink, Github } from "lucide-reac
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import RotatingTechCloud from "@/components/RotatingStackCloud";
 
 // Import the carousel components
 import {
@@ -201,6 +202,7 @@ const Home = () => {
       {/* === END: Featured Projects Section === */}
 
       {/* Skills Section */}
+      
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Tech Stack</h2>
@@ -209,7 +211,9 @@ const Home = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-4">
-            {skills.map((skill, index) => (
+            <RotatingTechCloud />
+            
+            {/* {skills.map((skill, index) => (
               <Badge
                 key={skill}
                 variant="secondary"
@@ -218,10 +222,11 @@ const Home = () => {
               >
                 {skill}
               </Badge>
-            ))}
+            ))} */}
           </div>
         </div>
-      </section>
+        </section>
+      
 
       {/* CTA Section */}
       <section className="py-20 bg-background">
