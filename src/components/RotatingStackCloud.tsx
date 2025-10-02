@@ -3,15 +3,15 @@ import StackIcon from "tech-stack-icons";
 import "./RotatingStackCloud.css";
 
 const ICON_NAMES = [
-    "gradio",  "huggingface", "java", "jira", "js", "json", "langchain", "gitlab",
-   "atlassian", "nextjs",  "meta",  "anthropic", "aws", "azureai", "bash", "bitbucket",  
+    "gradio",  "java", "jira", "langchain", "huggingface",
+    "nextjs",  "meta",  "anthropic", "aws", "azureai", "bash", "bitbucket",  
    "python",  "reactrouter", "materialui", "streamlit", "shadcnui",  "azure", "vite.js",
   "eslint", "figma", "spring", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
-  "copilotgithub", "css3", "deepseek", "nextjs2", "docker", "expressjs", "supabase", "mongodb",
+  "copilotgithub", "css3", "deepseek", "docker", "expressjs", "supabase", "mongodb",
   "oracle", "postgresql", "vscode", "pytorch", "react", "vercel", "typescript",
-  "langgraph", "llamaindex", "markdown", "claude","n8n", "tailwindcss", "mistral",
+  "langgraph", "markdown", "claude","n8n", "tailwindcss", "mistral",
   "npm2",  "postman", "powershell", "prettier", "html5", "colab", "openai",
-   "microsoft", "net",  "npm", "bolt",
+   "microsoft", "net",  "npm", "js", "llamaindex",
      
   
 ];
