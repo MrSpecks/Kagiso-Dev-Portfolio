@@ -168,7 +168,7 @@ const About = () => {
       type: 'education',
       title: "National Certificate: Information Technology: Systems Development",
       institution: "CTU Training Solutions",
-      period: "2019",
+      period: "2018 - 2019",
       location: "Johannesburg, GP",
       description: "I earned my Higher Certificate in Information Technology specializing in Systems Development with distinctions, solidifying my foundational development skills through an intensive work-integrated-learning JAVA Programming Bootcamp",
       responsibilities: [
