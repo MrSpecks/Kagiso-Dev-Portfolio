@@ -1,4 +1,13 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
+
+  const navigation = [
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Certifications", href: "/certifications" },
+    { name: "Contact", href: "/contact" },
+  ];
 
 const Footer = () => {
   return (
@@ -18,29 +27,29 @@ const Footer = () => {
             <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="/" className="text-muted-foreground hover:text-primary transition-colors">
+                <link href="/" className="text-muted-foreground hover:text-primary transition-colors">
                   Home
-                </a>
+                </link>
               </li>
               <li>
-                <a href="/about" className="text-muted-foreground hover:text-primary transition-colors">
+                <link href="/about" className="text-muted-foreground hover:text-primary transition-colors">
                   About
-                </a>
+                </link>
               </li>
               <li>
-                <a href="/projects" className="text-muted-foreground hover:text-primary transition-colors">
+                <link href="/projects" className="text-muted-foreground hover:text-primary transition-colors">
                   Projects
-                </a>
+                </link>
               </li>
               <li>
-                <a href="/certifications" className="text-muted-foreground hover:text-primary transition-colors">
+                <link href="/certifications" className="text-muted-foreground hover:text-primary transition-colors">
                   Certifications
-                </a>
+                </link>
               </li>
               <li>
-                <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
+                <link href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
-                </a>
+                </link>
               </li>
             </ul>
           </div>
