@@ -3,16 +3,16 @@ import StackIcon from "tech-stack-icons";
 import "./RotatingStackCloud.css";
 
 const ICON_NAMES = [
-    "gradio",  "huggingface", "java", "jira", "js", "json", "langchain",
-   "atlassian", "anthropic", "aws", "azureai", "bash", "bitbucket",  
-    "oracle", "postgresql", "vscode", "pytorch", "react", "vercel", "typescript",
-  "eslint", "figma", "framer", "gcloud", "gemini", "git", "github", "gitlab",
-  "copilotgithub", "css3", "deepseek", "docker", "expressjs", "supabase",
-  "langgraph", "llamaindex", "markdown",  "meta", "nextjs2", "claude",
-  "microsoft", "mistral", "mongodb", "n8n", "net", "nextjs",  "nodejs", "npm",
+    "gradio",  "huggingface", "java", "jira", "js", "json", "langchain", "gitlab",
+   "atlassian", "nextjs",  "meta",  "anthropic", "aws", "azureai", "bash", "bitbucket",  
+   "python",  "reactrouter", "materialui", "streamlit", "shadcnui",  "azure", "vite.js",
+  "eslint", "figma", "spring", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
+  "copilotgithub", "css3", "deepseek", "nextjs2", "docker", "expressjs", "supabase", "mongodb",
+  "oracle", "postgresql", "vscode", "pytorch", "react", "vercel", "typescript",
+  "langgraph", "llamaindex", "markdown", "claude","n8n", "tailwindcss", "mistral",
   "npm2",  "postman", "powershell", "prettier", "html5", "colab", "openai",
-  "python",  "reactrouter", "materialui", "shadcnui",  "azure", "vite", 
-  "streamlit",  "tailwindcss",  "ubuntu", "bolt", "spring",
+   "microsoft", "net",  "npm", "bolt",
+     
   
 ];
 
