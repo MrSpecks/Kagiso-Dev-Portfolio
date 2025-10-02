@@ -22,7 +22,7 @@ interface IconOrbit {
   lat: number;
 }
 
-const CLOUD_RADIUS = 260;
+const CLOUD_RADIUS = 170;
 const ORBIT_SPEED = 0.008;
 
 const RotatingTechCloud: React.FC = () => {

@@ -6,12 +6,12 @@
   width: 100%;
   height: 100%; /* fill parent container instead of full viewport */
   position: relative; /* relative so absolute children are inside this */
-  padding: 8rem 0; /* vertical padding for spacing */   
+  padding: 4rem 0; /* vertical padding for spacing */   
 }
 
 /* Perspective container for 3D effect */
 .tech-cloud-perspective {
-  perspective: 900px;
+  perspective: 800px;
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,8 +21,8 @@
 
 /* The cloud itself is centered using flex, no absolute */
 .tech-cloud {
-  width: 300px;
-  height: 300px;
+  width: min(80vw,300px);
+  height: min(80vw,300px);;
   transform-style: preserve-3d;
   display: flex;
   justify-content: center;
@@ -33,8 +33,10 @@
 /* Individual icons */
 .tech-icon {
   position: absolute; /* still absolute for 3D translation */
-  width: 40px;
-  height: 40px;
+  width: 8vw;
+  max-width: 40px;
+  height: 8vw;
+  max-width: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
