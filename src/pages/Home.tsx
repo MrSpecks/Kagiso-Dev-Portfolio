@@ -246,21 +246,10 @@ const Home = () => {
             Let's discuss your next project and bring your ideas to life
           </p>
           <Link to="/contact">
-          import StarBorder from './StarBorder'
-  
-<StarBorder
-  as="button"
-  className="custom-class"
-  color="cyan"
-  speed="5s"
->
-  // content
-
             <Button size="lg" className="group">
               Get In Touch
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
-            </StarBorder>
           </Link>
         </div>
       </section>
