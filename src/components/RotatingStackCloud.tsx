@@ -6,12 +6,12 @@ const ICON_NAMES = [
     "gradio",  "java", "jira", "langchain", "huggingface",
     "nextjs",  "meta",  "anthropic", "aws", "azureai", "bash", "bitbucket",  
    "python",  "reactrouter", "materialui", "streamlit", "shadcnui",  "azure", "vite.js",
-  "eslint", "figma", "spring", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
+   "figma", "spring", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
   "copilotgithub", "css3", "deepseek", "docker", "expressjs", "supabase", "mongodb",
   "oracle", "postgresql", "vscode", "pytorch", "react", "vercel", "typescript",
   "langgraph", "markdown", "claude","n8n", "tailwindcss", "mistral",
   "npm2",  "postman", "powershell", "prettier", "html5", "colab", "openai",
-   "microsoft", "net",  "npm", "js", "llamaindex",
+   "microsoft", "net",  "npm", "js",
      
   
 ];
