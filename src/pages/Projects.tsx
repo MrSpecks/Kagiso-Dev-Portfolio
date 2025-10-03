@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import * as React from "react";
+import FadeContent from "@/components/FadeContent";
 // Added Sparkles and Zap for the RAG Agent section styling, while keeping all original imports
 import { 
     ArrowRight, ListChecks, Database, Workflow, Cloud, Search, Cpu, ExternalLink, 
@@ -104,6 +105,7 @@ export const Projects = () => {
                 </div>
 
                 {/* --- RAG Agent Technical Capabilities Section --- */}
+                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div id="rag-agent-capabilities" className="project-card mb-16 mx-auto max-w-4xl">
                     <div className="flex items-center space-x-3 mb-4">
                         <Zap className="w-8 h-8 text-primary" />
@@ -190,8 +192,10 @@ export const Projects = () => {
                         </table>
                     </div>
                 </div>
+                </FadeContent>
 
                 {/* Projects Grid (Original Content) */}
+                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project) => (
                         <Card key={project.id} className="project-card group">
@@ -254,8 +258,10 @@ export const Projects = () => {
                         </Card>
                     ))}
                 </div>
+                </FadeContent>
  
                 {/* Call to Action */}
+                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div className="text-center mt-16">
                     <Card className="p-8 bg-primary/5 border-primary/20">
                         <h2 className="text-2xl font-bold mb-4">Interested in Working Together?</h2>
@@ -271,6 +277,7 @@ export const Projects = () => {
                         </Link>
                     </Card>
                 </div>
+                </FadeContent>
             </div>
         </div>
     );

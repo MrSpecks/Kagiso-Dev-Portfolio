@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, MapPin, GraduationCap, Briefcase, ChevronRight } from "lucide-react";
 import ExperienceDetailModal from "@/components/ExperienceDetailModal"; // Import the new component
+import FadeContent from "@/components/FadeContent"; // Import the FadeContent component
 
 // Define data interfaces for type safety
 interface ExperienceItem {
@@ -246,6 +247,7 @@ const About = () => {
           </div>
 
 	        {/* Personal Story */}
+        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="mb-16">
           <Card className="p-8">
             <h2 className="text-2xl font-bold mb-6">My Journey</h2>
@@ -269,8 +271,10 @@ const About = () => {
             </div>
           </Card>
         </div>
+        </FadeContent>
 
           {/* Professional Experience */}
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 flex items-center">
                 <Briefcase className="h-7 w-7 mr-3 text-primary" />
@@ -304,8 +308,10 @@ const About = () => {
               ))}
             </div>
           </div>
+          </FadeContent>
 
           {/* Education */}
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
           <div className="mb-16">
             <h2 className="text-3xl font-bold mb-8 flex items-center">
                 <GraduationCap className="h-7 w-7 mr-3 text-primary" />
@@ -338,8 +344,10 @@ const About = () => {
               ))}
             </div>
           </div>
+          </FadeContent>
 
           {/* Interests */}
+          <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
           <div>
             <h2 className="text-3xl font-bold mb-8">Interests & Hobbies</h2>
             <Card className="p-8">
@@ -360,8 +368,10 @@ const About = () => {
               </p>
             </Card>
           </div>
+          </FadeContent>
         </div>
       </div>
+      
       
       {/* Detail Modal Component */}
       {isModalOpen && selectedDetail && (

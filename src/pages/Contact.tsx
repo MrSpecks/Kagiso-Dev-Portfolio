@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Mail, Phone, MapPin, Github, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast"; 
+import FadeContent from "@/components/FadeContent";
 
 const Contact = () => {
   // Define the Formspree endpoint URL directly
@@ -120,6 +121,8 @@ const Contact = () => {
           </p>
         </div>
 
+        {/* Contact Form and Contact Info */}
+        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <Card className="p-8">
@@ -244,6 +247,7 @@ const Contact = () => {
             </Card>
           </div>
         </div>
+        </FadeContent>
       </div>
     </div>
   );

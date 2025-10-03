@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import RotatingTechCloud from "@/components/RotatingStackCloud";
+import StarBorder from "@/components/StarBorder";
 
 // Import the carousel components
 import {
@@ -18,6 +19,8 @@ import {
 
 // Import your projects data
 import { projects as featuredProjects } from "@/pages/Projects";
+import FadeContent from "@/components/FadeContent";
+
 
 const Home = () => {
   // Fetch certifications count
@@ -84,6 +87,7 @@ const Home = () => {
       </section>
 
       {/* Stats Section */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -113,8 +117,10 @@ const Home = () => {
           </div>
         </div>
       </section>
+      </FadeContent>
       
       {/* About Preview */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
@@ -138,8 +144,10 @@ const Home = () => {
           </Link>
         </div>
       </section>
+      </FadeContent>
       
       {/* === NEW: Featured Projects Section === */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Featured Projects</h2>
@@ -199,6 +207,7 @@ const Home = () => {
           </Carousel>
         </div>
       </section>
+      </FadeContent>
       {/* === END: Featured Projects Section === */}
 
       {/* Skills Section */}
@@ -229,6 +238,7 @@ const Home = () => {
       
 
       {/* CTA Section */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-background">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">Ready to Work Together?</h2>
@@ -236,13 +246,25 @@ const Home = () => {
             Let's discuss your next project and bring your ideas to life
           </p>
           <Link to="/contact">
+          import StarBorder from './StarBorder'
+  
+<StarBorder
+  as="button"
+  className="custom-class"
+  color="cyan"
+  speed="5s"
+>
+  // content
+
             <Button size="lg" className="group">
               Get In Touch
               <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </Button>
+            </StarBorder>
           </Link>
         </div>
       </section>
+      </FadeContent>
     </div>
   );
 };
