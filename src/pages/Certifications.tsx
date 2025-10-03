@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
 import ChartRadarGridFill from "@/components/ChartRadarGridFill";
 import { Link } from "react-router-dom";
-import FadeContent from "@/components/FadeContent";
 import { format } from "date-fns";
 
 
@@ -68,14 +67,11 @@ const Certifications = () => {
         </div>
 
         {/* START: Radar Chart Component Placement (New Section) */}
-        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="mb-16">
-        <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))', }, }} />
+            <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))', }, }} />
         </div>
-        </FadeContent>
 
         {/* Certifications Grid */}
-        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         {certifications && certifications.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {certifications.map((cert) => (
@@ -153,10 +149,8 @@ const Certifications = () => {
             </p>
           </div>
         )}
-        </FadeContent>
 
         {/* Call to Action */}
-        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
         <div className="text-center mt-16">
           <Card className="p-8 bg-primary/5 border-primary/20">
             <h2 className="text-2xl font-bold mb-4">Continuous Learning</h2>
@@ -171,7 +165,6 @@ const Certifications = () => {
           </Link>
           </Card>
         </div>
-        </FadeContent>
       </div>
     </div>
   );
