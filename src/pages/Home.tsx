@@ -255,10 +255,10 @@ const Home = () => {
         </div>
       </section>
       </FadeContent>
-            {/* Interactive particles */}
+      {/* Interactive particles */}
       <Particles
         className="absolute inset-0"
-        quantity={100}
+        quantity={200}
         ease={80}
         staticity={50}
         color="#ffffff"
