@@ -123,6 +123,17 @@ const Home = () => {
       {/* About Preview */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-background">
+
+      {/* Circle Image Cutout */}
+      <div className="relative z-20 mb-12 mx-auto w-44 h-44 rounded-full overflow-hidden shadow-effect">
+       <img
+          src="/Kagiso-Portrait.jpg"
+          alt="Kagiso Mfusi"
+          width="450"
+          height="450"
+          className="object-cover"
+        /> 
+      </div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">

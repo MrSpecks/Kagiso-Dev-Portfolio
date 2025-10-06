@@ -120,6 +120,19 @@
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
+/* Drop shadow for light mode */
+@media (prefers-color-scheme: light) {
+  .shadow-effect {
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+}
+
+/* Glow effect for dark mode */
+@media (prefers-color-scheme: dark) {
+  .shadow-effect {
+    box-shadow: 0 0 10px hsl(231, 65%, 65%), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  }
+}
 }
 
 @layer base {
