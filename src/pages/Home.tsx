@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import RotatingTechCloud from "@/components/RotatingStackCloud";
 import StarBorder from "@/components/StarBorder";
+import { Particles } from "@/components/ui/shadcn-io/particles/Particles";
 
 // Import the carousel components
 import {
@@ -254,6 +255,15 @@ const Home = () => {
         </div>
       </section>
       </FadeContent>
+            {/* Interactive particles */}
+      <Particles
+        className="absolute inset-0"
+        quantity={100}
+        ease={80}
+        staticity={50}
+        color="#ffffff"
+        size={0.8}
+      />
     </div>
   );
 };
