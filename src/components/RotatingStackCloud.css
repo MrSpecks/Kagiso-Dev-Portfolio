@@ -31,6 +31,65 @@
 }
 
 /* Individual icons */
+/* Wrapper now takes the parent size and centers content flexibly */
+.tech-cloud-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%; /* fill parent container instead of full viewport */
+  position: relative; /* relative so absolute children are inside this */
+  padding: 4rem 0; /* vertical padding for spacing */   
+}
+
+/* Perspective container for 3D effect */
+.tech-cloud-perspective {
+  perspective: 800px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The cloud itself is centered using flex, no absolute */
+.tech-cloud {
+  width: min(80vw,300px);
+  height: min(80vw,300px);;
+  transform-style: preserve-3d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative; /* for absolute positioned icons */
+}
+
+.tech-cloud::after {
+  content: "";
+  position: absolute;
+  bottom: -6rem; 
+  /* Pushed up slightly, was -2rem. This will depend on the cloud's center. */
+  
+  width: 80%;
+  /* Drastically reduced height to make it a flat ellipse */
+  height: 12%; /* <--- FIX 1: Make it very shallow */
+  
+  /* Increased opacity slightly for a darker shadow */
+  background: rgba(0, 0, 0, 0.45); 
+  
+  border-radius: 50%; 
+  
+  /* Much higher blur to diffuse the edges and make it subtle */
+  filter: blur(20px); /* <--- FIX 2: Increase blur */
+  
+ z-index: -1; 
+  
+  /* We can remove the transform for now to focus on the shape, 
+    or keep the scaleY to flatten it. */
+ transform: scaleY(0.1); 
+  /* ^^^ FIX 3: Using scaleY(0.1) instead of rotateX(70deg) for flatness */
+}
+
+/* Individual icons */
 .tech-icon {
   position: absolute; /* still absolute for 3D translation */
   width: 8vw;
@@ -42,3 +101,4 @@
   justify-content: center;
   transform-style: preserve-3d;
 }
+
