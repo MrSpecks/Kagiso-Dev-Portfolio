@@ -146,7 +146,7 @@ export const Projects = () => {
                                         <Sparkles className="w-4 h-4 mr-2 text-muted-foreground" /> Vector Embedding (Jina-v3)
                                     </th>
                                     <td className="px-4 py-4 text-muted-foreground">
-                                        Direct, functional code implementation (`embed_meta_facts.js`) to call the Jina AI API, consistently converting source text (portfolio data) into high-quality vector representations.
+                                        Direct, functional code implementation to call the Jina AI API, consistently converting source text into high-quality vector representations.
                                     </td>
                                     <td className="px-4 py-4 text-center text-lg font-semibold text-primary">
                                         8/10

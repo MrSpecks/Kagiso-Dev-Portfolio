@@ -22,6 +22,27 @@ import {
 import { projects as featuredProjects } from "@/pages/Projects";
 import FadeContent from "@/components/FadeContent";
 
+// Import the TypewriterEffectSmooth component
+import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
+// export function TypewriterEffectSmoothDemo() {
+  
+//   return (
+//     <div className="flex flex-col items-center justify-center h-[40rem]  ">
+//       <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base  ">
+//         The road to freedom starts from here
+//       </p>
+      
+//       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
+//         <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm">
+//           Join now
+//         </button>
+//         <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
+//           Signup
+//         </button>
+//       </div>
+//     </div>
+//   );
+// }
 
 const Home = () => {
   // Fetch certifications count
@@ -42,6 +63,36 @@ const Home = () => {
     "Javascript", "Next.js", "Express", "Agentic AI", "Java", "Vercel",
     "HTML", "CSS", "REST APIs", "N8N", "CI/CD", "RAG", "Figma",
   ];
+  const words = [
+    {
+      text: "AI",
+      className: "text-primary-glow dark:text-primary-glow",
+    },
+    {
+      text: "&",
+      className: "text-primary-glow dark:text-primary-glow",
+    },
+    {
+      text: "Systems",
+      className: "text-primary-glow dark:text-primary-glow",
+    },
+    {
+      text: "Developer",
+      className: "text-primary-glow dark:text-primary-glow",
+    },
+    {
+      text: "crafting",
+    },
+    {
+      text: "exceptional",
+    },
+    {
+      text: "digital",
+    },
+    {
+      text: "experiences.",
+    },
+  ];
 
   return (
     <div className="min-h-screen pt-16">
@@ -55,9 +106,7 @@ const Home = () => {
             </h1>
           </div>
           <div className="hero-text">
-            <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto">
-              AI & Systems Developer crafting exceptional digital experiences
-            </p>
+            <TypewriterEffectSmooth words={words} />
           </div>
           <div className="hero-text">
             <Link to="/projects">
