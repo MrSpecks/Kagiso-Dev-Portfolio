@@ -79,8 +79,18 @@ async function getJinaEmbedding(input) {
 
 // --- START: Injected JSON Data from certifications_rows.json ---
 const certificationsData = [
-  {"idx":6,"id":"3c668df8-e019-4c87-90a1-4765eb40371e","title":"Prompt Engineering and AI Agents","provider":"LinkedIn Learning","date_earned":"2025-06-23","description":"Practical guide to crafting effective prompts and designing agentic workflows.","file_url":"https://qlkwqrbqvtwxnkfsleqj.supabase.co/storage/v1/object/public/Certifications/Prompt%20Engineering%20and%20AI%20Agents.pdf","created_at":"2025-09-26 04:11:47.720164","tags":"{\"Prompt Engineering\",\"AI Agents\",LLM}"},
-  ];
+  {
+        "idx": 32,
+        "id": "a1b2c3d4-e5f6-47a8-9b0c-d1e2f3a4b5c6", // Placeholder UUID for the new entry
+        "title": "OCI Multicloud Architect Professional",
+        "provider": "Oracle",
+        "date_earned": "2026-01-01",
+        "description": "Expert-level certification covering the design, implementation, and management of robust, high-performance multicloud solutions leveraging Oracle Cloud Infrastructure (OCI) alongside other major cloud providers like Azure and AWS.",
+        "file_url": "https://qlkwqrbqvtwxnkfsleqj.supabase.co/storage/v1/object/public/Certifications/OCI%20Multicloud%20Architect%20Professional.pdf",
+        "created_at": "2026-01-01 12:00:00.000000",
+        "tags": "{\"OCI\",\"Multicloud\",\"Cloud Architecture\",\"AWS\",\"Azure\",\"Google\"}"
+    }
+];
 // --- END: Injected JSON Data ---
 
 /**

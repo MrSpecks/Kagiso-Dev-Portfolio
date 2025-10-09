@@ -6,16 +6,17 @@ import { ChartConfig } from './ui/chart';
 // High-Impact Expertise Data (Scores out of 10)
 // REVISED: Scores and pillars updated to reflect high-velocity, full-stack AI system deployment proficiency (RAG project).
 const expertiseData = [
-	// Reflects end-to-end RAG deployment, architectural fluency, and immediate application of GenAI certifications.
-	{ pillar: 'AI & Agentic Automation', score: 9.8 },
-	// Renamed to emphasize architectural design, backend integration (Supabase), and serverless optimization (Vercel pivot).
-	{ pillar: 'System Architecture & Integration', score: 9.5 },
-	// Score boosted to reflect high technical velocity (HTV), autonomy, and full-project ownership in under a week.
-	{ pillar: 'High-Velocity Project Delivery', score: 9.3 },
-	// Reflects proficiency in Azure/Cloud concepts and building scalable systems (Serverless/Docker).
-	{ pillar: 'Cloud & Enterprise Systems', score: 8.5 },
-	// Maintaining a solid score based on existing certifications and relevance to Systems Development (Recon tools).
-	{ pillar: 'Cybersecurity & Compliance', score: 7.8 },
+    // Retaining high score; impact from the recent multicloud course is indirect/minimal here.
+    { pillar: 'AI & Agentic Automation', score: 9.8 },
+    // Score boosted to reflect mastery in complex multicloud integration, advanced networking (Interconnects), 
+    // and federated identity management across OCI, Azure, and Google Cloud.
+    { pillar: 'System Architecture & Integration', score: 9.7 },
+    // Slight boost for validating competence in designing and delivering high-availability (HA) and disaster recovery (DR) solutions in complex enterprise environments.
+    { pillar: 'High-Velocity Project Delivery', score: 9.4 },
+    // Significant boost due to achieving professional-level expertise in Multicloud Architecture (OCI, Azure, GCP). This is the core skill confirmed by the new course.
+    { pillar: 'Cloud & Enterprise Systems', score: 9.6 },
+    // Score boosted to reflect expertise in cross-cloud Identity & Access Management (IAM) federation and applying regulatory compliance/data security best practices across multicloud infrastructure.
+    { pillar: 'Cybersecurity & Compliance', score: 8.3 },
 ];
 
 // Chart Configuration

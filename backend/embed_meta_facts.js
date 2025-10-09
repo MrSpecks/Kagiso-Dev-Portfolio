@@ -80,7 +80,7 @@ async function getJinaEmbedding(input) {
 const metaFacts = [
     {
         title: "Quantitative Summary",
-        content: "Kagiso Mfusi's quantitative professional summary is as follows: Kagiso has **31 total certifications earned** across AI, cloud infrastructure, and software development, which includes key expertise in Oracle AI, Microsoft Azure, and Python Machine Learning. Kagiso has **8+ projects completed and showcased** in the portfolio, including the Personal Portfolio RAG Agent, an AI Brochure Maker, and an OSINT Reconnaissance Tool. Kagiso has **7+ years of total experience** in systems development, cloud architecture, and full-stack development, with specialization in LLM engineering."
+        content: "Kagiso Mfusi's quantitative professional summary is as follows: Kagiso has **32 total certifications earned** across AI, cloud infrastructure, and software development, which includes key expertise in Oracle AI, Microsoft Azure, and Python Machine Learning. Kagiso has **8+ projects completed and showcased** in the portfolio, including the Personal Portfolio RAG Agent, an AI Brochure Maker, and an OSINT Reconnaissance Tool. Kagiso has **7+ years of total experience** in systems development, cloud architecture, and full-stack development, with specialization in LLM engineering."
     },
     {
         title: "Core Specializations and Tech Stack",
