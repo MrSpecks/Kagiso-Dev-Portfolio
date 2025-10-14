@@ -8,14 +8,6 @@ import ChartRadarGridFill from "@/components/ChartRadarGridFill";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 
-
-// const ChartRadarGridFill = () => (
-//     <div className="flex justify-center items-center h-80 rounded-x p-6">
-//         <p className="text-xl font-semibold text-primary/70">
-//             [ChartRadarGridFill Placeholder]
-//         </p>
-//     </div>
-// );
 const Certifications = () => {
   const { data: certifications, isLoading, error } = useQuery({
     queryKey: ["certifications"],
@@ -68,7 +60,7 @@ const Certifications = () => {
 
         {/* START: Radar Chart Component Placement (New Section) */}
         <div className="mb-16">
-            <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))', }, }} />
+          <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))' } }} />
         </div>
 
         {/* Certifications Grid */}
@@ -102,38 +94,60 @@ const Certifications = () => {
                   )}
                   
                   {cert.file_url && (
-                    <div className="flex gap-2">
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        asChild
-                        className="flex-1"
-                      >
-                        <a
-                          href={cert.file_url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="flex items-center justify-center"
+                    <div className="flex flex-col gap-2">
+                      <div className="flex gap-2">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="flex-1"
                         >
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          View
-                        </a>
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        asChild
-                        className="flex-1"
-                      >
-                        <a
-                          href={cert.file_url}
-                          download
-                          className="flex items-center justify-center"
+                          <a
+                            href={cert.file_url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center"
+                          >
+                            <ExternalLink className="mr-2 h-4 w-4" />
+                            View
+                          </a>
+                        </Button>
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="flex-1"
                         >
-                          <Download className="mr-2 h-4 w-4" />
-                          Download
-                        </a>
-                      </Button>
+                          <a
+                            href={cert.file_url}
+                            download
+                            className="flex items-center justify-center"
+                          >
+                            <Download className="mr-2 h-4 w-4" />
+                            Download
+                          </a>
+                        </Button>
+                      </div>
+
+                      {/* NEW: View Badge Button */}
+                      {cert.VerifyUrl && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="w-full"
+                        >
+                          <a
+                            href={cert.VerifyUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center"
+                          >
+                            <Award className="mr-2 h-4 w-4" />
+                            View Badge
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   )}
                 </div>
@@ -158,11 +172,11 @@ const Certifications = () => {
               I believe in staying current with the latest technologies and best practices. 
               These certifications represent my commitment to professional growth and excellence.
             </p>
-          <Link to="/about">
-            <Button size="lg" className="group">
-              View All Experience
-            </Button>
-          </Link>
+            <Link to="/about">
+              <Button size="lg" className="group">
+                View All Experience
+              </Button>
+            </Link>
           </Card>
         </div>
       </div>

@@ -80,16 +80,16 @@ async function getJinaEmbedding(input) {
 // --- START: Injected JSON Data from certifications_rows.json ---
 const certificationsData = [
   {
-        "idx": 32,
-        "id": "a1b2c3d4-e5f6-47a8-9b0c-d1e2f3a4b5c6", // Placeholder UUID for the new entry
-        "title": "OCI Multicloud Architect Professional",
-        "provider": "Oracle",
-        "date_earned": "2026-01-01",
-        "description": "Expert-level certification covering the design, implementation, and management of robust, high-performance multicloud solutions leveraging Oracle Cloud Infrastructure (OCI) alongside other major cloud providers like Azure and AWS.",
-        "file_url": "https://qlkwqrbqvtwxnkfsleqj.supabase.co/storage/v1/object/public/Certifications/OCI%20Multicloud%20Architect%20Professional.pdf",
-        "created_at": "2026-01-01 12:00:00.000000",
-        "tags": "{\"OCI\",\"Multicloud\",\"Cloud Architecture\",\"AWS\",\"Azure\",\"Google\"}"
-    }
+    "idx": 33,
+    "id": "c7d8e9f0-a1b2-43c4-d5e6-f7a8b9c0d1e2", // Placeholder UUID for the new entry
+    "title": "Oracle Autonomous Database Professional (2025)",
+    "provider": "Oracle",
+    "date_earned": "2025-10-01",
+    "description": "Professional-level certification validating expertise in deploying, managing, and optimizing Oracle Autonomous Databases on OCI. Focus areas include automated scaling, backup and recovery, AI-driven performance tuning, Data Guard, and secure development using APEX, Machine Learning, and JSON, Text, Spatial, and Graph features.",
+    "file_url": "https://qlkwqrbqvtwxnkfsleqj.supabase.co/storage/v1/object/public/Certifications/Oracle%20Autonomous%20Database%20Professional%20(2025).pdf",
+    "created_at": "2025-10-01 12:00:00.000000",
+    "tags": "{\"OCI\",\"Autonomous Database\",\"Database Management\",\"AI-Driven Optimization\",\"Oracle APEX\",\"Machine Learning\"}"
+}
 ];
 // --- END: Injected JSON Data ---
 

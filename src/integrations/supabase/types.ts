@@ -14,7 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      certifications: {
+            certifications: {
         Row: {
           created_at: string | null
           date_earned: string
@@ -23,6 +23,7 @@ export type Database = {
           id: string
           provider: string
           title: string
+          VerifyUrl: string | null  // <-- added
         }
         Insert: {
           created_at?: string | null
@@ -32,6 +33,7 @@ export type Database = {
           id?: string
           provider: string
           title: string
+          VerifyUrl?: string | null // <-- added
         }
         Update: {
           created_at?: string | null
@@ -41,6 +43,7 @@ export type Database = {
           id?: string
           provider?: string
           title?: string
+          VerifyUrl?: string | null // <-- added
         }
         Relationships: []
       }

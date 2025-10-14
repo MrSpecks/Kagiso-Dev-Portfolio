@@ -24,26 +24,6 @@ import FadeContent from "@/components/FadeContent";
 
 // Import the TypewriterEffectSmooth component
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
-// export function TypewriterEffectSmoothDemo() {
-  
-//   return (
-//     <div className="flex flex-col items-center justify-center h-[40rem]  ">
-//       <p className="text-neutral-600 dark:text-neutral-200 text-xs sm:text-base  ">
-//         The road to freedom starts from here
-//       </p>
-      
-//       <div className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-4">
-//         <button className="w-40 h-10 rounded-xl bg-black border dark:border-white border-transparent text-white text-sm">
-//           Join now
-//         </button>
-//         <button className="w-40 h-10 rounded-xl bg-white text-black border border-black  text-sm">
-//           Signup
-//         </button>
-//       </div>
-//     </div>
-//   );
-// }
-
 const Home = () => {
   // Fetch certifications count
   const { data: certifications } = useQuery({
@@ -186,17 +166,16 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            My journey into tech hasn't been a straight line. I didn't take the traditional route. Instead, I carved
-            my own path by building, failing, and building again. Over the last 7 years, that persistence has shaped me
-            into a Systems & AI Developer who thrives at the intersection of cloud, AI, and automation.
+            My journey into tech hasn't followed the traditional path. 
+            I've carved my own by building, iterating, and evolving—learning from every success and failure along the way. 
+            Over the past 7 years, that persistence has shaped me into a Systems & AI Developer thriving at the intersection of cloud, AI, and automation.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            I specialize in LLM engineering and multi-cloud architecture, turning complex ideas into solutions that actually
-            scale and deliver measurable value. But for me, it's not just about the code or the architecture - it's about the
-            impact. I believe technology should make businesses smarter, people's lives easier, and the future more accessible.
+            I specialize in LLM engineering and multi-cloud architecture, turning complex problems into scalable solutions that deliver real-world impact. 
+            For me, it's not just about the code—it's about making businesses smarter, people's lives easier, and the future more accessible.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            While you're here, I hope you enjoy exploring this portfolio as much as I enjoyed creating it.
+            Explore my work, and see how curiosity, creativity, and technology come together to create meaningful solutions.
           </p>
           <Link to="/about">
             <Button size="lg" className="group">
@@ -282,17 +261,6 @@ const Home = () => {
           
           <div className="flex flex-wrap justify-center gap-4">
             <RotatingTechCloud />
-            
-            {/* {skills.map((skill, index) => (
-              <Badge
-                key={skill}
-                variant="secondary"
-                className="px-4 py-2 text-sm hover:bg-primary hover:text-primary-foreground transition-colors cursor-pointer"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                {skill}
-              </Badge>
-            ))} */}
           </div>
         </div>
         </section>
