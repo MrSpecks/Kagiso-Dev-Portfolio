@@ -1,3 +1,4 @@
+import React from "react";
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
@@ -5,8 +6,14 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Calendar, Award, ExternalLink, Download } from "lucide-react";
 import ChartRadarGridFill from "@/components/ChartRadarGridFill";
+import CertificationFilters from "@/components/CertificationFilters";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
+import { motion, AnimatePresence } from "framer-motion";
+import { Tables } from "@/integrations/supabase/types";
+
+// Type definition for certification data
+type Certification = Tables<"certifications">;
 
 const Certifications = () => {
   const { data: certifications, isLoading, error } = useQuery({
@@ -20,6 +27,16 @@ const Certifications = () => {
       return data;
     },
   });
+
+  // State for filtered certifications
+  const [filteredCertifications, setFilteredCertifications] = React.useState<Certification[]>([]);
+
+  // Initialize filtered certifications when data loads
+  React.useEffect(() => {
+    if (certifications) {
+      setFilteredCertifications(certifications);
+    }
+  }, [certifications]);
 
   if (isLoading) {
     return (
@@ -63,97 +80,122 @@ const Certifications = () => {
           <ChartRadarGridFill chartConfig={{ score: { label: 'Expertise Score', color: 'hsl(var(--primary))' } }} />
         </div>
 
+        {/* Filter & Search Component */}
+        {certifications && certifications.length > 0 && (
+          <CertificationFilters
+            certifications={certifications}
+            onFilteredCertifications={setFilteredCertifications}
+          />
+        )}
+
         {/* Certifications Grid */}
         {certifications && certifications.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {certifications.map((cert) => (
-              <Card key={cert.id} className="cert-card group">
-                {/* Badge */}
-                <div className="cert-badge">
-                  <Award className="h-8 w-8 text-primary" />
-                </div>
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={filteredCertifications.length}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
+              {filteredCertifications.map((cert, index) => (
+                <motion.div
+                  key={cert.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.1 }}
+                  layout
+                >
+                  <Card className="cert-card group">
+                    {/* Badge */}
+                    <div className="cert-badge">
+                      <Award className="h-8 w-8 text-primary" />
+                    </div>
 
-                <div className="mt-4">
-                  <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
-                    {cert.title}
-                  </h3>
-                  
-                  <Badge variant="secondary" className="mb-3">
-                    {cert.provider}
-                  </Badge>
-                  
-                  <div className="flex items-center text-muted-foreground mb-4">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    <span>{format(new Date(cert.date_earned), "MMMM yyyy")}</span>
-                  </div>
-                  
-                  {cert.description && (
-                    <p className="text-muted-foreground mb-6 line-clamp-3">
-                      {cert.description}
-                    </p>
-                  )}
-                  
-                  {cert.file_url && (
-                    <div className="flex flex-col gap-2">
-                      <div className="flex gap-2">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="flex-1"
-                        >
-                          <a
-                            href={cert.file_url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center"
-                          >
-                            <ExternalLink className="mr-2 h-4 w-4" />
-                            View
-                          </a>
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="flex-1"
-                        >
-                          <a
-                            href={cert.file_url}
-                            download
-                            className="flex items-center justify-center"
-                          >
-                            <Download className="mr-2 h-4 w-4" />
-                            Download
-                          </a>
-                        </Button>
+                    <div className="mt-4">
+                      <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                        {cert.title}
+                      </h3>
+                      
+                      <Badge variant="secondary" className="mb-3">
+                        {cert.provider}
+                      </Badge>
+                      
+                      <div className="flex items-center text-muted-foreground mb-4">
+                        <Calendar className="mr-2 h-4 w-4" />
+                        <span>{format(new Date(cert.date_earned), "MMMM yyyy")}</span>
                       </div>
+                      
+                      {cert.description && (
+                        <p className="text-muted-foreground mb-6 line-clamp-3">
+                          {cert.description}
+                        </p>
+                      )}
+                      
+                      {cert.file_url && (
+                        <div className="flex flex-col gap-2">
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              asChild
+                              className="flex-1"
+                            >
+                              <a
+                                href={cert.file_url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center"
+                              >
+                                <ExternalLink className="mr-2 h-4 w-4" />
+                                View
+                              </a>
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              asChild
+                              className="flex-1"
+                            >
+                              <a
+                                href={cert.file_url}
+                                download
+                                className="flex items-center justify-center"
+                              >
+                                <Download className="mr-2 h-4 w-4" />
+                                Download
+                              </a>
+                            </Button>
+                          </div>
 
-                      {/* NEW: View Badge Button */}
-                      {cert.VerifyUrl && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="w-full"
-                        >
-                          <a
-                            href={cert.VerifyUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center"
-                          >
-                            <Award className="mr-2 h-4 w-4" />
-                            View Badge
-                          </a>
-                        </Button>
+                          {/* NEW: View Badge Button */}
+                          {cert.VerifyUrl && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              asChild
+                              className="w-full"
+                            >
+                              <a
+                                href={cert.VerifyUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center"
+                              >
+                                <Award className="mr-2 h-4 w-4" />
+                                View Badge
+                              </a>
+                            </Button>
+                          )}
+                        </div>
                       )}
                     </div>
-                  )}
-                </div>
-              </Card>
-            ))}
-          </div>
+                  </Card>
+                </motion.div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         ) : (
           <div className="text-center py-16">
             <Award className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
