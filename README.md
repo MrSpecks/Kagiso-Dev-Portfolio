@@ -136,12 +136,12 @@ This implementation demonstrates mastery across the complete AI engineering life
 ### **Experience the AI Assistant**
 Visit the live portfolio and interact with the AI chatbot to see the RAG system in action. Ask questions like:
 - "What projects has Kagiso worked on?"
-- "Tell me about his AI and machine learning experience"
-- "What certifications does he have?"
-- "How does the RAG system work?"
+- "Tell me about Kagiso's AI and machine learning experience"
+- "What certifications does Kagiso have?"
+- "How does Kagiso's RAG system work?"
 
 ### **Key Sections**
-- **🏠 Home**: Hero section with typewriter effect and project carousel
+- **🏠 Home**: Hero section with typewriter effect, particle effect, tech stack cloud and project carousel
 - **👨‍💻 About**: Interactive timeline with expandable experience details
 - **🚀 Projects**: Technical capability showcase with live demos
 - **🏆 Certifications**: Dynamic display with radar chart visualization
