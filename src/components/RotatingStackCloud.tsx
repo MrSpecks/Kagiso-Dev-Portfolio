@@ -3,15 +3,15 @@ import StackIcon from "tech-stack-icons";
 import "./RotatingStackCloud.css";
 
 const ICON_NAMES = [
-    "gradio", "jira", "langchain", "huggingface",
-    "nextjs", "js",  "meta",  "anthropic", "aws",  "bash", "bitbucket",  
-   "python",  "reactrouter", "materialui", "streamlit", "prettier", "shadcnui",  "azure", "vite.js",
-   "figma", "spring", "java", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
+  "gradio", "jira", "langchain", "huggingface",
+  "nextjs", "js",  "meta",  "anthropic", "aws",  "bash", "bitbucket",  
+  "python",  "reactrouter", "materialui", "streamlit", "prettier", "shadcnui",  "azure", "vite.js",
+  "figma", "spring", "java", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
   "copilotgithub", "css3", "deepseek", "docker", "expressjs", "supabase", "mongodb",
   "oracle", "postgresql", "microsoft", "vscode", "pytorch", "react", "vercel", "typescript",
   "langgraph", "markdown", "claude","n8n", "tailwindcss", "mistral",
   "npm2",  "postman", "powershell", "html5", "azureai", "colab", "openai",
-    "net",  "npm", 
+  "net",  "npm", 
      
   
 ];
@@ -85,10 +85,11 @@ const RotatingTechCloud: React.FC = () => {
                 style={{
                   transform: `translate3d(${x}px, ${y}px, ${z}px) rotateY(0deg) rotateX(0deg)`,
                   opacity: 0.5 + 0.5 * depth,
+                  zIndex: Math.floor(depth * 100),
                   scale
                 }}
               >
-                <StackIcon name={name} />
+                <StackIcon name={name.toLowerCase()} />
               </div>
             );
           })}

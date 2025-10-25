@@ -43,13 +43,21 @@ export const projects = [
     },
     {
         id: 4,
-        title: "Personal Portfolio Website",
-        description: "A modern, responsive portfolio website showcasing projects and skills. Built with React, featuring smooth animations and dark mode support.",
-        tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
-        demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
-        repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
-        screenshot_url: "/website-preview.jpg",
-        category: "Website"
+        "title": "Interactive Ames Housing Market Dashboard",
+        "description": "A production-ready data application that transforms a comprehensive Jupyter Notebook EDA and advanced feature engineering process (50+ custom features) into a dynamic Streamlit dashboard. The core achievement was refactoring all logic into modular Python packages to ensure clean, maintainable code. The dashboard provides real estate professionals with interactive filters (Neighborhood, Quality, Price Range) to visualize key property metrics, price distributions, and dynamic feature correlations in real-time.",
+        "tech_stack": [
+            "Python",
+            "Streamlit",
+            "Pandas",
+            "Plotly",
+            "Data Refactoring",
+            "Feature Engineering",
+            "Modular Design"
+        ],
+        demo_url: "https://housing-prices-dashboard.streamlit.app/",
+        repo_url: "https://github.com/MrSpecks/Machine-Learning-Project",
+        screenshot_url: "/Exploratory-Data-Analysis-Dashboard.png",
+        category: "Data App & Visualization"
     },
     {
         id: 5,
@@ -71,15 +79,33 @@ export const projects = [
         screenshot_url: "/Property-Reviews-Dashboard.png",
         category: "Web App"
     },
+    {
+        id: 7,
+        title: "Personal Portfolio Website",
+        description: "My bespoke personal portfolio, engineered for technical depth and future-ready craftsmanship. Built on Next.js, TypeScript, and Tailwind CSS with a clean, scalable architecture. Features smooth Framer Motion animations, JSON-driven content, full responsiveness, and an engaging dark mode toggle with an Easter Egg.",
+        tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
+        demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
+        repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
+        screenshot_url: "/website-preview.jpg",
+        category: "Website"
+    },
 ];
  
 export const Projects = () => {
+      // Mock data based on the Executive Summary in the original project files
+  const executiveSummary = [
+    { title: "Strongest Predictor", value: "Quality (r=0.79)", color: "text-blue-600" },
+    { title: "Price Variation", value: "3x across neighborhoods", color: "text-green-600" },
+    { title: "Size Correlation", value: "Secondary to Quality (r=0.71)", color: "text-yellow-600" },
+    { title: "Data Readiness", value: "Excellent, Modeling-Ready", color: "text-purple-600" },
+  ];
  
     const getCategoryIcon = (category: string) => {
         switch (category) {
             case "Web App":
             case "Web Tool":
             case "Website":
+            case "Data App & Visualization":
                 return <Globe className="h-4 w-4" />;
             case "Mobile":
             case "Mobile App":
@@ -100,7 +126,7 @@ export const Projects = () => {
                     <h1 className="text-4xl md:text-5xl font-bold mb-6">Projects</h1>
                     <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
                         A showcase of my recent work and side projects. Each project represents different challenges 
-                        and technologies I've worked with.
+                        and technologies I've worked with. Including my work in Data Science, ML Engineering, and AI application development.
                     </p>
                 </div>
 
@@ -199,27 +225,30 @@ export const Projects = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {projects.map((project) => (
                         <Card key={project.id} className="project-card group">
-                            {/* Project Image */}
-                            <div className="relative overflow-hidden rounded-lg mb-4 bg-muted">
-                                <div
-                                    className="w-full h-48 bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${project.screenshot_url})` }}
-                                >
-                                    {/* Removed category icon and text to make space for the image */}
-                                </div>
+                        {/* Icon and Category based on project ID for polish */}
+                        <div className="flex items-center justify-between mb-4">
+                                {project.id === 2 ? (
+                                    <Zap className="h-8 w-8 text-primary" />
+                                ) : project.id === 3 ? (
+                                    <Database className="h-8 w-8 text-blue-500" />
+                                ) : (
+                                    <Sparkles className="h-8 w-8 text-yellow-500" />
+                                )}
+                                <Badge variant="secondary" className="text-sm px-3 py-1 bg-gray-100 dark:bg-gray-700 dark:text-gray-300">
+                                    {project.category}
+                                </Badge>
                             </div>
  
                             {/* Project Content */}
                             <div className="space-y-4 p-4">
                                 <div>
-                                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                                    <h3 className="text-2xl font-bold mb-3 text-gray-900 dark:text-white">
                                         {project.title}
                                     </h3>
-                                    <p className="text-muted-foreground text-sm line-clamp-3">
+                                    <p className="text-muted-foreground mb-6 text-sm">
                                         {project.description}
                                     </p>
                                 </div>
- 
                                 {/* Tech Stack */}
                                 <div className="flex flex-wrap gap-2">
                                     {project.tech_stack.map((tech) => (
@@ -228,31 +257,29 @@ export const Projects = () => {
                                         </Badge>
                                     ))}
                                 </div>
- 
+                                {/* Project Image */}
+                            <div className="relative overflow-hidden rounded-lg mb-4 bg-muted">
+                                <div
+                                    className="w-full h-48 bg-cover bg-center"
+                                    style={{ backgroundImage: `url(${project.screenshot_url})` }}
+                                >
+                                    {/* Removed category icon and text to make space for the image */}
+                                </div>
+                            </div>
                                 {/* Action Buttons */}
                                 <div className="flex gap-2 pt-2">
-                                    <Button variant="outline" size="sm" asChild className="flex-1">
-                                        <a
-                                            href={project.demo_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center justify-center"
-                                        >
-                                            <ExternalLink className="mr-2 h-4 w-4" />
-                                            Demo
-                                        </a>
-                                    </Button>
-                                    <Button variant="outline" size="sm" asChild className="flex-1">
-                                        <a
-                                            href={project.repo_url}
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            className="flex items-center justify-center"
-                                        >
-                                            <Github className="mr-2 h-4 w-4" />
-                                            Code
-                                        </a>
-                                    </Button>
+                                <Button asChild variant="outline" size="sm" className="w-1/2">
+                                    <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                        <ExternalLink className="mr-2 h-4 w-4" />
+                                        Live Demo
+                                    </a>
+                                </Button>
+                                <Button asChild size="sm" className="w-1/2">
+                                    <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="flex items-center group">
+                                        <Github className="mr-2 h-4 w-4" />
+                                        Source Code
+                                    </a>
+                                </Button>
                                 </div>
                             </div>
                         </Card>
