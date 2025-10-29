@@ -186,6 +186,39 @@ const Home = () => {
       </section>
       </FadeContent>
       
+      {/* === Coming Soon: AI Document Intelligence Platform === */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+      <section className="py-20 bg-muted/30">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold">Coming Soon</h2>
+            <p className="text-xl text-muted-foreground mt-3 max-w-3xl mx-auto">
+              AI Document Intelligence Platform — documents in, intelligence out. Grounded RAG, vector search, and a workspace that feels quietly powerful.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <Card className="overflow-hidden">
+              <img
+                src="/Document-int.png"
+                alt="AI Document Intelligence Platform"
+                className="w-full h-72 md:h-full object-cover"
+              />
+            </Card>
+            <Card className="p-6">
+              <h3 className="text-2xl font-semibold mb-3">A quiet engine is warming up</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4">
+                Expect structured insights from unstructured files, precise retrieval, and thoughtfully crafted UX. A public preview lands soon.
+              </p>
+              <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline">Preview</Button>
+              </a>
+            </Card>
+          </div>
+        </div>
+      </section>
+      </FadeContent>
+      {/* === END Coming Soon === */}
+
       {/* === NEW: Featured Projects Section === */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-muted/30">

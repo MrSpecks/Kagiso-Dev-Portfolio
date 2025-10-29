@@ -406,6 +406,16 @@ npm install
 npm run dev
 ```
 
+### Session Summaries Policy
+
+- For every implementation session that changes code, content, or configuration:
+  1. Create or update a dated markdown file under `Session Summaries/` using the format `YYYY-MM-DD-session-summary.md`.
+  2. Briefly document what was added, modified, refactored, or removed, referencing files like `src/pages/Projects.tsx` or `src/pages/Home.tsx`.
+  3. Include rationale and any follow-up actions (e.g., pending repo links, rollout steps).
+  4. Keep summaries concise, actionable, and written for future maintainers.
+
+This practice ensures clear traceability of intent and accelerates onboarding for future contributors.
+
 #### **Available Scripts** [file: package.json]
 - `npm run dev`: Start development server on port 8080
 - `npm run build`: Build production bundle

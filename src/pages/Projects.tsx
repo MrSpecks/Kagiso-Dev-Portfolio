@@ -13,36 +13,26 @@ import {
 export const projects = [
     {
         id: 1,
-        title: "AI Brochure Maker",
-        description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
-        tech_stack: ["Python", "BeautifulSoup", "Streamlit", "OpenAI API", "OpenRouter"],
-        demo_url: "https://brochure-maker.streamlit.app/",
-        repo_url: "https://github.com/MrSpecks/Brochure-Maker",
-        screenshot_url: "/Brochure-Maker.png",
-        category: "AI Tool"
+        title: "AI Document Intelligence Platform",
+        description: "A production-grade, SaaS-ready platform that ingests PDFs, DOCX, TXT, and images (with OCR fallback), segments them into semantically coherent chunks, and performs vectorization with pgvector to power precise retrieval. A carefully engineered RAG pipeline assembles grounded context and drives structured, JSON‑ready insights for downstream workflows, wrapped in role‑aware access, a credit‑based usage model, and a modern Next.js UI. Designed for reliability and scale on Vercel with Supabase as the secure backbone, it turns unstructured documents into clear, actionable intelligence.",
+        tech_stack: ["Next.js", "TypeScript", "Supabase", "pgvector", "OpenRouter", "RAG"],
+        // demo_url: "https://ai-document-intelligence-platform.vercel.app/",
+        // Intentionally no repo_url yet — coming soon
+        screenshot_url: "/Document-int.png",
+        category: "Web App"
     },
     {
         id: 2,
-        title: "AI Q&A Code Assistant",
-        description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
-        tech_stack: ["Python", "OpenAI API", "Streamlit", "OpenRouter"],
-        demo_url: "https://qna-code-assistant.streamlit.app/",
-        repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
-        screenshot_url: "/Q&A-Bot.png",
-        category: "AI Tool"
+        title: "Personal Portfolio RAG Agent",
+        description: "A Retrieval‑Augmented Generation agent embedded into my portfolio that demonstrates the complete AI application loop: chunking and embedding site content, similarity search over Supabase pgvector, and tightly‑scoped prompting for verifiable answers. Deployed as a serverless function with guardrails and analytics, it logs unfamiliar questions to Supabase to create a continuous learning feedback loop and drive targeted content updates. The result is a responsive, grounded assistant that improves over time while preserving performance and cost efficiency.",
+        tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
+        demo_url: "https://kagiso-dev-portfolio-z55k-fa6c2gtm8-mrspecks-projects.vercel.app",
+        repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
+        screenshot_url: "/Portfolio-RAG-Agent.png",
+        category: "Web App"
     },
     {
         id: 3,
-        title: "Website Scraper & Summarizer",
-        description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
-        tech_stack: ["Python", "BeautifulSoup","OpenRouter", "OpenAI API", "Streamlit"],
-        demo_url: "https://website-summaryzer.streamlit.app/",
-        repo_url: "https://github.com/MrSpecks/Website-Summarizer",
-        screenshot_url: "/Website-scraper-summarizer.png",
-        category: "AI Tool"
-    },
-    {
-        id: 4,
         "title": "Interactive Ames Housing Market Dashboard",
         "description": "A production-ready data application that transforms a comprehensive Jupyter Notebook EDA and advanced feature engineering process (50+ custom features) into a dynamic Streamlit dashboard. The core achievement was refactoring all logic into modular Python packages to ensure clean, maintainable code. The dashboard provides real estate professionals with interactive filters (Neighborhood, Quality, Price Range) to visualize key property metrics, price distributions, and dynamic feature correlations in real-time.",
         "tech_stack": [
@@ -60,17 +50,37 @@ export const projects = [
         category: "Data App & Visualization"
     },
     {
+        id: 4,
+        title: "AI Brochure Maker",
+        description: "The AI Brochure Maker is a Jupyter Notebook project that automates the creation of professional company brochures. It scrapes and analyzes website content, identifies the most relevant information (e.g., About, Company, Careers pages), and generates a polished brochure draft using a Large Language Model.",
+        tech_stack: ["Python", "BeautifulSoup", "Streamlit", "OpenAI API", "OpenRouter"],
+        demo_url: "https://brochure-maker.streamlit.app/",
+        repo_url: "https://github.com/MrSpecks/Brochure-Maker",
+        screenshot_url: "/Brochure-Maker.png",
+        category: "AI Tool"
+    },
+    {
         id: 5,
-        title: "Personal Portfolio RAG Agent",
-        description: "A Retrieval-Augmented Generation (RAG) agent integrated into my portfolio website. It's trained on my own site content and connected to Supabase for persistent learning. The agent not only answers visitor questions but also logs unknown queries to Supabase, creating a feedback loop that helps me continuously improve its knowledge base",
-        tech_stack: ["React", "Supabase", "TailwindCSS", "OpenRouter", "RAG Pipeline"],
-        demo_url: "https://kagiso-dev-portfolio-z55k-fa6c2gtm8-mrspecks-projects.vercel.app",
-        repo_url: "https://github.com/MrSpecks/Kagiso-Dev-Portfolio",
-        screenshot_url: "/Portfolio-RAG-Agent.png",
-        category: "Web App"
+        title: "AI Q&A Code Assistant",
+        description: "The AI Q&A Bot is a Jupyter Notebook project that allows you to interactively ask technical or general questions and receive AI-generated answers in real-time. It leverages a Large Language Model to provide accurate and context-aware responses, making it a valuable tool for developers and learners.",
+        tech_stack: ["Python", "OpenAI API", "Streamlit", "OpenRouter"],
+        demo_url: "https://qna-code-assistant.streamlit.app/",
+        repo_url: "https://github.com/MrSpecks/QnA-code-assistant",
+        screenshot_url: "/Q&A-Bot.png",
+        category: "AI Tool"
     },
     {
         id: 6,
+        title: "Website Scraper & Summarizer",
+        description: "This project is a Jupyter Notebook application that allows you to scrape the contents of a website and automatically generate a concise summary using a Large Language Model (LLM). It combines web scraping techniques with natural language processing to produce easy-to-read summaries of online content.",
+        tech_stack: ["Python", "BeautifulSoup","OpenRouter", "OpenAI API", "Streamlit"],
+        demo_url: "https://website-summaryzer.streamlit.app/",
+        repo_url: "https://github.com/MrSpecks/Website-Summarizer",
+        screenshot_url: "/Website-scraper-summarizer.png",
+        category: "AI Tool"
+    },
+    {
+        id: 7,
         title: "Property Reviews Dashboard",
         description: "A modern reviews management dashboard built to help property managers track and improve guest experience. The app integrates with a reviews API, normalizes data across multiple channels, and provides an interface to filter, approve, and publish guest feedback. Only manager-approved reviews appear on the public property page, ensuring trust and consistency.",
         tech_stack: ["React", "Typescript", "TailwindCSS", "API Integration", "Data Normalization", "Dashboard UI"],
@@ -80,9 +90,9 @@ export const projects = [
         category: "Web App"
     },
     {
-        id: 7,
+        id: 8,
         title: "Personal Portfolio Website",
-        description: "My bespoke personal portfolio, engineered for technical depth and future-ready craftsmanship. Built on Next.js, TypeScript, and Tailwind CSS with a clean, scalable architecture. Features smooth Framer Motion animations, JSON-driven content, full responsiveness, and an engaging dark mode toggle with an Easter Egg.",
+        description: "A bespoke portfolio engineered to communicate depth while remaining fast, accessible, and production‑ready. Built with Next.js, TypeScript, and Tailwind CSS on a clean, scalable architecture, it renders JSON‑driven content, features responsive layouts and tasteful motion, and supports dark/light theming with a polished UI system. Deployed on Vercel and tuned for Lighthouse performance, it showcases projects, articles, and case studies with clarity and reliability.",
         tech_stack: ["React", "Tailwind CSS", "Lucide", "TypeScript", "Vercel"],
         demo_url: "https://personal-portfolio-git-main-mrspecks-projects.vercel.app",
         repo_url: "https://github.com/MrSpecks/MrSpecks-/tree/main/portfolio",
@@ -130,6 +140,26 @@ export const Projects = () => {
                     </p>
                 </div>
 
+                {/* --- RAG Agent Technical Capabilities Section --- */}
+                {/* Teaser: AI Document Intelligence Platform (Coming Soon) */}
+                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+                <div className="project-card mb-16 mx-auto max-w-4xl">
+                    <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center space-x-3">
+                            <Sparkles className="w-7 h-7 text-primary" />
+                            <h3 className="text-2xl font-bold text-primary">Coming Soon: AI Document Intelligence Platform</h3>
+                        </div>
+                        <Badge variant="secondary" className="bg-foreground/5">Coming Soon</Badge>
+                    </div>
+                    <p className="text-muted-foreground mb-4">
+                        A quiet engine is warming beneath the surface — documents in, intelligence out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
+                    </p>
+                    <div className="relative overflow-hidden rounded-lg bg-muted">
+                        <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(/Document-int.png)` }} />
+                    </div>
+                </div>
+                </FadeContent>
+                
                 {/* --- RAG Agent Technical Capabilities Section --- */}
                 <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div id="rag-agent-capabilities" className="project-card mb-16 mx-auto max-w-4xl">
@@ -268,18 +298,22 @@ export const Projects = () => {
                             </div>
                                 {/* Action Buttons */}
                                 <div className="flex gap-2 pt-2">
-                                <Button asChild variant="outline" size="sm" className="w-1/2">
-                                    <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                                        <ExternalLink className="mr-2 h-4 w-4" />
-                                        Live Demo
-                                    </a>
-                                </Button>
-                                <Button asChild size="sm" className="w-1/2">
-                                    <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="flex items-center group">
-                                        <Github className="mr-2 h-4 w-4" />
-                                        Source Code
-                                    </a>
-                                </Button>
+                                {project.demo_url && (
+                                    <Button asChild variant="outline" size="sm" className="w-1/2">
+                                        <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                            <ExternalLink className="mr-2 h-4 w-4" />
+                                            {project.title.includes("Document Intelligence") ? "Preview" : "Live Demo"}
+                                        </a>
+                                    </Button>
+                                )}
+                                {project.repo_url && (
+                                    <Button asChild size="sm" className="w-1/2">
+                                        <a href={project.repo_url} target="_blank" rel="noopener noreferrer" className="flex items-center group">
+                                            <Github className="mr-2 h-4 w-4" />
+                                            Source Code
+                                        </a>
+                                    </Button>
+                                )}
                                 </div>
                             </div>
                         </Card>
