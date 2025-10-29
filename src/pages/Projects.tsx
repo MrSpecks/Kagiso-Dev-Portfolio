@@ -46,7 +46,7 @@ export const projects = [
         ],
         demo_url: "https://housing-prices-dashboard.streamlit.app/",
         repo_url: "https://github.com/MrSpecks/Machine-Learning-Project",
-        screenshot_url: "/Exploratory-Data-Analysis-Dashboard.png",
+        screenshot_url: "/Ames-EDA-dash.png",
         category: "Data App & Visualization"
     },
     {
