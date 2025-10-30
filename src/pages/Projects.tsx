@@ -9,6 +9,8 @@ import {
     ArrowRight, ListChecks, Database, Workflow, Cloud, Search, Cpu, ExternalLink, 
     Github, Code, Smartphone, Globe, Sparkles, Zap 
 } from "lucide-react";
+import { useTheme } from "@/components/theme-provider";
+import { useEffect, useState } from "react";
 
 export const projects = [
     {
@@ -102,6 +104,25 @@ export const projects = [
 ];
  
 export const Projects = () => {
+  const { theme } = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const computeIsDark = () => {
+      setIsDarkMode(theme === "dark" || (theme === "system" && mediaQuery.matches));
+    };
+    computeIsDark();
+    mediaQuery.addEventListener("change", computeIsDark);
+    return () => mediaQuery.removeEventListener("change", computeIsDark);
+  }, [theme]);
+
+  const getScreenshotUrl = (projectId: number, defaultUrl: string) => {
+    if (projectId === 1) {
+      return isDarkMode ? "/Document-int.png" : "/Document-int2.png";
+    }
+    return defaultUrl;
+  };
       // Mock data based on the Executive Summary in the original project files
   const executiveSummary = [
     { title: "Strongest Predictor", value: "Quality (r=0.79)", color: "text-blue-600" },
@@ -155,7 +176,7 @@ export const Projects = () => {
                         A quiet engine is warming beneath the surface — documents in, intelligence out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
                     </p>
                     <div className="relative overflow-hidden rounded-lg bg-muted">
-                        <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(/Document-int.png)` }} />
+                        <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(${isDarkMode ? "/Document-int.png" : "/Document-int2.png"})` }} />
                     </div>
                 </div>
                 </FadeContent>
@@ -291,7 +312,7 @@ export const Projects = () => {
                             <div className="relative overflow-hidden rounded-lg mb-4 bg-muted">
                                 <div
                                     className="w-full h-48 bg-cover bg-center"
-                                    style={{ backgroundImage: `url(${project.screenshot_url})` }}
+                                    style={{ backgroundImage: `url(${getScreenshotUrl(project.id, project.screenshot_url)})` }}
                                 >
                                     {/* Removed category icon and text to make space for the image */}
                                 </div>

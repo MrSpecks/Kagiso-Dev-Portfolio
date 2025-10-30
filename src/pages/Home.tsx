@@ -8,6 +8,8 @@ import { supabase } from "@/integrations/supabase/client";
 import RotatingTechCloud from "@/components/RotatingStackCloud";
 import StarBorder from "@/components/StarBorder";
 import { Particles } from "@/components/ui/shadcn-io/particles/Particles";
+import { useTheme } from "@/components/theme-provider";
+import { useEffect, useState } from "react";
 
 // Import the carousel components
 import {
@@ -25,6 +27,18 @@ import FadeContent from "@/components/FadeContent";
 // Import the TypewriterEffectSmooth component
 import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 const Home = () => {
+  const { theme } = useTheme();
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    const computeIsDark = () => {
+      setIsDarkMode(theme === "dark" || (theme === "system" && mediaQuery.matches));
+    };
+    computeIsDark();
+    mediaQuery.addEventListener("change", computeIsDark);
+    return () => mediaQuery.removeEventListener("change", computeIsDark);
+  }, [theme]);
   // Fetch certifications count
   const { data: certifications } = useQuery({
     queryKey: ["certifications-count"],
@@ -81,12 +95,12 @@ const Home = () => {
         <div className="absolute inset-0 bg-gradient-to-br from-background/20 to-background/40" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <div className="hero-text">
-            <h1 className="text-5xl md:text-7xl font-bold mb-6">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-extrabold mb-6 leading-tight text-3d">
               Hello, I'm <span className="text-primary-glow">Kagiso</span>
             </h1>
           </div>
           <div className="hero-text">
-            <TypewriterEffectSmooth words={words} />
+            <TypewriterEffectSmooth words={words} className="justify-center items-center" />
           </div>
           <div className="hero-text">
             <Link to="/projects">
@@ -125,7 +139,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">7</h3>
+              <h3 className="text-3xl font-bold mb-2">8</h3>
               <p className="text-muted-foreground">Projects Completed</p>
             </Card>
             
@@ -199,7 +213,7 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <Card className="overflow-hidden">
               <img
-                src="/Document-int.png"
+                src={isDarkMode ? "/Document-int.png" : "/Document-int2.png"}
                 alt="AI Document Intelligence Platform"
                 className="w-full h-72 md:h-full object-cover"
               />

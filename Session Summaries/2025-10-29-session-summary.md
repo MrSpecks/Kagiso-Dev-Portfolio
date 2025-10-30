@@ -31,3 +31,26 @@ Portfolio enhancements to feature the AI Document Intelligence Platform and poli
 - Optional: add a dedicated case study page when the platform launches.
 
 
+
+### Update — Theme-aware imagery (Dark/Light)
+
+#### Changes Implemented
+- Home page (`src/pages/Home.tsx`)
+  - Switched the “Coming Soon: AI Document Intelligence Platform” card image dynamically based on theme.
+  - Dark mode: `/Document-int.png`; Light mode: `/Document-int2.png`.
+  - Implementation respects `system` theme and updates on OS preference change.
+
+- Projects page (`src/pages/Projects.tsx`)
+  - Teaser card image now follows theme with the same dark/light assets.
+  - Projects grid entry for "AI Document Intelligence Platform" (id: `1`) also switches images using the current theme.
+
+#### Technical Notes
+- Used `useTheme` from `components/theme-provider` and a reactive `matchMedia('(prefers-color-scheme: dark)')` listener to support `system`.
+- No lint errors introduced.
+
+#### Rationale
+- Align visuals with the current theme for a cohesive, polished UX while previewing the platform.
+
+#### Follow-ups
+- Consider preloading both images to avoid flicker during theme toggle.
+- Optionally add `loading="lazy"` or a skeleton for large images.

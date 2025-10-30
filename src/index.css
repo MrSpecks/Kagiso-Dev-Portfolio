@@ -2,6 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  .text-3d {
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.15), 0 8px 24px rgba(0, 0, 0, 0.25);
+  }
+  .dark .text-3d {
+    text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* (reverted) removed accent-mesh utility */
+
 /* Portfolio Design System - Professional & Modern */
 
 @layer base {
