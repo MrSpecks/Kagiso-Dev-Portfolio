@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Compass, Link2, Share2 } from "lucide-react";
+import { Github, Linkedin, Mail, Compass, Link2, Share2, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { AboutModal } from "./AboutModal";
@@ -12,7 +12,10 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Kagiso Mfusi</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <User className="h-5 w-5 text-primary" />
+              Kagiso Mfusi
+            </h3>
             <p className="text-muted-foreground">
               Full-Stack & AI Systems Engineer focused on creating exceptional digital experiences.
             </p>
