@@ -10,8 +10,15 @@ import { BRAND_CONFIG } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Mail, Linkedin, Sparkles } from "lucide-react";
 
-export function AboutModal() {
-  const [open, setOpen] = useState(false);
+interface AboutModalProps {
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
+}
+
+export function AboutModal({ open: externalOpen, onOpenChange }: AboutModalProps = {}) {
+  const [internalOpen, setInternalOpen] = useState(false);
+  const open = externalOpen !== undefined ? externalOpen : internalOpen;
+  const setOpen = onOpenChange || setInternalOpen;
 
   // Keyboard shortcut: Cmd/Ctrl + Shift + A
   useEffect(() => {
@@ -24,19 +31,24 @@ export function AboutModal() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, []);
+  }, [setOpen]);
+
+  // Only render button if not controlled by parent (i.e., when used standalone in AboutModal.tsx)
+  const isStandalone = externalOpen === undefined;
 
   return (
     <>
-      <Button
-        variant="ghost"
-        size="sm"
-        onClick={() => setOpen(true)}
-        className="text-muted-foreground hover:text-primary transition-colors"
-        title="About This App (Ctrl+Shift+A)"
-      >
-        About The App
-      </Button>
+      {isStandalone && (
+        <Button
+          variant="ghost"
+          size="sm"
+          onClick={() => setOpen(true)}
+          className="text-muted-foreground hover:text-primary transition-colors"
+          title="About This App (Ctrl+Shift+A)"
+        >
+          About The App
+        </Button>
+      )}
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">

@@ -1,8 +1,11 @@
-import { Github, Linkedin, Mail, Compass } from "lucide-react";
+import { Github, Linkedin, Mail, Compass, Link2, Share2 } from "lucide-react";
 import { Link } from "react-router-dom";
-import AboutModal from "./AboutModal";
+import { useState } from "react";
+import { AboutModal } from "./AboutModal";
 
 const Footer = () => {
+  const [showAboutModal, setShowAboutModal] = useState(false);
+
   return (
     <footer className="bg-muted/30 border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -17,7 +20,10 @@ const Footer = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Link2 className="h-5 w-5 text-primary" />
+              Quick Links
+            </h3>
             <ul className="space-y-2">
               <li>
                 <a href="/" className="text-muted-foreground hover:text-primary transition-colors">
@@ -55,7 +61,13 @@ const Footer = () => {
             </h3>
             <ul className="space-y-2">
               <li>
-                <AboutModal />
+                <button
+                  type="button"
+                  onClick={() => setShowAboutModal(true)}
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm text-left"
+                >
+                  About The App
+                </button>
               </li>
               <li>
                 <Link
@@ -79,7 +91,10 @@ const Footer = () => {
 
           {/* Connect */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Connect</h3>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Share2 className="h-5 w-5 text-primary" />
+              Connect
+            </h3>
             <div className="flex space-x-4">
               <a
                 href="https://github.com/MrSpecks"
@@ -117,6 +132,9 @@ const Footer = () => {
           </p>
         </div>
       </div>
+
+      {/* About Modal */}
+      <AboutModal open={showAboutModal} onOpenChange={setShowAboutModal} />
     </footer>
   );
 };
