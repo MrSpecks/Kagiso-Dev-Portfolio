@@ -63,7 +63,7 @@ const About = () => {
     {
       id: "exp-sps",
       type: 'experience',
-      title: "UI/UX Designer & Systems Developer",
+      title: "Full-Stack & AI Systems Engineer",
       company: "SPS Software",
       period: "2025 - Present",
       location: "GP, Remote",
