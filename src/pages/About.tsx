@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Calendar, MapPin, GraduationCap, Briefcase, ChevronRight } from "lucide-react";
+import { Calendar, MapPin, GraduationCap, Briefcase, ChevronRight, BookOpen } from "lucide-react";
 import ExperienceDetailModal from "@/components/ExperienceDetailModal"; // Import the new component
+import CertificationModal from "@/components/CertificationModal"; // Import the certification modal
 import FadeContent from "@/components/FadeContent"; // Import the FadeContent component
+import { Tables } from "@/integrations/supabase/types";
 
 // Define data interfaces for type safety
 interface ExperienceItem {
@@ -33,21 +37,39 @@ interface EducationItem {
 }
 
 type DetailData = ExperienceItem | EducationItem;
-
+type Certification = Tables<"certifications">;
 
 const About = () => {
   // State for the modal
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedDetail, setSelectedDetail] = useState<DetailData | null>(null);
+  const [selectedDetail, setSelectedDetail] = useState<(DetailData & { subtitle: string; logo: string }) | null>(null);
+
+  // State for certification modal
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [selectedProvider, setSelectedProvider] = useState<string | null>(null);
+
+  // Fetch certifications
+  const { data: certifications = [] } = useQuery({
+    queryKey: ["certifications"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("certifications")
+        .select("*")
+        .order("date_earned", { ascending: false });
+      if (error) throw error;
+      return data || [];
+    },
+  });
 
   // Function to open the modal
   const openModal = (data: DetailData) => {
     // Transform data to a consistent shape expected by the modal, adding 'duration' if missing
     const detailData = {
         ...data,
-        subtitle: data.type === 'experience' ? data.company : data.institution,
-    };
-    setSelectedDetail(detailData as any);
+        subtitle: data.type === 'experience' ? (data as ExperienceItem).company : (data as EducationItem).institution,
+        logo: '', // Placeholder for logo
+    } as DetailData & { subtitle: string; logo: string };
+    setSelectedDetail(detailData);
     setIsModalOpen(true);
   };
 
@@ -56,6 +78,36 @@ const About = () => {
     setIsModalOpen(false);
     setSelectedDetail(null);
   };
+
+  // Function to open certification modal
+  const openCertModal = (provider: string) => {
+    setSelectedProvider(provider);
+    setIsCertModalOpen(true);
+  };
+
+  // Function to close certification modal
+  const closeCertModal = () => {
+    setIsCertModalOpen(false);
+    setSelectedProvider(null);
+  };
+
+  // Get unique providers and their certification counts
+  const providerData = certifications.reduce(
+    (acc, cert) => {
+      const provider = cert.provider;
+      if (!acc[provider]) {
+        acc[provider] = [];
+      }
+      acc[provider].push(cert);
+      return acc;
+    },
+    {} as Record<string, Certification[]>
+  );
+
+  // Get unique provider names sorted by count
+  const providers = Object.keys(providerData).sort(
+    (a, b) => providerData[b].length - providerData[a].length
+  );
   
   // --- UPDATED DATA WITH DETAILED SECTIONS ---
   
@@ -346,6 +398,56 @@ const About = () => {
           </div>
           </FadeContent>
 
+          {/* Online Learning */}
+          {providers.length > 0 && (
+            <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+            <div className="mb-16">
+              <h2 className="text-3xl font-bold mb-8 flex items-center">
+                  <BookOpen className="h-7 w-7 mr-3 text-primary" />
+                  Online Learning
+              </h2>
+              <p className="text-muted-foreground mb-8 max-w-3xl">
+                Continuous learning through industry-leading platforms and providers. Click on any provider to explore the certifications and courses completed.
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {providers.map((provider) => (
+                  <Card
+                    key={provider}
+                    className="p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 cursor-pointer group"
+                    onClick={() => openCertModal(provider)}
+                  >
+                    <div className="flex justify-between items-start mb-4">
+                      <div>
+                        <h3 className="text-xl font-semibold group-hover:text-primary transition-colors">{provider}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {providerData[provider].length} {providerData[provider].length === 1 ? "certification" : "certifications"}
+                        </p>
+                      </div>
+                      <ChevronRight className="h-6 w-6 text-muted-foreground group-hover:text-primary transition-colors" />
+                    </div>
+
+                    <div className="space-y-3">
+                      <div className="flex flex-wrap gap-2">
+                        {providerData[provider].slice(0, 3).map((cert) => (
+                          <Badge key={cert.id} variant="secondary" className="text-xs">
+                            {cert.title}
+                          </Badge>
+                        ))}
+                        {providerData[provider].length > 3 && (
+                          <Badge variant="secondary" className="text-xs bg-primary/10 text-primary">
+                            +{providerData[provider].length - 3} more
+                          </Badge>
+                        )}
+                      </div>
+                      <p className="text-sm text-primary/70 font-medium">Click to view all</p>
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            </div>
+            </FadeContent>
+          )}
+
           {/* Interests */}
           <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
           <div>
@@ -375,10 +477,20 @@ const About = () => {
       
       {/* Detail Modal Component */}
       {isModalOpen && selectedDetail && (
-        <ExperienceDetailModal 
-          data={selectedDetail} 
-          isOpen={isModalOpen} 
-          onClose={closeModal} 
+        <ExperienceDetailModal
+          data={selectedDetail}
+          isOpen={isModalOpen}
+          onClose={closeModal}
+        />
+      )}
+
+      {/* Certification Modal Component */}
+      {selectedProvider && (
+        <CertificationModal
+          isOpen={isCertModalOpen}
+          onClose={closeCertModal}
+          certifications={providerData[selectedProvider] || []}
+          provider={selectedProvider}
         />
       )}
     </>
