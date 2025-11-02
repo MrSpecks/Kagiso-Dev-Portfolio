@@ -21,14 +21,5 @@
         }
       ]
     }
-  ],
-  "routes": [
-    {
-      "src": "/certifications/.*",
-      "status": 307,
-      "headers": {
-        "Location": "/not-found"
-      }
-    }
   ]
 }
