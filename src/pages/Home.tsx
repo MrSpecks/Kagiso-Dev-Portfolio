@@ -59,7 +59,7 @@ const Home = () => {
   ];
   const words = [
     {
-      text: "AI",
+      text: "Full-Stack",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
@@ -67,11 +67,15 @@ const Home = () => {
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
+      text: "AI",
+      className: "text-primary-glow dark:text-primary-glow",
+    },
+    {
       text: "Systems",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
-      text: "Developer",
+      text: "Engineer",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
@@ -182,7 +186,7 @@ const Home = () => {
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
             My journey into tech hasn't followed the traditional path. 
             I've carved my own by building, iterating, and evolving—learning from every success and failure along the way. 
-            Over the past 7 years, that persistence has shaped me into a Systems & AI Developer thriving at the intersection of cloud, AI, and automation.
+            Over the past 7 years, that persistence has shaped me into a Full-Stack & AI Systems Engineer thriving at the intersection of cloud, AI, and automation.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
             I specialize in LLM engineering and multi-cloud architecture, turning complex problems into scalable solutions that deliver real-world impact. 
@@ -218,14 +222,14 @@ const Home = () => {
                 className="w-full h-72 md:h-full object-cover"
               />
             </Card>
-            <Card className="p-6">
-              <h3 className="text-2xl font-semibold mb-3">A quiet engine is warming up</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Expect structured insights from unstructured files, precise retrieval, and thoughtfully crafted UX. A public preview lands soon.
+            <Card className="p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 cursor-default">
+              <h3 className="text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary">A quiet engine is warming up</h3>
+              <p className="text-muted-foreground leading-relaxed mb-4 transition-colors duration-300">
+                Transform unstructured documents into actionable intelligence. Precision retrieval meets intuitive design—launching soon.
               </p>
-              <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
+              {/* <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">Preview</Button>
-              </a>
+              </a> */}
             </Card>
           </div>
         </div>
