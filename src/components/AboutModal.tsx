@@ -67,14 +67,16 @@ export function AboutModal() {
               </ul>
             </section>
 
-            {/* Engineering Provenance */}
+            {/* Author Information */}
             <section>
-              <h3 className="font-semibold text-lg mb-3">Engineering Provenance</h3>
+              <h3 className="font-semibold text-lg mb-3">Created & Engineered By</h3>
               <p className="text-sm text-muted-foreground mb-3">
-                This portfolio website was engineered by{" "}
-                <span className="font-semibold">{BRAND_CONFIG.author.name}</span> (
-                {BRAND_CONFIG.author.title}) as a comprehensive showcase of mastery across
-                full-stack development, cloud architecture, and AI systems engineering.
+                <span className="font-semibold">{BRAND_CONFIG.author.name}</span>
+                <br />
+                <span className="text-xs">{BRAND_CONFIG.author.title}</span>
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                This portfolio website is designed, built, and maintained by me as a personal project showcasing my professional work, technical skills, and career journey.
               </p>
               <div className="flex flex-wrap gap-2">
                 <a
@@ -85,16 +87,6 @@ export function AboutModal() {
                   <Button variant="outline" size="sm" className="gap-2">
                     <Github className="h-4 w-4" />
                     GitHub
-                  </Button>
-                </a>
-                <a
-                  href={BRAND_CONFIG.author.portfolio}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Button variant="outline" size="sm" className="gap-2">
-                    <ExternalLink className="h-4 w-4" />
-                    Live Portfolio
                   </Button>
                 </a>
                 <a href={`mailto:${BRAND_CONFIG.author.email}`}>
@@ -127,39 +119,23 @@ export function AboutModal() {
                   </p>
                 </div>
                 <div>
-                  <p className="font-medium mb-1">Backend</p>
+                  <p className="font-medium mb-1">Backend & Data</p>
                   <p className="text-muted-foreground">
                     {BRAND_CONFIG.techStack.backend.join(", ")}
                   </p>
                 </div>
                 <div>
-                  <p className="font-medium mb-1">Cloud & DevOps</p>
+                  <p className="font-medium mb-1">Deployment</p>
                   <p className="text-muted-foreground">
-                    {BRAND_CONFIG.techStack.cloud.join(", ")}
+                    {BRAND_CONFIG.techStack.deployment.join(", ")}
                   </p>
                 </div>
                 <div>
-                  <p className="font-medium mb-1">AI/ML</p>
+                  <p className="font-medium mb-1">Development Tools</p>
                   <p className="text-muted-foreground">
-                    {BRAND_CONFIG.techStack.ai.join(", ")}
+                    {BRAND_CONFIG.techStack.tools.join(", ")}
                   </p>
                 </div>
-              </div>
-            </section>
-
-            {/* Organization */}
-            <section>
-              <h3 className="font-semibold text-lg mb-3">Organization</h3>
-              <div className="flex items-center gap-2 text-sm">
-                <span className="text-muted-foreground">Built by</span>
-                <a
-                  href={BRAND_CONFIG.organization.website}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="font-medium hover:text-primary transition-colors"
-                >
-                  {BRAND_CONFIG.organization.name}
-                </a>
               </div>
             </section>
 
