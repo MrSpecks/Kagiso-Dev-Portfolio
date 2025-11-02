@@ -332,6 +332,9 @@ const About = () => {
                 <Briefcase className="h-7 w-7 mr-3 text-primary" />
                 Professional Experience
             </h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              A decade of hands-on experience across full-stack development, cloud architecture, and AI systems engineering. Click on any position to explore responsibilities, impact, and technical growth achieved in each role.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {experience.map((exp) => (
                 <Card 
@@ -369,6 +372,9 @@ const About = () => {
                 <GraduationCap className="h-7 w-7 mr-3 text-primary" />
                 Education & Qualifications
             </h2>
+            <p className="text-muted-foreground mb-8 max-w-3xl">
+              From foundational IT training to advanced systems development certifications. A commitment to structured learning that has built the technical foundation for my career. Click on any qualification to explore the modules, achievements, and academic progression.
+            </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {education.map((edu) => (
                 <Card 
