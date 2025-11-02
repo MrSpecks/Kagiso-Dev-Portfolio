@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Compass, Link2, Share2, User } from "lucide-react";
+import { Github, Linkedin, Mail, Compass, Link2, Share2, User, Award, Zap } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { AboutModal } from "./AboutModal";
@@ -123,6 +123,24 @@ const Footer = () => {
                 className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
               >
                 <Mail className="h-5 w-5" />
+              </a>
+              <a
+                href="https://simplykae.link/"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Gravatar"
+                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <Zap className="h-5 w-5" />
+              </a>
+              <a
+                href="https://www.credly.com/users/kagiso-mfusi"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="Credly - Certifications & Badges"
+                className="p-2 rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
+              >
+                <Award className="h-5 w-5" />
               </a>
             </div>
           </div>

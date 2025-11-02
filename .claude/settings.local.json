@@ -3,7 +3,9 @@
     "allow": [
       "Bash(dir /s \"C:\\Users\\user\\Repos\\Personal\\Kagiso-Dev-Portfolio\\src\" /b)",
       "Bash(test:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
