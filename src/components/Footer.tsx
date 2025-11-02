@@ -1,10 +1,12 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+import { Github, Linkedin, Mail, Compass } from "lucide-react";
+import { Link } from "react-router-dom";
+import AboutModal from "./AboutModal";
 
 const Footer = () => {
   return (
     <footer className="bg-muted/30 border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* About */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Kagiso Mfusi</h3>
@@ -41,6 +43,36 @@ const Footer = () => {
                 <a href="/contact" className="text-muted-foreground hover:text-primary transition-colors">
                   Contact
                 </a>
+              </li>
+            </ul>
+          </div>
+
+          {/* Explore */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Compass className="h-5 w-5 text-primary" />
+              Explore
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <AboutModal />
+              </li>
+              <li>
+                <Link
+                  to="/not-found"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Lose Yourself
+                </Link>
+              </li>
+              <li>
+                <button
+                  disabled
+                  className="text-muted-foreground/50 cursor-not-allowed text-sm"
+                  title="Coming soon!"
+                >
+                  Surprise Me
+                </button>
               </li>
             </ul>
           </div>

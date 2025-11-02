@@ -1,0 +1,181 @@
+import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { BRAND_CONFIG } from "@/config/brand";
+import { Button } from "@/components/ui/button";
+import { Github, ExternalLink, Mail, Linkedin, Sparkles } from "lucide-react";
+
+export function AboutModal() {
+  const [open, setOpen] = useState(false);
+
+  // Keyboard shortcut: Cmd/Ctrl + Shift + A
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.shiftKey && e.key === "A") {
+        e.preventDefault();
+        setOpen(true);
+      }
+    }
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  return (
+    <>
+      <Button
+        variant="ghost"
+        size="sm"
+        onClick={() => setOpen(true)}
+        className="text-muted-foreground hover:text-primary transition-colors"
+        title="About This App (Ctrl+Shift+A)"
+      >
+        About The App
+      </Button>
+
+      <Dialog open={open} onOpenChange={setOpen}>
+        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <Sparkles className="h-5 w-5 text-primary" />
+              {BRAND_CONFIG.project.name}
+            </DialogTitle>
+            <DialogDescription>{BRAND_CONFIG.project.tagline}</DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-6">
+            {/* Project Overview */}
+            <section>
+              <h3 className="font-semibold text-lg mb-3">Project Overview</h3>
+              <p className="text-sm text-muted-foreground">
+                {BRAND_CONFIG.project.description}
+              </p>
+            </section>
+
+            {/* Portfolio Capabilities */}
+            <section>
+              <h3 className="font-semibold text-lg mb-3">Core Capabilities</h3>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                {BRAND_CONFIG.capabilities.map((capability, index) => (
+                  <li key={index}>• {capability}</li>
+                ))}
+              </ul>
+            </section>
+
+            {/* Engineering Provenance */}
+            <section>
+              <h3 className="font-semibold text-lg mb-3">Engineering Provenance</h3>
+              <p className="text-sm text-muted-foreground mb-3">
+                This portfolio website was engineered by{" "}
+                <span className="font-semibold">{BRAND_CONFIG.author.name}</span> (
+                {BRAND_CONFIG.author.title}) as a comprehensive showcase of mastery across
+                full-stack development, cloud architecture, and AI systems engineering.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <a
+                  href={BRAND_CONFIG.author.github}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Github className="h-4 w-4" />
+                    GitHub
+                  </Button>
+                </a>
+                <a
+                  href={BRAND_CONFIG.author.portfolio}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <ExternalLink className="h-4 w-4" />
+                    Live Portfolio
+                  </Button>
+                </a>
+                <a href={`mailto:${BRAND_CONFIG.author.email}`}>
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Mail className="h-4 w-4" />
+                    Email
+                  </Button>
+                </a>
+                <a
+                  href={BRAND_CONFIG.author.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button variant="outline" size="sm" className="gap-2">
+                    <Linkedin className="h-4 w-4" />
+                    LinkedIn
+                  </Button>
+                </a>
+              </div>
+            </section>
+
+            {/* Technology Stack */}
+            <section>
+              <h3 className="font-semibold text-lg mb-3">Technology Stack</h3>
+              <div className="grid grid-cols-2 gap-3 text-sm">
+                <div>
+                  <p className="font-medium mb-1">Frontend</p>
+                  <p className="text-muted-foreground">
+                    {BRAND_CONFIG.techStack.frontend.join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium mb-1">Backend</p>
+                  <p className="text-muted-foreground">
+                    {BRAND_CONFIG.techStack.backend.join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium mb-1">Cloud & DevOps</p>
+                  <p className="text-muted-foreground">
+                    {BRAND_CONFIG.techStack.cloud.join(", ")}
+                  </p>
+                </div>
+                <div>
+                  <p className="font-medium mb-1">AI/ML</p>
+                  <p className="text-muted-foreground">
+                    {BRAND_CONFIG.techStack.ai.join(", ")}
+                  </p>
+                </div>
+              </div>
+            </section>
+
+            {/* Organization */}
+            <section>
+              <h3 className="font-semibold text-lg mb-3">Organization</h3>
+              <div className="flex items-center gap-2 text-sm">
+                <span className="text-muted-foreground">Built by</span>
+                <a
+                  href={BRAND_CONFIG.organization.website}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium hover:text-primary transition-colors"
+                >
+                  {BRAND_CONFIG.organization.name}
+                </a>
+              </div>
+            </section>
+
+            {/* Framework */}
+            <section className="border-t pt-4">
+              <p className="text-xs text-muted-foreground">
+                Part of the {BRAND_CONFIG.framework.name} {BRAND_CONFIG.framework.version} —
+                systematically encoding authorship and engineering provenance across all platform
+                layers.
+              </p>
+            </section>
+          </div>
+        </DialogContent>
+      </Dialog>
+    </>
+  );
+}
+
+export default AboutModal;
