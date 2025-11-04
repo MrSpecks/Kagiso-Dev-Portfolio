@@ -6,6 +6,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { BRAND_CONFIG } from "@/config/brand";
 import { Button } from "@/components/ui/button";
 import { Github, ExternalLink, Mail, Linkedin, Sparkles } from "lucide-react";
@@ -51,16 +52,18 @@ export function AboutModal({ open: externalOpen, onOpenChange }: AboutModalProps
       )}
 
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogContent className="max-w-2xl max-h-[80vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <Sparkles className="h-5 w-5 text-primary" />
-              {BRAND_CONFIG.project.name}
-            </DialogTitle>
-            <DialogDescription>{BRAND_CONFIG.project.tagline}</DialogDescription>
-          </DialogHeader>
+        <DialogContent className="max-w-2xl max-h-[80vh] p-0 flex flex-col">
+          <ScrollArea className="h-full w-full">
+            <div className="p-6">
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <Sparkles className="h-5 w-5 text-primary" />
+                  {BRAND_CONFIG.project.name}
+                </DialogTitle>
+                <DialogDescription>{BRAND_CONFIG.project.tagline}</DialogDescription>
+              </DialogHeader>
 
-          <div className="space-y-6">
+              <div className="space-y-6 mt-6">
             {/* Project Overview */}
             <section>
               <h3 className="font-semibold text-lg mb-3">Project Overview</h3>
@@ -159,7 +162,9 @@ export function AboutModal({ open: externalOpen, onOpenChange }: AboutModalProps
                 layers.
               </p>
             </section>
-          </div>
+            </div>
+            </div>
+          </ScrollArea>
         </DialogContent>
       </Dialog>
     </>
