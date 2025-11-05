@@ -333,7 +333,7 @@ const About = () => {
                 Professional Experience
             </h2>
             <p className="text-muted-foreground mb-8 max-w-3xl">
-              A decade of hands-on experience across full-stack development, cloud architecture, and AI systems engineering. Click on any position to explore responsibilities, impact, and technical growth achieved in each role.
+             From hands-on experience across full-stack development, cloud architecture, and AI systems engineering to in-depth client service excellence. Click on any position to explore responsibilities, impact, and technical growth achieved in each role.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {experience.map((exp) => (
