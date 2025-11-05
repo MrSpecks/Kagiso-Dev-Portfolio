@@ -223,13 +223,13 @@ const Home = () => {
               />
             </Card>
             <Card className="p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 cursor-default">
-              <h3 className="text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary">A quiet engine is warming up</h3>
+              <h3 className="text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary">My AI Document Intelligence Platform is now LIVE!</h3>
               <p className="text-muted-foreground leading-relaxed mb-4 transition-colors duration-300">
-                Transform unstructured documents into actionable intelligence. Precision retrieval meets intuitive design—launching soon.
+                Transform unstructured documents into actionable intelligence. Precision retrieval meets intuitive design.
               </p>
-              {/* <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
+              <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
                 <Button variant="outline">Preview</Button>
-              </a> */}
+              </a>
             </Card>
           </div>
         </div>

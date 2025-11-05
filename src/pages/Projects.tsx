@@ -18,8 +18,8 @@ export const projects = [
         title: "AI Document Intelligence Platform",
         description: "A production-grade, SaaS-ready platform that ingests PDFs, DOCX, TXT, and images (with OCR fallback), segments them into semantically coherent chunks, and performs vectorization with pgvector to power precise retrieval. A carefully engineered RAG pipeline assembles grounded context and drives structured, JSON‑ready insights for downstream workflows, wrapped in role‑aware access, a credit‑based usage model, and a modern Next.js UI. Designed for reliability and scale on Vercel with Supabase as the secure backbone, it turns unstructured documents into clear, actionable intelligence.",
         tech_stack: ["Next.js", "TypeScript", "Supabase", "pgvector", "OpenRouter", "RAG"],
-        // demo_url: "https://ai-document-intelligence-platform.vercel.app/",
-        // Intentionally no repo_url yet — coming soon
+        demo_url: "https://ai-document-intelligence-platform.vercel.app",
+	repo_url: "https://github.com/MrSpecks/AI-Document-Intelligence-Platform-v1",
         screenshot_url: "/Document-int.png",
         category: "Web App"
     },
@@ -173,7 +173,7 @@ export const Projects = () => {
                         <Badge variant="secondary" className="bg-foreground/5">Coming Soon</Badge>
                     </div>
                     <p className="text-muted-foreground mb-4">
-                        A quiet engine is warming beneath the surface — documents in, intelligence out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
+                        My AI Document Intelligence Platform is Finaly Live — documents go in, intelligence comes out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
                     </p>
                     <div className="relative overflow-hidden rounded-lg bg-muted">
                         <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(${isDarkMode ? "/Document-int.png" : "/Document-int2.png"})` }} />
