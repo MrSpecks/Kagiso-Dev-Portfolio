@@ -209,7 +209,7 @@ const Home = () => {
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold">Coming Soon</h2>
+            <h2 className="text-3xl md:text-4xl font-bold">Live!</h2>
             <p className="text-xl text-muted-foreground mt-3 max-w-3xl mx-auto">
               AI Document Intelligence Platform — documents in, intelligence out. Grounded RAG, vector search, and a workspace that feels quietly powerful.
             </p>
@@ -223,7 +223,7 @@ const Home = () => {
               />
             </Card>
             <Card className="p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-primary/50 cursor-default">
-              <h3 className="text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary">My AI Document Intelligence Platform is now LIVE!</h3>
+              <h3 className="text-2xl font-semibold mb-3 transition-colors duration-300 group-hover:text-primary">AI Document Intelligence Platform is now LIVE!</h3>
               <p className="text-muted-foreground leading-relaxed mb-4 transition-colors duration-300">
                 Transform unstructured documents into actionable intelligence. Precision retrieval meets intuitive design.
               </p>

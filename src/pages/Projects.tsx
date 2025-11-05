@@ -168,9 +168,9 @@ export const Projects = () => {
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-3">
                             <Sparkles className="w-7 h-7 text-primary" />
-                            <h3 className="text-2xl font-bold text-primary">Coming Soon: AI Document Intelligence Platform</h3>
+                            <h3 className="text-2xl font-bold text-primary">AI Document Intelligence Platform</h3>
                         </div>
-                        <Badge variant="secondary" className="bg-foreground/5">Coming Soon</Badge>
+                        <Badge variant="secondary" className="bg-foreground/5">LIVE!</Badge>
                     </div>
                     <p className="text-muted-foreground mb-4">
                         My AI Document Intelligence Platform is Finaly Live — documents go in, intelligence comes out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
