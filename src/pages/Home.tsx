@@ -59,36 +59,49 @@ const Home = () => {
   ];
   const words = [
     {
-      text: "Full-Stack",
-      className: "text-primary-glow dark:text-primary-glow",
-    },
-    {
-      text: "&",
-      className: "text-primary-glow dark:text-primary-glow",
-    },
-    {
       text: "AI",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
-      text: "Systems",
+      text: "Automation",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
-      text: "Engineer",
+      text: "Architect",
       className: "text-primary-glow dark:text-primary-glow",
     },
     {
-      text: "crafting",
+      text: "designing",
     },
     {
-      text: "exceptional",
+      text: "systems",
     },
     {
-      text: "digital",
+      text: "that",
     },
     {
-      text: "experiences.",
+      text: "eliminate",
+    },
+    {
+      text: "manual",
+    },
+    {
+      text: "work",
+    },
+    {
+      text: "and",
+    },
+    {
+      text: "scale",
+    },
+    {
+      text: "at",
+    },
+    {
+      text: "enterprise",
+    },
+    {
+      text: "level.",
     },
   ];
 
