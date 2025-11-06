@@ -446,7 +446,7 @@ const About = () => {
   {/* Closing Statement */}
   <div className="mt-12 pt-8 border-t border-border/40">
     <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
-      <span className="font-semibold text-foreground">I don't architect systems in isolation. Every decision from data pipelines, cloud strategy to user experience is informed by real operational context. I've spent enough time in the trenches to know what actually works. That's where I build from.</span> 
+      <span className="font-semibold text-foreground">I don't architect systems in isolation.</span>  Every decision, from data pipelines to cloud strategy to user experience is informed by real operational context. I've spent enough time in the trenches to know what actually works. That's where I build from.
     </p>
   </div>
 </section>
