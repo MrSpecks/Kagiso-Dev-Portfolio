@@ -11,7 +11,7 @@
 export const BRAND_CONFIG = {
   author: {
     name: "Kagiso Mfusi",
-    title: "Full-Stack & AI Systems Engineer",
+    title: "AI Systems & Automation Architect",
     website: "https://simplykaedesigns.com",
     github: "https://github.com/MrSpecks",
     email: "kagisomfusi@outlook.com",
