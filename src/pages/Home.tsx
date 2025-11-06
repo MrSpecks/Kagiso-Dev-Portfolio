@@ -184,16 +184,21 @@ const Home = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            My journey into tech hasn't followed the traditional path. 
-            I've carved my own by building, iterating, and evolving—learning from every success and failure along the way. 
-            Over the past 7 years, that persistence has shaped me into a Full-Stack & AI Systems Engineer thriving at the intersection of cloud, AI, and automation.
+            I design AI automation systems that eliminate manual work and scale operations across enterprise infrastructure.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            I specialize in LLM engineering and multi-cloud architecture, turning complex problems into scalable solutions that deliver real-world impact. 
-            For me, it's not just about the code—it's about making businesses smarter, people's lives easier, and the future more accessible.
+            Most companies treat AI and cloud as separate problems. 
+            They're not. When you architect them together (AI logic + multicloud infrastructure + intelligent workflows) 
+            you unlock something rare: systems that get smarter as they scale.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Explore my work, and see how curiosity, creativity, and technology come together to create meaningful solutions.
+            What I actually do: </br>
+            Engineer RAG pipelines, agentic AI workflows, and LLM integrations that make data actionable </br>
+            Architect resilient multicloud systems that adapt to real-world chaos </br>
+            Design end-to-end solutions: from backend infrastructure to UI, security to deployment
+          </p>
+          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
+            Explore my work, and see how how I approach problems differently.
           </p>
           <Link to="/about">
             <Button size="lg" className="group">
