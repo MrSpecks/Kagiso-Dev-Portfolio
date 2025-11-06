@@ -10,13 +10,13 @@ const expertiseData = [
     { pillar: 'AI & Agentic Automation', score: 9.8 },
     // Score boosted to reflect mastery in complex multicloud integration, advanced networking (Interconnects), 
     // and federated identity management across OCI, Azure, and Google Cloud.
-    { pillar: 'System Architecture & Integration', score: 9.7 },
+    { pillar: 'Enterprise Systems Design', score: 9.7 },
     // Slight boost for validating competence in designing and delivering high-availability (HA) and disaster recovery (DR) solutions in complex enterprise environments.
-    { pillar: 'High-Velocity Project Delivery', score: 9.4 },
+    { pillar: 'Continuous Delivery & DevOps', score: 9.4 },
     // Significant boost due to achieving professional-level expertise in Multicloud Architecture (OCI, Azure, GCP). This is the core skill confirmed by the new course.
-    { pillar: 'Cloud & Enterprise Systems', score: 9.6 },
+    { pillar: 'Multicloud Architecture', score: 9.6 },
     // Score boosted to reflect expertise in cross-cloud Identity & Access Management (IAM) federation and applying regulatory compliance/data security best practices across multicloud infrastructure.
-    { pillar: 'Cybersecurity & Compliance', score: 8.3 },
+    { pillar: 'Security & Compliance', score: 8.3 },
 ];
 
 // Chart Configuration
