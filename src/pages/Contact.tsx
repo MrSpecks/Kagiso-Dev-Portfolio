@@ -83,6 +83,12 @@ const Contact = () => {
       href: "mailto:kagisomfusi@outlook.com",
     },
     {
+      icon: LinkedIn,
+      label: "LinkedIn",
+      value: "Kagiso Mfusi",
+      href: "https://www.linkedin.com/in/kagiso-mfusi/",
+    },
+    {
       icon: Phone,
       label: "Phone",
       value: "+27 (075) 130-4807",
@@ -105,7 +111,7 @@ const Contact = () => {
     {
       icon: Linkedin,
       label: "LinkedIn",
-      href: "https://www.linkedin.co/in/kagiso-m-95b329224",
+      href: "https://www.linkedin.com/in/kagiso-mfusi/",
     },
   ];
   
