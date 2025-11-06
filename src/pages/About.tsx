@@ -305,7 +305,7 @@ const About = () => {
   <div className="mb-12">
     <h2 className="text-3xl md:text-4xl font-bold mb-4">My Journey</h2>
     <p className="text-lg text-muted-foreground max-w-3xl">
-      From customer-centric operations to architecting intelligent systems. How I learned to build technology that solves real business problems.
+      From customer-centric operations to architecting intelligent systems. How I learnt to build technology that solves real business problems.
     </p>
   </div>
 
@@ -325,7 +325,7 @@ const About = () => {
         <div className="md:col-span-3">
           <h3 className="text-xl font-bold mb-3">The Foundation: Enterprise Operations</h3>
           <p className="text-muted-foreground mb-4 leading-relaxed">
-            At FNB, I spent nearly a decade's worth of hours (9,700+ to be precise) in frontline customer service—resolving complex banking queries in high-pressure environments, maintaining 95%+ satisfaction ratings, and identifying systemic inefficiencies across operations.
+            At FNB, I spent nearly a decade's worth of hours (9,700+ to be precise) in frontline customer service; resolving complex banking queries in high-pressure environments, maintaining 95%+ satisfaction ratings, and identifying systemic inefficiencies across operations.
           </p>
           <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
             This wasn't just customer service. It was a deep immersion into how enterprises actually work: the workflows, pain points, bottlenecks, and unspoken needs that drive real business problems. I learned to see technology through the eyes of the people who use it.
@@ -410,7 +410,7 @@ const About = () => {
             <div className="space-y-3">
               <div className="flex items-start gap-3">
                 <span className="text-primary font-bold text-lg">85%</span>
-                <p className="text-sm text-muted-foreground">Reduced document analysis time—turning 2-hour manual reviews into 7-minute automated workflows</p>
+                <p className="text-sm text-muted-foreground">Reduced document analysis time: turning 2-hour manual reviews into 7-minute automated workflows</p>
               </div>
 		    <div className="flex items-start gap-3">
 		      <span className="text-primary font-bold text-lg">Production-Grade</span>
