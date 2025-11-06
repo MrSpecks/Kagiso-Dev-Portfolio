@@ -167,47 +167,100 @@ const Home = () => {
       </section>
       </FadeContent>
       
-      {/* About Preview */}
-      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-      <section className="py-20 bg-background">
-
-      {/* Circle Image Cutout */}
-      <div className="relative z-20 mb-12 mx-auto w-44 h-44 rounded-full overflow-hidden shadow-effect">
-       <img
-          src="/Kagiso-Portrait.jpg"
-          alt="Kagiso Mfusi"
-          width="450"
-          height="450"
-          className="object-cover"
-        /> 
-      </div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-8">About Me</h2>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            I design AI automation systems that eliminate manual work and scale operations across enterprise infrastructure.
-          </p>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Most companies treat AI and cloud as separate problems. 
-            They're not. When you architect them together (AI logic + multicloud infrastructure + intelligent workflows) 
-            you unlock something rare: systems that get smarter as they scale.
-          </p>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            What I actually do: <br />
-            Engineer RAG pipelines, agentic AI workflows, and LLM integrations that make data actionable <br />
-            Architect resilient multicloud systems that adapt to real-world chaos <br />
-            Design end-to-end solutions: from backend infrastructure to UI, security to deployment
-          </p>
-          <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            Explore my work, and see how how I approach problems differently.
-          </p>
-          <Link to="/about">
-            <Button size="lg" className="group">
-              Read More
-            </Button>
-          </Link>
+      {/* About Preview - REFACTORED */}
+<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+<section className="py-20 bg-background">
+  <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    {/* Header Section with Image + Intro */}
+    <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
+      {/* Circle Image - Left Side */}
+      <div className="relative z-20 flex-shrink-0">
+        <div className="w-44 h-44 md:w-52 md:h-52 rounded-full overflow-hidden shadow-effect hover:shadow-lg transition-shadow duration-300">
+          <img
+            src="/Kagiso-Portrait.jpg"
+            alt="Kagiso Mfusi"
+            width="450"
+            height="450"
+            className="object-cover w-full h-full"
+          /> 
         </div>
-      </section>
-      </FadeContent>
+      </div>
+      
+      {/* Intro Text - Right Side */}
+      <div className="flex-1">
+        <h2 className="text-3xl md:text-4xl font-bold mb-6">About Me</h2>
+        <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
+          I design <span className="font-semibold text-foreground">AI automation systems</span> that eliminate manual work and scale operations across enterprise infrastructure.
+        </p>
+        <p className="text-sm text-muted-foreground leading-relaxed">
+          Most companies treat AI and cloud as separate problems. They're not. When you architect them together—AI logic + multicloud infrastructure + intelligent workflows—you unlock something rare: <span className="font-semibold text-foreground">systems that get smarter as they scale.</span>
+        </p>
+      </div>
+    </div>
+
+    {/* Three-Column Capability Cards */}
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+      {/* Card 1: AI Engineering */}
+      <Card className="p-6 border-l-2 border-l-primary/40 hover:border-l-primary hover:shadow-md transition-all duration-300">
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <Code className="h-5 w-5 text-primary" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-foreground mb-3">AI Engineering</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              RAG pipelines, agentic AI workflows, and LLM integrations that make complex data actionable
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      {/* Card 2: Cloud Architecture */}
+      <Card className="p-6 border-l-2 border-l-primary/40 hover:border-l-primary hover:shadow-md transition-all duration-300">
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <Award className="h-5 w-5 text-primary" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-foreground mb-3">Cloud Architecture</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Resilient multicloud systems built to adapt to real-world complexity
+            </p>
+          </div>
+        </div>
+      </Card>
+
+      {/* Card 3: End-to-End Delivery */}
+      <Card className="p-6 border-l-2 border-l-primary/40 hover:border-l-primary hover:shadow-md transition-all duration-300">
+        <div className="flex items-start gap-4">
+          <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+            <User className="h-5 w-5 text-primary" />
+          </div>
+          <div className="flex-1">
+            <h3 className="font-semibold text-foreground mb-3">End-to-End Delivery</h3>
+            <p className="text-sm text-muted-foreground leading-relaxed">
+              Complete solutions spanning backend infrastructure, UI, security, and deployment
+            </p>
+          </div>
+        </div>
+      </Card>
+    </div>
+
+    {/* Call to Action - Minimalist */}
+    <div className="text-center border-t border-border/40 pt-12">
+      <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+        Explore my work and see how I approach problems differently.
+      </p>
+      <Link to="/about">
+        <Button size="lg" className="group">
+          Read My Full Story
+          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+        </Button>
+      </Link>
+    </div>
+  </div>
+</section>
+</FadeContent>
       
       {/* === Coming Soon: AI Document Intelligence Platform === */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
