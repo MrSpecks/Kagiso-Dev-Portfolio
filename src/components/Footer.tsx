@@ -17,7 +17,7 @@ const Footer = () => {
               Kagiso Mfusi
             </h3>
             <p className="text-muted-foreground">
-              Full-Stack & AI Systems Engineer focused on creating exceptional digital experiences.
+              AI Automation Architect designing systems that eliminate manual work and scale at enterprise level.
             </p>
           </div>
 
