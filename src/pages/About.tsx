@@ -298,32 +298,159 @@ const About = () => {
             </p>
           </div>
 
-	        {/* Personal Story */}
-        <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
-        <div className="mb-16">
-          <Card className="p-8">
-            <h2 className="text-2xl font-bold mb-6">My Journey</h2>
-            <div className="space-y-4 text-muted-foreground">
-              <p>
-                I discovered my passion for technology in high school, which led me to pursue a career in IT and software development. 
-                Over the years, I've built expertise across cloud computing, AI, cybersecurity, and full-stack development, 
-                always with a focus on creating solutions that drive real impact.
-              </p>
-              <p>
-                Throughout my career, I've had the opportunity to work with diverse teams and technologies, from startups 
-                to established companies. Each experience has shaped my approach to development, emphasizing clean code, 
-                user-centric design, and continuous learning.
-              </p>
-              <p>
-                I thrive at the intersection of innovation and execution, blending technical skill with user-centric design 
-                and strategic problem-solving. 
-                Today, I build scalable, future-ready systems and am constantly exploring emerging technologies to shape 
-                the next wave of digital solutions.
-              </p>
-            </div>
-          </Card>
+	        {/* Personal Story - ENHANCED */}
+<FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+<section className="mb-20">
+  {/* Section Header */}
+  <div className="mb-12">
+    <h2 className="text-3xl md:text-4xl font-bold mb-4">My Journey</h2>
+    <p className="text-lg text-muted-foreground max-w-3xl">
+      From customer-centric operations to architecting intelligent systems. How I learned to build technology that solves real business problems.
+    </p>
+  </div>
+
+  {/* Timeline Container */}
+  <div className="space-y-8">
+    
+    {/* Phase 1: The Foundation */}
+    <Card className="p-8 border-l-4 border-l-primary/60 hover:shadow-lg transition-all duration-300">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+        {/* Timeline Badge */}
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold text-primary mb-2">2019 — 2023</span>
+          <span className="text-xs text-muted-foreground">4 Years, 9,700+ Hours</span>
         </div>
-        </FadeContent>
+
+        {/* Content */}
+        <div className="md:col-span-3">
+          <h3 className="text-xl font-bold mb-3">The Foundation: Enterprise Operations</h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            At FNB, I spent nearly a decade's worth of hours (9,700+ to be precise) in frontline customer service—resolving complex banking queries in high-pressure environments, maintaining 95%+ satisfaction ratings, and identifying systemic inefficiencies across operations.
+          </p>
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+            This wasn't just customer service. It was a deep immersion into how enterprises actually work: the workflows, pain points, bottlenecks, and unspoken needs that drive real business problems. I learned to see technology through the eyes of the people who use it.
+          </p>
+          
+          {/* Key Insights as Badges/Highlights */}
+          <div className="flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Empathy for end-user needs</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Systems thinking at scale</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Identifying automation opportunities</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    {/* Phase 2: The Pivot */}
+    <Card className="p-8 border-l-4 border-l-primary/60 hover:shadow-lg transition-all duration-300">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+        {/* Timeline Badge */}
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold text-primary mb-2">2023 — 2024</span>
+          <span className="text-xs text-muted-foreground">Technical Transition</span>
+        </div>
+
+        {/* Content */}
+        <div className="md:col-span-3">
+          <h3 className="text-xl font-bold mb-3">The Pivot: From Operations to Architecture</h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            When I moved into full-stack development and cloud engineering, I made a deliberate choice: <span className="font-semibold text-foreground">I wouldn't just learn technology, I'd apply it to solve real problems.</span>
+          </p>
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+            I realized most engineers approach cloud and AI as separate disciplines. I saw them differently: as interconnected pieces of a larger architecture. What if I could design systems where cloud infrastructure + AI logic + intelligent automation worked together to eliminate the manual bottlenecks I'd spent years watching?
+          </p>
+          
+          {/* Key Insights */}
+          <div className="flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Multicloud architecture design</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">LLM integration & automation</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">End-to-end systems thinking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+
+    {/* Phase 3: The Execution */}
+    <Card className="p-8 border-l-4 border-l-primary/60 hover:shadow-lg transition-all duration-300">
+      <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
+        {/* Timeline Badge */}
+        <div className="flex flex-col">
+          <span className="text-sm font-semibold text-primary mb-2">2024 — Today</span>
+          <span className="text-xs text-muted-foreground">Proven Impact</span>
+        </div>
+
+        {/* Content */}
+        <div className="md:col-span-3">
+          <h3 className="text-xl font-bold mb-3">The Execution: Building Systems That Scale</h3>
+          <p className="text-muted-foreground mb-4 leading-relaxed">
+            Today, I architect AI automation systems that eliminate the manual work I'd witnessed drain resources. Every project is grounded in that operational context: What problem are we solving? What's the business impact? How do we make this maintainable at scale?
+          </p>
+          
+          {/* Impact Examples */}
+          <div className="bg-muted/40 rounded-lg p-6 mb-4 border border-border/40">
+            <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Real-World Impact</p>
+            <div className="space-y-3">
+              <div className="flex items-start gap-3">
+                <span className="text-primary font-bold text-lg">85%</span>
+                <p className="text-sm text-muted-foreground">Reduced document analysis time—turning 2-hour manual reviews into 7-minute automated workflows</p>
+              </div>
+		    <div className="flex items-start gap-3">
+		      <span className="text-primary font-bold text-lg">Production-Grade</span>
+		      <p className="text-sm text-muted-foreground">Enterprise security, multi-tenancy, audit logging, payment integration with immediate monetization capability</p>
+		    </div>
+              <div className="flex items-start gap-3">
+                <span className="text-primary font-bold text-lg">95%+</span>
+                <p className="text-sm text-muted-foreground">Entity extraction accuracy and risk analysis across invoices, contracts, CVs, and company profiles</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Key Insights */}
+          <div className="flex flex-wrap gap-3">
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Business-first architecture</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Measurable ROI per project</span>
+            </div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
+              <span className="text-xs font-medium text-primary">→</span>
+              <span className="text-xs text-muted-foreground">Production-ready systems</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </Card>
+  </div>
+
+  {/* Closing Statement */}
+  <div className="mt-12 pt-8 border-t border-border/40">
+    <p className="text-lg text-muted-foreground leading-relaxed max-w-3xl">
+      <span className="font-semibold text-foreground">I don't architect systems in isolation. Every decision from data pipelines, cloud strategy to user experience is informed by real operational context. I've spent enough time in the trenches to know what actually works. That's where I build from.</span> 
+    </p>
+  </div>
+</section>
+</FadeContent>
 
           {/* Professional Experience */}
           <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
