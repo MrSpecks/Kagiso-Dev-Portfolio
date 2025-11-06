@@ -192,9 +192,9 @@ const Home = () => {
             you unlock something rare: systems that get smarter as they scale.
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
-            What I actually do: </br>
-            Engineer RAG pipelines, agentic AI workflows, and LLM integrations that make data actionable </br>
-            Architect resilient multicloud systems that adapt to real-world chaos </br>
+            What I actually do: <br />
+            Engineer RAG pipelines, agentic AI workflows, and LLM integrations that make data actionable <br />
+            Architect resilient multicloud systems that adapt to real-world chaos <br />
             Design end-to-end solutions: from backend infrastructure to UI, security to deployment
           </p>
           <p className="text-xl text-muted-foreground mb-12 max-w-3xl mx-auto">
