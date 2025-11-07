@@ -271,6 +271,14 @@ export const Projects = () => {
                 </div>
                 </FadeContent>
 
+			    <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+				<div className="text-center border-t border-border/40 pt-12">
+			      <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
+			        My work spans applied AI, cloud architecture, and full-stack delivery; each project demonstrating mastery across different layers of the automation stack.
+			      </p>
+				</div>
+                </FadeContent>
+
                 {/* Projects Grid (Original Content) */}
                 <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
