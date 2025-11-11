@@ -15,6 +15,11 @@ import Certifications from "./pages/Certifications";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
+import RefundPolicy from "./pages/policies/RefundPolicy";
+import CancellationPolicy from "./pages/policies/CancellationPolicy";
+import PrivacyPolicy from "./pages/policies/PrivacyPolicy";
+import TermsOfService from "./pages/policies/TermsOfService";
+import ContactDetails from "./pages/policies/ContactDetails";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +34,11 @@ const AppContent = () => (
         <Route path="/projects" element={<Projects />} />
         <Route path="/certifications" element={<Certifications />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/policies/refund" element={<RefundPolicy />} />
+        <Route path="/policies/cancellation" element={<CancellationPolicy />} />
+        <Route path="/policies/privacy" element={<PrivacyPolicy />} />
+        <Route path="/policies/terms" element={<TermsOfService />} />
+        <Route path="/policies/contact-details" element={<ContactDetails />} />
         <Route path="/not-found" element={<NotFound />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
