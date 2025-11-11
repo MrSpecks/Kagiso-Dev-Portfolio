@@ -1,4 +1,4 @@
-import { Github, Linkedin, Mail, Compass, Link2, Share2, User, Award, Zap } from "lucide-react";
+import { Github, Linkedin, Mail, Compass, Link2, Share2, User, Award, Zap, Scale } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { AboutModal } from "./AboutModal";
@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-muted/30 border-t border-border mt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* About */}
           <div>
             <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
@@ -88,6 +88,56 @@ const Footer = () => {
                 >
                   Surprise Me
                 </button>
+              </li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 flex items-center gap-2">
+              <Scale className="h-5 w-5 text-primary" />
+              Policies
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  to="/policies/refund"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/policies/cancellation"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Cancellation Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/policies/privacy"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/policies/terms"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Terms of Service
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/policies/contact-details"
+                  className="text-muted-foreground hover:text-primary transition-colors text-sm"
+                >
+                  Contact Details
+                </Link>
               </li>
             </ul>
           </div>
