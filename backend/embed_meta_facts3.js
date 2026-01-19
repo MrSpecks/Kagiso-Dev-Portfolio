@@ -80,20 +80,8 @@ async function getJinaEmbedding(input) {
 const metaFacts3 = [
 // --- NEW PROJECT FACTS ---
     {
-        title: "AI-Generated Company Brochure Builder (Sep 2025)",
-        content: "Built a system that **automatically scrapes company websites** (identifying sections like About, Careers, Customers, etc.) and uses **GPT-4o-mini** to generate tailored brochures in real time, adapting tone (professional, humorous, promotional). **Impact:** Reduced brochure creation time by **80%**, lowered marketing costs, and ensured **brand consistency** by extracting messaging directly from official sources. Scalable for sales, recruitment, and proposal generation workflows."
-    },
-    {
-        title: "AI-Powered Code Explainer – Interactive Developer Assistant (Sep 2025)",
-        content: "Designed an intelligent assistant using **OpenAI's GPT-4o-mini** for **real-time, step-by-step code explanations** inside **Jupyter Notebooks**. Leveraged streaming responses for dynamic UX. **Impact:** Cut developer onboarding time by up to **50%** by enabling real-time Q&A on codebases, boosting team productivity with instant explanations, and creating a foundation for enterprise-grade internal documentation tools."
-    },
-    {
-        title: "Website Scraper & Summarizer (Sep 2025)",
-        content: "Developed a **Python-powered tool** that scrapes websites and delivers concise, **AI-generated summaries**. Integrates **BeautifulSoup** for clean data extraction and **Ollama's LLaMA 3.2** for **local LLM-powered summarization**, ensuring **privacy-first AI**. **Impact:** Increased research efficiency by up to **70%**, improved decision-making speed for analysts, and is a scalable foundation for competitive intelligence and content monitoring dashboards."
-    },
-    {
-        title: "CMS Reconnaissance & Webshell Payload Generator (Feb 2025 - Mar 2025)",
-        content: "Developed an **asynchronous Python-based reconnaissance system** using **aiohttp** for high-performance concurrent requests. It automates the detection of backend technologies and logs results in a structured **JSON** format, including a custom tech stack detection module. **Impact:** Accelerated penetration testing workflows by up to **60%**, improved recon accuracy, and enabled security engineers to scan and prepare payloads across hundreds of targets in parallel."
+        title: "FastAPI Issue Tracker (Jan 2026)",
+        content: "The FastAPI Issue Tracker is a project designed to streamline the management of issues and feature requests for applications built using FastAPI. It provides a user-friendly interface for developers and users to report bugs, suggest enhancements, and track the progress of ongoing issues. The tracker integrates seamlessly with FastAPI's asynchronous capabilities, ensuring efficient handling of requests and real-time updates. Key features include customizable issue categories, priority tagging, and automated notifications for updates. This project aims to enhance collaboration among development teams and improve the overall quality of FastAPI applications by providing a structured approach to issue management."
     },
 ];
 

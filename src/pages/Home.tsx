@@ -156,7 +156,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Code className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">8</h3>
+                <h3 className="text-3xl font-bold mb-2">{featuredProjects.length}</h3>
               <p className="text-muted-foreground">Projects Completed</p>
             </Card>
             
@@ -172,7 +172,7 @@ const Home = () => {
               <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                 <User className="h-6 w-6 text-primary" />
               </div>
-              <h3 className="text-3xl font-bold mb-2">7+</h3>
+                <h3 className="text-3xl font-bold mb-2">{new Date().getFullYear() - 2018}+</h3>
               <p className="text-muted-foreground">Years Experience</p>
             </Card>
           </div>

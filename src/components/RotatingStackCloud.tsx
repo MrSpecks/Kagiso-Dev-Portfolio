@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import StackIcon from "tech-stack-icons";
+import { MousePointer } from "lucide-react";
 import "./RotatingStackCloud.css";
 
 const ICON_NAMES = [
@@ -11,15 +12,15 @@ const ICON_NAMES = [
   "oracle", "postgresql", "microsoft", "vscode", "pytorch", "react", "vercel", "typescript",
   "langgraph", "markdown", "claude","n8n", "tailwindcss", "mistral",
   "npm2",  "postman", "powershell", "html5", "azureai", "colab", "openai",
-  "net",  "npm", 
+  "net",  "npm",
      
-  
 ];
 
 interface IconOrbit {
   name: string;
   lon: number;
   lat: number;
+  type?: "tech" | "cursor";
 }
 
 const CLOUD_RADIUS = 170;
@@ -31,17 +32,19 @@ const RotatingTechCloud: React.FC = () => {
 
   // Initialize evenly distributed orbit angles using Fibonacci sphere
   useEffect(() => {
-    const n = ICON_NAMES.length;
+    const allIcons = [...ICON_NAMES, "cursor"];
+    const n = allIcons.length;
     const phi = Math.PI * (3 - Math.sqrt(5)); // golden angle
 
-    const initialAngles: IconOrbit[] = ICON_NAMES.map((name, i) => {
+    const initialAngles: IconOrbit[] = allIcons.map((name, i) => {
       const y = 1 - (i / (n - 1)) * 2; // from 1 to -1
       const radius = Math.sqrt(1 - y * y);
       const theta = phi * i;
       return {
         name,
         lon: theta,
-        lat: Math.asin(y) // arcsin(y) gives latitude
+        lat: Math.asin(y), // arcsin(y) gives latitude
+        type: name === "cursor" ? "cursor" : "tech"
       };
     });
 
@@ -70,7 +73,7 @@ const RotatingTechCloud: React.FC = () => {
     <section className="tech-cloud-wrapper">
       <div className="tech-cloud-perspective">
         <div className="tech-cloud">
-          {angles.map(({ name, lon, lat }, i) => {
+          {angles.map(({ name, lon, lat, type }, i) => {
             const x = CLOUD_RADIUS * Math.cos(lat) * Math.sin(lon);
             const y = CLOUD_RADIUS * Math.sin(lat);
             const z = CLOUD_RADIUS * Math.cos(lat) * Math.cos(lon);
@@ -89,7 +92,11 @@ const RotatingTechCloud: React.FC = () => {
                   scale
                 }}
               >
-                <StackIcon name={name.toLowerCase()} />
+                {type === "cursor" ? (
+                  <MousePointer size={30} className="cursor-icon" strokeWidth={2} />
+                ) : (
+                  <StackIcon name={name.toLowerCase()} />
+                )}
               </div>
             );
           })}
