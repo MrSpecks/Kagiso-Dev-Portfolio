@@ -9,7 +9,7 @@ import RotatingTechCloud from "@/components/RotatingStackCloud";
 import StarBorder from "@/components/StarBorder";
 import { Particles } from "@/components/ui/shadcn-io/particles/Particles";
 import { useTheme } from "@/components/theme-provider";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // Import the carousel components
 import {
@@ -29,6 +29,10 @@ import { TypewriterEffectSmooth } from "@/components/ui/typewriter-effect";
 const Home = () => {
   const { theme } = useTheme();
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isHoveringCarousel, setIsHoveringCarousel] = useState(false);
+  const [isHoveringProjectsCarousel, setIsHoveringProjectsCarousel] = useState(false);
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const projectsCarouselRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
@@ -39,6 +43,45 @@ const Home = () => {
     mediaQuery.addEventListener("change", computeIsDark);
     return () => mediaQuery.removeEventListener("change", computeIsDark);
   }, [theme]);
+
+  // Load LinkedIn embed script
+  useEffect(() => {
+    const script = document.createElement("script");
+    script.src = "https://platform.linkedin.com/in.js";
+    script.async = true;
+    script.innerHTML = "{ lang: 'en_US' }";
+    document.body.appendChild(script);
+    return () => {
+      if (script.parentNode) {
+        script.parentNode.removeChild(script);
+      }
+    };
+  }, []);
+
+  // Auto-scroll Socials carousel every 10 seconds, pause on hover
+  useEffect(() => {
+    if (isHoveringCarousel) return;
+
+    const interval = setInterval(() => {
+      const nextButton = carouselRef.current?.querySelector('[data-carousel-next]') as HTMLButtonElement;
+      nextButton?.click();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [isHoveringCarousel]);
+
+  // Auto-scroll Featured Projects carousel every 10 seconds, pause on hover
+  useEffect(() => {
+    if (isHoveringProjectsCarousel) return;
+
+    const interval = setInterval(() => {
+      const nextButton = projectsCarouselRef.current?.querySelector('[data-carousel-next]') as HTMLButtonElement;
+      nextButton?.click();
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, [isHoveringProjectsCarousel]);
+
   // Fetch certifications count
   const { data: certifications } = useQuery({
     queryKey: ["certifications-count"],
@@ -50,6 +93,57 @@ const Home = () => {
       return data;
     },
   });
+
+  const linkedInPosts = [
+    {
+      id: 1,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7381804824079699968?collapsed=1",
+      height: "589",
+      width: "504",
+    },
+    {
+      id: 2,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7385976303293739008?collapsed=1",
+      height: "669",
+      width: "504",
+    },
+    {
+      id: 3,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7389603001931378688?collapsed=1",
+      height: "590",
+      width: "504",
+    },
+    {
+      id: 4,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7391108637479305218?collapsed=1",
+      height: "669",
+      width: "504",
+    },
+    {
+      id: 5,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7393550317369503744?collapsed=1",
+      height: "669",
+      width: "504",
+    },
+    {
+      id: 6,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7401662260366241792?collapsed=1",
+      height: "669",
+      width: "504",
+    },
+    {
+      id: 7,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:share:7407334745031794689?collapsed=1",
+      height: "669",
+      width: "504",
+    },
+    {
+      id: 8,
+      src: "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7407348416730632192?collapsed=1",
+      height: "565",
+      width: "504",
+    },
+  ];
 
   const skills = [
     "React", "TypeScript", "Node.js", "Python", "Supabase",
@@ -308,6 +402,57 @@ const Home = () => {
       </FadeContent>
       {/* === END Coming Soon === */}
 
+      {/* === Socials Section === */}
+      <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
+      <section className="py-20 bg-background">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Connect on Social Media</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              Explore my latest posts, insights, and updates. Follow along to see what I'm building and thinking about.
+            </p>
+          </div>
+
+          <div
+            ref={carouselRef}
+            onMouseEnter={() => setIsHoveringCarousel(true)}
+            onMouseLeave={() => setIsHoveringCarousel(false)}
+          >
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-6xl mx-auto"
+            >
+              <CarouselContent>
+                {linkedInPosts.map((post) => (
+                  <CarouselItem key={post.id} className="basis-full md:basis-1/2">
+                    <div className="flex justify-center p-1">
+                      <div className="flex justify-center overflow-hidden rounded-xl bg-card border border-border">
+                        <iframe
+                          src={post.src}
+                          height={post.height}
+                          width={post.width}
+                          frameBorder="0"
+                          allowFullScreen
+                          title={`LinkedIn post ${post.id}`}
+                          className="linkedin-embed"
+                        />
+                      </div>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex" />
+              <CarouselNext className="hidden sm:flex" data-carousel-next />
+            </Carousel>
+          </div>
+        </div>
+      </section>
+      </FadeContent>
+      {/* === END Socials Section === */}
+
       {/* === NEW: Featured Projects Section === */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-muted/30">
@@ -317,56 +462,62 @@ const Home = () => {
             Here's a glimpse of what I've been working on.
           </p>
 
-          <Carousel
-            opts={{
-              align: "start",
-              loop: true,
-            }}
-            className="w-full max-w-4xl mx-auto"
+          <div
+            ref={projectsCarouselRef}
+            onMouseEnter={() => setIsHoveringProjectsCarousel(true)}
+            onMouseLeave={() => setIsHoveringProjectsCarousel(false)}
           >
-            <CarouselContent>
-              {featuredProjects.map((project) => (
-                <CarouselItem key={project.id}>
-                  <div className="p-1">
-                    <Card className="flex flex-col h-full overflow-hidden text-left">
-                      <img
-                        src={project.screenshot_url}
-                        alt={project.title}
-                        className="w-full h-60 object-cover"
-                      />
-                      <CardContent className="p-6 flex-grow">
-                        <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
-                        <div className="flex flex-wrap gap-2 mb-4">
-                          {project.tech_stack.map((tech) => (
-                            <Badge key={tech} variant="secondary">{tech}</Badge>
-                          ))}
-                        </div>
-                        <p className="text-muted-foreground leading-relaxed">
-                          {project.description}
-                        </p>
-                      </CardContent>
-                      <CardFooter className="p-6 bg-background/50 border-t">
-                        <div className="flex justify-between w-full">
-                          <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
-                            <Button variant="outline" className="group">
-                              Live Demo <ExternalLink className="ml-2 h-4 w-4" />
-                            </Button>
-                          </a>
-                          <a href={project.repo_url} target="_blank" rel="noopener noreferrer">
-                            <Button variant="outline" className="group">
-                              <Github className="mr-2 h-4 w-4" /> View Code
-                            </Button>
-                          </a>
-                        </div>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious className="hidden sm:flex" />
-            <CarouselNext className="hidden sm:flex" />
-          </Carousel>
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full max-w-4xl mx-auto"
+            >
+              <CarouselContent>
+                {featuredProjects.map((project) => (
+                  <CarouselItem key={project.id}>
+                    <div className="p-1">
+                      <Card className="flex flex-col h-full overflow-hidden text-left">
+                        <img
+                          src={project.screenshot_url}
+                          alt={project.title}
+                          className="w-full h-60 object-cover"
+                        />
+                        <CardContent className="p-6 flex-grow">
+                          <h3 className="text-2xl font-bold mb-3">{project.title}</h3>
+                          <div className="flex flex-wrap gap-2 mb-4">
+                            {project.tech_stack.map((tech) => (
+                              <Badge key={tech} variant="secondary">{tech}</Badge>
+                            ))}
+                          </div>
+                          <p className="text-muted-foreground leading-relaxed">
+                            {project.description}
+                          </p>
+                        </CardContent>
+                        <CardFooter className="p-6 bg-background/50 border-t">
+                          <div className="flex justify-between w-full">
+                            <a href={project.demo_url} target="_blank" rel="noopener noreferrer">
+                              <Button variant="outline" className="group">
+                                Live Demo <ExternalLink className="ml-2 h-4 w-4" />
+                              </Button>
+                            </a>
+                            <a href={project.repo_url} target="_blank" rel="noopener noreferrer">
+                              <Button variant="outline" className="group">
+                                <Github className="mr-2 h-4 w-4" /> View Code
+                              </Button>
+                            </a>
+                          </div>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+                ))}
+              </CarouselContent>
+              <CarouselPrevious className="hidden sm:flex" />
+              <CarouselNext className="hidden sm:flex" data-carousel-next />
+            </Carousel>
+          </div>
         </div>
       </section>
       </FadeContent>

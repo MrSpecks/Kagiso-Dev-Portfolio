@@ -262,4 +262,14 @@
     animation-delay: 0.4s;
     animation-fill-mode: both;
   }
+
+  /* LinkedIn Embed Styling */
+  .linkedin-embed {
+    @apply block;
+  }
+
+  /* Dark mode adjustments for LinkedIn embeds */
+  .dark .linkedin-embed {
+    filter: brightness(0.95);
+  }
 }
