@@ -6,7 +6,7 @@ import "./RotatingStackCloud.css";
 const ICON_NAMES = [
   "gradio", "jira", "langchain", "huggingface",
   "nextjs", "js",  "meta",  "anthropic", "aws",  "bash", "bitbucket",  
-  "python",  "reactrouter", "materialui", "streamlit", "prettier", "shadcnui",  "azure", "vite.js",
+  "python",  "reactrouter", "materialui", "streamlit", "prettier", "shadcnui",  "azure", "vite",
   "figma", "spring", "java", "nodejs", "framer", "gcloud", "gemini", "git", "github", 
   "copilotgithub", "css3", "deepseek", "docker", "expressjs", "supabase", "mongodb",
   "oracle", "postgresql", "microsoft", "vscode", "pytorch", "react", "vercel", "typescript",

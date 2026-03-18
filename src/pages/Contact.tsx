@@ -10,7 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import FadeContent from "@/components/FadeContent";
 
 const Contact = () => {
-  const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT as string;
+  const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT || "https://formspree.io/f/xldpnryl";
 
   const [formData, setFormData] = useState({
     name: "",
