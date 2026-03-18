@@ -67,8 +67,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress = 0 }) => {
           style={{
             background: `linear-gradient(135deg, ${
               window.matchMedia("(prefers-color-scheme: dark)").matches
-                ? "#0f172a, #1e293b"
-                : "#c7d2fe, #a5b4fc"
+                ? "#071a19, #0d2e2b, #0a3a4a"
+                : "#145c54, #12909e, #0ea5c8"
             })`,
           }}
         />
@@ -83,15 +83,15 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress = 0 }) => {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
-          className="mb-6 text-center text-sm text-gray-300 dark:text-gray-200 font-mono"
+          className="mb-6 text-center text-sm text-white/80 font-mono"
         >
           {microCopy[messageIndex]}
         </motion.p>
 
         {/* Weighted, non-linear progress bar */}
-        <div className="w-3/4 max-w-md h-4 bg-gray-400 rounded-full mb-8 overflow-hidden">
+        <div className="w-3/4 max-w-md h-4 bg-white/20 rounded-full mb-8 overflow-hidden">
           <motion.div
-            className="h-full bg-[#646cffaa]"
+            className="h-full bg-[#5be0ca]"
             style={{ width: `${easedProgress}%` }}
             transition={{ type: "tween", duration: 0.2 }}
           />
@@ -105,7 +105,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ progress = 0 }) => {
             return (
               <motion.div
                 key={idx}
-                className="text-4xl"
+                className="text-4xl text-white"
                 style={{
                   transform: `translateY(${yOffset}px)`,
                   opacity: opacityWave,

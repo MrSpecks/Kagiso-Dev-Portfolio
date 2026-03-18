@@ -1,4 +1,4 @@
-import { useState, useEffect, SetStateAction } from "react";
+import { useState, useEffect, SetStateAction, Component, ReactNode } from "react";
 import { QueryClient, QueryClientProvider, useIsFetching } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
@@ -23,6 +23,37 @@ import TermsOfService from "./pages/policies/TermsOfService";
 import ContactDetails from "./pages/policies/ContactDetails";
 
 const queryClient = new QueryClient();
+
+// Error boundary — prevents full-page blank on uncaught component errors
+class ErrorBoundary extends Component<{ children: ReactNode }, { hasError: boolean }> {
+  constructor(props: { children: ReactNode }) {
+    super(props);
+    this.state = { hasError: false };
+  }
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div className="min-h-screen flex flex-col items-center justify-center gap-4 p-8 text-center">
+          <h1 className="text-2xl font-bold">Something went wrong</h1>
+          <p className="text-muted-foreground max-w-md">
+            An unexpected error occurred. Please refresh the page or{" "}
+            <a href="/contact" className="text-primary underline">get in touch</a> if the issue persists.
+          </p>
+          <button
+            onClick={() => window.location.reload()}
+            className="px-4 py-2 bg-primary text-primary-foreground rounded-lg text-sm"
+          >
+            Refresh Page
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
 
 // AppContent contains your main app layout
 const AppContent = () => (
@@ -114,7 +145,9 @@ const App = () => {
               setIsLoaded={setIsLoaded}
             >
               {isLoaded ? (
-                <AppContent />
+                <ErrorBoundary>
+                  <AppContent />
+                </ErrorBoundary>
               ) : (
                 <LoadingScreen progress={loadingProgress} />
               )}

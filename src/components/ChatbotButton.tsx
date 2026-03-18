@@ -114,9 +114,9 @@ const ChatbotButton = () => {
           
           {/* Header (with Agent Icon) */}
           <div className="border-b border-border pb-2 mb-4 flex items-center">
-            <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0" />
+            <Cpu className="h-6 w-6 text-primary mr-2 flex-shrink-0" />
             <div>
-                <h3 className="font-bold text-indigo-700">Kae's AI Assistant</h3>
+                <h3 className="font-bold text-primary">Kae's AI Assistant</h3>
                 <p className="text-xs text-gray-500">
                     Ask me anything about Kagiso's work!
                 </p>
@@ -134,7 +134,7 @@ const ChatbotButton = () => {
               >
                 {/* Assistant Avatar */}
                 {msg.role === "assistant" && (
-                    <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0 p-0.5 rounded-full bg-indigo-50" />
+                    <Cpu className="h-6 w-6 text-primary mr-2 flex-shrink-0 p-0.5 rounded-full bg-primary/10" />
                 )}
 
                 {/* Message Bubble */}
@@ -159,7 +159,7 @@ const ChatbotButton = () => {
             {loading && (
                 <div className="flex justify-start items-start">
                     {/* Loading Assistant Avatar */}
-                    <Cpu className="h-6 w-6 text-indigo-600 mr-2 flex-shrink-0 p-0.5 rounded-full bg-indigo-50 animate-pulse" />
+                    <Cpu className="h-6 w-6 text-primary mr-2 flex-shrink-0 p-0.5 rounded-full bg-primary/10 animate-pulse" />
                     <div className="p-3 rounded-xl rounded-tl-sm bg-gray-100 text-gray-500 shadow-sm">
                         <p className="text-sm">AI is typing...</p>
                     </div>

@@ -64,6 +64,7 @@ export const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
 				<CardTitle>Expertise Radar</CardTitle>
 				<CardDescription>
 					Visual representation of core technical competencies and delivery capabilities.
+					Each axis represents a distinct skill domain scored out of 10. Hover any point to see the exact score.
 				</CardDescription>
 			</CardHeader>
 			<CardContent className="pl-2">
@@ -82,6 +83,17 @@ export const ChartRadarGridFill = ({ chartConfig }: ChartProps) => {
 						</RadarChart>
 					</ResponsiveContainer>
 				</ChartContainer>
+				<div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-muted-foreground border-t border-border pt-4">
+					{expertiseData.map((item) => (
+						<div key={item.pillar} className="flex items-center justify-between gap-2">
+							<span className="flex items-center gap-1.5">
+								<span className="inline-block w-2 h-2 rounded-full bg-primary/70 shrink-0" />
+								{item.pillar}
+							</span>
+							<span className="font-mono font-semibold text-foreground tabular-nums">{item.score.toFixed(1)}/10</span>
+						</div>
+					))}
+				</div>
 			</CardContent>
 		</Card>
 	);

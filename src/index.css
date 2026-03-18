@@ -9,56 +9,119 @@
   .dark .text-3d {
     text-shadow: 0 2px 0 rgba(0, 0, 0, 0.35), 0 12px 32px rgba(0, 0, 0, 0.45);
   }
+
+  /* ── Glassmorphism Utilities ── */
+
+  /* Standard glass — light mode */
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+  }
+
+  /* Standard glass — dark mode */
+  .dark .glass {
+    background: rgba(8, 15, 20, 0.55);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(45, 212, 191, 0.12);
+  }
+
+  /* Glass card with teal accent border */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(13, 148, 136, 0.2);
+    box-shadow: 0 8px 32px rgba(13, 148, 136, 0.08);
+  }
+
+  .dark .glass-card {
+    background: rgba(8, 15, 20, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(45, 212, 191, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(45, 212, 191, 0.08);
+  }
+
+  /* Glass navigation bar */
+  .glass-nav {
+    background: rgba(250, 250, 250, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(13, 148, 136, 0.12);
+  }
+
+  .dark .glass-nav {
+    background: rgba(8, 15, 20, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(45, 212, 191, 0.1);
+  }
+
+  /* Glass hero overlay panel */
+  .glass-hero {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .dark .glass-hero {
+    background: rgba(8, 15, 20, 0.35);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(45, 212, 191, 0.1);
+  }
 }
 
-/* (reverted) removed accent-mesh utility */
-
-/* Portfolio Design System - Professional & Modern */
+/* Portfolio Design System — Ocean Teal + Sky Blue */
 
 @layer base {
   :root {
-    /* Light Mode - Clean & Professional */
+    /* Light Mode */
     --background: 0 0% 98%;
-    --foreground: 222 15% 15%;
+    --foreground: 194 30% 12%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 15% 15%;
+    --card-foreground: 194 30% 12%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 15% 15%;
+    --popover-foreground: 194 30% 12%;
 
-    --primary: 231 48% 48%;
+    --primary: 174 77% 29%;
     --primary-foreground: 0 0% 100%;
-    
-    --primary-glow: 231 65% 65%;
-    --primary-subtle: 231 48% 95%;
 
-    --secondary: 222 8% 96%;
-    --secondary-foreground: 222 15% 25%;
+    --primary-glow: 174 77% 42%;
+    --primary-subtle: 174 60% 94%;
 
-    --muted: 222 8% 96%;
-    --muted-foreground: 222 8% 45%;
+    --secondary: 199 50% 95%;
+    --secondary-foreground: 194 30% 25%;
 
-    --accent: 231 48% 92%;
-    --accent-foreground: 231 48% 25%;
+    --muted: 194 15% 96%;
+    --muted-foreground: 194 12% 45%;
+
+    --accent: 199 70% 91%;
+    --accent-foreground: 199 60% 25%;
 
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 222 8% 90%;
-    --input: 222 8% 90%;
-    --ring: 231 48% 48%;
+    --border: 194 20% 88%;
+    --input: 194 20% 88%;
+    --ring: 174 77% 29%;
 
     --radius: 0.75rem;
 
     /* Portfolio-specific tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(231, 48%, 48%) 0%, hsl(231, 65%, 65%) 100%);
-    --card-gradient: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(222, 8%, 98%) 100%);
-    --skill-hover: hsl(231, 48%, 48%);
-    --shadow-soft: 0 4px 12px hsl(222, 8%, 0%, 0.08);
-    --shadow-medium: 0 8px 24px hsl(222, 8%, 0%, 0.12);
-    --shadow-strong: 0 16px 40px hsl(222, 8%, 0%, 0.16);
-    
+    --hero-gradient: linear-gradient(135deg, hsl(174, 77%, 29%) 0%, hsl(185, 80%, 38%) 50%, hsl(199, 89%, 48%) 100%);
+    --card-gradient: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(194, 20%, 97%) 100%);
+    --skill-hover: hsl(174, 77%, 29%);
+    --shadow-soft: 0 4px 12px rgba(13, 148, 136, 0.08);
+    --shadow-medium: 0 8px 24px rgba(13, 148, 136, 0.12);
+    --shadow-strong: 0 16px 40px rgba(13, 148, 136, 0.16);
+
     /* Animation variables */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -66,84 +129,75 @@
     --animation-pulse-glow: pulse-glow 2s ease-in-out infinite alternate;
 
     --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
+    --sidebar-foreground: 194 10% 26%;
+    --sidebar-primary: 174 77% 29%;
     --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-accent: 174 40% 95%;
+    --sidebar-accent-foreground: 174 77% 20%;
+    --sidebar-border: 194 20% 88%;
+    --sidebar-ring: 174 77% 29%;
   }
 
   .dark {
-    /* Dark Mode - Elegant Gradient */
-    --background: 222 20% 8%;
-    --foreground: 222 8% 95%;
+    /* Dark Mode — Ocean */
+    --background: 193 28% 7%;
+    --foreground: 194 10% 95%;
 
-    --card: 222 15% 12%;
-    --card-foreground: 222 8% 95%;
+    --card: 193 22% 11%;
+    --card-foreground: 194 10% 95%;
 
-    --popover: 222 15% 12%;
-    --popover-foreground: 222 8% 95%;
+    --popover: 193 22% 11%;
+    --popover-foreground: 194 10% 95%;
 
-    --primary: 231 65% 65%;
-    --primary-foreground: 222 20% 8%;
-    
-    --primary-glow: 231 80% 75%;
-    --primary-subtle: 231 48% 15%;
+    --primary: 174 57% 52%;
+    --primary-foreground: 193 28% 7%;
 
-    --secondary: 222 15% 18%;
-    --secondary-foreground: 222 8% 90%;
+    --primary-glow: 174 65% 68%;
+    --primary-subtle: 174 40% 13%;
 
-    --muted: 222 15% 18%;
-    --muted-foreground: 222 8% 60%;
+    --secondary: 193 20% 18%;
+    --secondary-foreground: 194 10% 90%;
 
-    --accent: 231 48% 20%;
-    --accent-foreground: 231 65% 85%;
+    --muted: 193 20% 18%;
+    --muted-foreground: 194 10% 60%;
+
+    --accent: 199 45% 20%;
+    --accent-foreground: 199 70% 80%;
 
     --destructive: 0 72% 60%;
-    --destructive-foreground: 222 20% 8%;
+    --destructive-foreground: 193 28% 7%;
 
-    --border: 222 15% 18%;
-    --input: 222 15% 18%;
-    --ring: 231 65% 65%;
+    --border: 193 20% 17%;
+    --input: 193 20% 17%;
+    --ring: 174 57% 52%;
 
     /* Dark mode portfolio tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(222, 20%, 8%) 0%, hsl(222, 15%, 15%) 100%);
-    --card-gradient: linear-gradient(135deg, hsl(222, 15%, 12%) 0%, hsl(222, 15%, 15%) 100%);
-    --skill-hover: hsl(231, 65%, 65%);
-    --shadow-soft: 0 4px 12px hsl(222, 20%, 0%, 0.3);
-    --shadow-medium: 0 8px 24px hsl(222, 20%, 0%, 0.4);
-    --shadow-strong: 0 16px 40px hsl(222, 20%, 0%, 0.5);
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --hero-gradient: linear-gradient(135deg, hsl(193, 28%, 7%) 0%, hsl(174, 25%, 13%) 40%, hsl(199, 25%, 10%) 100%);
+    --card-gradient: linear-gradient(135deg, hsl(193, 22%, 11%) 0%, hsl(193, 22%, 14%) 100%);
+    --skill-hover: hsl(174, 57%, 52%);
+    --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.4);
+    --shadow-strong: 0 16px 40px rgba(0, 0, 0, 0.5);
+
+    --sidebar-background: 193 28% 7%;
+    --sidebar-foreground: 194 10% 95%;
+    --sidebar-primary: 174 57% 52%;
+    --sidebar-primary-foreground: 193 28% 7%;
+    --sidebar-accent: 174 40% 13%;
+    --sidebar-accent-foreground: 174 65% 85%;
+    --sidebar-border: 193 20% 17%;
+    --sidebar-ring: 174 57% 52%;
   }
-/* Drop shadow for light mode */
-@media (prefers-color-scheme: light) {
+
+  /* Drop shadow — light mode */
   .shadow-effect {
     filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
   }
-}
 
-/* Glow effect for dark mode */
-@media (prefers-color-scheme: dark) {
-  .shadow-effect {
-    box-shadow: 0 0 10px hsl(231, 65%, 65%), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+  /* Glow effect — dark mode */
+  .dark .shadow-effect {
+    box-shadow: 0 0 12px hsl(174, 57%, 52%), 0 0 24px rgba(45, 212, 191, 0.35), 0 0 40px rgba(45, 212, 191, 0.15);
   }
-}
 }
 
 @layer base {
@@ -179,85 +233,112 @@
   to { opacity: 1; }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
 /* Portfolio Component Classes */
 @layer components {
   .hero-gradient {
     background: var(--hero-gradient);
   }
-  
+
   .card-gradient {
     background: var(--card-gradient);
   }
-  
+
   .skill-tag {
-    @apply px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 
-           transition-all duration-300 hover:bg-primary hover:text-primary-foreground 
+    @apply px-3 py-1 rounded-full text-primary border border-primary/20
+           transition-all duration-300 hover:bg-primary hover:text-primary-foreground
            hover:border-primary hover:shadow-lg hover:scale-105 cursor-pointer;
+    background: rgba(13, 148, 136, 0.08);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     animation: var(--animation-float);
   }
-  
+
+  .dark .skill-tag {
+    background: rgba(45, 212, 191, 0.08);
+    border-color: rgba(45, 212, 191, 0.2);
+  }
+
   .skill-tag:nth-child(2n) {
     animation-delay: -2s;
   }
-  
+
   .skill-tag:nth-child(3n) {
     animation-delay: -4s;
   }
-  
+
   .project-card {
-    @apply bg-card border border-border rounded-xl p-6 
-           transition-all duration-300 hover:shadow-xl hover:scale-[1.02] 
-           hover:border-primary/20;
+    @apply bg-card border border-border rounded-xl p-6
+           transition-all duration-300 hover:shadow-xl hover:scale-[1.02]
+           hover:border-primary/30;
     box-shadow: var(--shadow-soft);
   }
-  
+
+  .dark .project-card {
+    background: rgba(8, 15, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(45, 212, 191, 0.12);
+  }
+
   .project-card:hover {
     box-shadow: var(--shadow-medium);
   }
-  
+
   .cert-card {
     @apply bg-card border border-border rounded-xl p-6 relative overflow-hidden
            transition-all duration-300 hover:shadow-xl hover:scale-[1.02];
     box-shadow: var(--shadow-soft);
   }
-  
+
+  .dark .cert-card {
+    background: rgba(8, 15, 20, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-color: rgba(45, 212, 191, 0.12);
+  }
+
   .cert-card:hover {
     box-shadow: var(--shadow-medium);
   }
-  
+
   .cert-badge {
-    @apply absolute -top-4 -left-4 w-16 h-16 bg-primary/20 rounded-full 
+    @apply absolute -top-4 -left-4 w-16 h-16 bg-primary/20 rounded-full
            flex items-center justify-center transform rotate-12;
   }
-  
+
   .nav-link {
-    @apply relative px-4 py-2 text-muted-foreground hover:text-foreground 
+    @apply relative px-4 py-2 text-muted-foreground hover:text-foreground
            transition-colors duration-300;
   }
-  
+
   .nav-link.active {
     @apply text-primary;
   }
-  
+
   .nav-link::after {
-    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary 
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-0.5 bg-primary
            transition-all duration-300;
   }
-  
+
   .nav-link:hover::after,
   .nav-link.active::after {
     @apply w-full;
   }
-  
+
   .hero-text {
     animation: slide-in 0.8s ease-out;
   }
-  
+
   .hero-text:nth-child(2) {
     animation-delay: 0.2s;
     animation-fill-mode: both;
   }
-  
+
   .hero-text:nth-child(3) {
     animation-delay: 0.4s;
     animation-fill-mode: both;
@@ -268,7 +349,6 @@
     @apply block;
   }
 
-  /* Dark mode adjustments for LinkedIn embeds */
   .dark .linkedin-embed {
     filter: brightness(0.95);
   }

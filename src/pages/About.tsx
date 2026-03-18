@@ -119,19 +119,22 @@ const About = () => {
       company: "SPS Software",
       period: "2025 - Present",
       location: "GP, Remote",
-      description: "I engineered intelligent AI workflows and streamlined the development of scalable web applications using React, Node.js, and cloud technologies, delivering business value through system automations.",
+      description: "At SPS Software, I build and ship AI-powered systems for real clients — from agentic AI workflow engineering and production FastAPI services to headless CMS architectures and multi-service containerised deployments. Every system I deliver runs in a live environment with actual users, under full end-to-end ownership from architecture to deployment.",
       responsibilities: [
-        "Design and prototype user interfaces (UI) and user experiences (UX) for new features and products using Figma.",
-        "Develop and deploy scalable full-stack web applications using React, Next.js, and Node.js.",
-        "Integrate AI models and build automated workflows to streamline internal business processes.",
-        "Collaborate with stakeholders to translate business requirements into technical solutions.",
+        "Engineer and deploy multi-service containerised production systems using Docker Compose, custom Dockerfiles, Traefik HTTPS routing, and automated registry workflows — serving live client traffic.",
+        "Build and maintain production Python API services handling JWT authentication, async Redis caching, rate limiting, webhook processing, and third-party integrations (Stripe, Resend, Google APIs).",
+        "Architect and deliver agentic AI workflows using Claude Code and LangGraph, with structured session memory, parallel agent dispatch, and systematic verification gates as the primary engineering toolchain.",
+        "Design and implement headless CMS architectures with WPGraphQL, Apollo Client, and Next.js TypeScript frontends — deployed across multiple client environments from a single parameterised IaC template.",
+        "Collaborate directly with clients to translate business requirements into end-to-end technical solutions, owning decisions from system architecture through to production deployment and maintenance.",
       ],
       impact: [
-        "Led the design of the main platform UI, resulting in a 25% increase in user engagement metrics.",
-        "Implemented a serverless data processing pipeline that reduced manual reporting time by 40 hours per month.",
-        "Gained advanced proficiency in cloud deployment, CI/CD practices, LLM engineering, and microservice architecture.",
+        "35% improvement in user engagement through AI-driven automation pipelines and API orchestration across two client deployments.",
+        "40% reduction in integration downtime by architecting agentic AI workflows with Python and LangGraph.",
+        "80% reduction in manual effort across documentation, content, and code analysis pipelines — live, not projected.",
+        "Delivered two distinct client platforms from a single parameterised infrastructure template, demonstrating consulting-grade reusability and full end-to-end ownership.",
+        "Built a structured multi-agent AI engineering system (session-persistent memory, skill files, parallel dispatch) now used as the primary toolchain across all production work.",
       ],
-      technicalSkills: ["React", "Next.js", "Node.js", "Figma", "Tailwind CSS", "Serverless Functions", "Cloud APIs"],
+      technicalSkills: ["React", "Next.js", "TypeScript", "FastAPI (Python)", "LangGraph", "Docker & Docker Compose", "Traefik", "Redis", "MariaDB", "WPGraphQL / Apollo Client", "N8N Workflow Automation", "IaC Shell Automation", "Claude Code", "Figma", "Tailwind CSS"],
     },
     {
       id: "exp-ats",
@@ -294,7 +297,7 @@ const About = () => {
           <div className="text-center mb-16">
             <h1 className="text-5xl font-extrabold mb-4">About Me</h1>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-              A brief overview of my professional journey, academic background, and technical passion.
+              From 9,700+ hours inside enterprise operations to engineering production AI systems for real clients. This is how the context became code.
             </p>
           </div>
 
@@ -393,15 +396,18 @@ const About = () => {
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6 items-start">
         {/* Timeline Badge */}
         <div className="flex flex-col">
-          <span className="text-sm font-semibold text-primary mb-2">2024 — Today</span>
-          <span className="text-xs text-muted-foreground">Proven Impact</span>
+          <span className="text-sm font-semibold text-primary mb-2">2025 - Today</span>
+          <span className="text-xs text-muted-foreground">Production-Grade AI Engineering</span>
         </div>
 
         {/* Content */}
         <div className="md:col-span-3">
           <h3 className="text-xl font-bold mb-3">The Execution: Building Systems That Scale</h3>
           <p className="text-muted-foreground mb-4 leading-relaxed">
-            Today, I architect AI automation systems that eliminate the manual work I'd witnessed drain resources. Every project is grounded in that operational context: What problem are we solving? What's the business impact? How do we make this maintainable at scale?
+            At SPS Software, I ship AI-powered systems for paying clients. The work is end-to-end: architecture, containerised deployment, agentic AI toolchains, and live maintenance — all under full ownership. <span className="font-semibold text-foreground">I don't work on sandboxes or internal demos.</span> The systems I build handle real users, real load, and real accountability.
+          </p>
+          <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+            I also developed a structured, session-persistent multi-agent engineering system built around Claude Code — with skill files, memory architecture, and parallel agent dispatch. This isn't casual AI tool use. It's an AI-native development practice that compounds in efficiency with every system shipped.
           </p>
           
           {/* Impact Examples */}
@@ -409,16 +415,20 @@ const About = () => {
             <p className="text-xs font-semibold text-muted-foreground mb-3 uppercase tracking-wider">Real-World Impact</p>
             <div className="space-y-3">
               <div className="flex items-start gap-3">
-                <span className="text-primary font-bold text-lg">85%</span>
-                <p className="text-sm text-muted-foreground">Reduced document analysis time: turning 2-hour manual reviews into 7-minute automated workflows</p>
+                <span className="text-primary font-bold text-lg">35%</span>
+                <p className="text-sm text-muted-foreground">Improvement in user engagement through AI-driven automation pipelines and API orchestration</p>
               </div>
-		    <div className="flex items-start gap-3">
-		      <span className="text-primary font-bold text-lg">Production-Grade</span>
-		      <p className="text-sm text-muted-foreground">Enterprise security, multi-tenancy, audit logging, payment integration with immediate monetization capability</p>
-		    </div>
               <div className="flex items-start gap-3">
-                <span className="text-primary font-bold text-lg">95%+</span>
-                <p className="text-sm text-muted-foreground">Entity extraction accuracy and risk analysis across invoices, contracts, CVs, and company profiles</p>
+                <span className="text-primary font-bold text-lg">40%</span>
+                <p className="text-sm text-muted-foreground">Reduction in integration downtime via agentic AI workflows with LangGraph</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-primary font-bold text-lg">80%</span>
+                <p className="text-sm text-muted-foreground">Reduction in manual effort across documentation, content, and code analysis pipelines</p>
+              </div>
+              <div className="flex items-start gap-3">
+                <span className="text-primary font-bold text-lg">5+ clients</span>
+                <p className="text-sm text-muted-foreground">Distinct production deployments from one parameterised IaC template</p>
               </div>
             </div>
           </div>
@@ -427,15 +437,15 @@ const About = () => {
           <div className="flex flex-wrap gap-3">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
               <span className="text-xs font-medium text-primary">→</span>
-              <span className="text-xs text-muted-foreground">Business-first architecture</span>
+              <span className="text-xs text-muted-foreground">Agentic AI engineering (Claude Code + LangGraph)</span>
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
               <span className="text-xs font-medium text-primary">→</span>
-              <span className="text-xs text-muted-foreground">Measurable ROI per project</span>
+              <span className="text-xs text-muted-foreground">Measurable ROI, live environments</span>
             </div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-primary/10 rounded-full">
               <span className="text-xs font-medium text-primary">→</span>
-              <span className="text-xs text-muted-foreground">Production-ready systems</span>
+              <span className="text-xs text-muted-foreground">Consulting-grade delivery</span>
             </div>
           </div>
         </div>

@@ -2,7 +2,7 @@ import type { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: ["./src/**/*.{ts,tsx}", "./index.html"],
   prefix: "",
   theme: {
     container: {
@@ -89,8 +89,8 @@ export default {
           "75%": { transform: "translateY(-10px) rotate(-1deg)" },
         },
         "pulse-glow": {
-          "0%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3)" },
-          "100%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6)" },
+          "0%": { boxShadow: "0 0 20px hsl(var(--primary) / 0.3), 0 0 40px hsl(var(--primary-glow) / 0.1)" },
+          "100%": { boxShadow: "0 0 40px hsl(var(--primary) / 0.6), 0 0 80px hsl(var(--primary-glow) / 0.2)" },
         },
         "slide-in": {
           from: { opacity: "0", transform: "translateY(20px)" },

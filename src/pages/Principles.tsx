@@ -92,7 +92,7 @@ const Principles = () => {
     {
       icon: <Brain className="h-6 w-6 text-primary" />,
       title: "AI as Integrated Intelligence",
-      description: "AI is not a feature to bolt on—it's an integrated nervous system. It should enhance decision-making, automate workflows, and create feedback loops that make systems smarter over time.",
+      description: "AI is not a feature to bolt on. It's an integrated intelligence layer that enhances decision-making, automates workflows, and creates feedback loops that make systems sharper over time.",
       category: "AI & Automation"
     },
     {
@@ -110,7 +110,7 @@ const Principles = () => {
     {
       icon: <Layers className="h-6 w-6 text-primary" />,
       title: "Cloud as the Skeleton, AI as the Nervous System",
-      description: "Cloud infrastructure provides structure and scale. AI provides intelligence and adaptability. Together, they form resilient, self-improving systems that respond to change.",
+      description: "Cloud infrastructure provides structure and scale. AI provides intelligence and adaptability. Together, they form durable, adaptive systems that respond to change.",
       category: "Systems Integration"
     },
     {
@@ -238,11 +238,11 @@ const Principles = () => {
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   My architectural approach is shaped by a journey from <strong className="text-foreground">enterprise operations</strong> through
                   <strong className="text-foreground"> systems engineering</strong> into <strong className="text-foreground">AI architecture</strong>.
-                  I've seen technology succeed and fail—not because of technical sophistication, but because of clarity of purpose.
+                  I've seen technology succeed and fail. Rarely because of technical sophistication. Almost always because of clarity of purpose.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   I believe in <strong className="text-foreground">systems that think</strong>. Not systems that require constant manual intervention,
-                  but systems that observe, learn, and adapt. Cloud infrastructure provides the skeleton—scalable, resilient, distributed.
+                  but systems that observe, learn, and adapt. Cloud infrastructure provides the skeleton: scalable, resilient, distributed.
                   AI provides the nervous system—intelligent, responsive, continuously improving.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
@@ -261,7 +261,7 @@ const Principles = () => {
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold mb-4">Core Principles I Follow</h2>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                These aren't generic best practices—they're battle-tested principles from building enterprise-scale systems
+                These aren't generic best practices. They're principles earned from building systems that run in production.
               </p>
             </div>
 
@@ -382,13 +382,13 @@ const Principles = () => {
             <Card className="p-8 bg-gradient-to-br from-primary/5 to-primary/10 border-primary/20">
               <CardContent className="p-0">
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
-                  Architecture is not a destination—it's a discipline of continuous learning. Every system I design teaches me something new.
+                  Architecture is not a destination. It's a discipline of continuous learning. Every system I design teaches me something new.
                   Every failure reveals a blind spot. Every success validates a hypothesis.
                 </p>
                 <p className="text-lg text-muted-foreground mb-6 leading-relaxed">
                   I'm constantly evolving my understanding of how AI systems should integrate with business processes,
                   how to balance innovation with stability, and how to design for unknowns.
-                  The best architects aren't those who have all the answers—they're the ones who ask better questions.
+                  The best architects aren't those who have all the answers. They're the ones who ask better questions.
                 </p>
                 <p className="text-lg text-muted-foreground leading-relaxed">
                   As AI capabilities expand, as cloud platforms mature, and as automation becomes table stakes,
@@ -412,8 +412,7 @@ const Principles = () => {
               Interested in discussing architecture philosophy?
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              I'm always open to conversations about systems thinking, AI integration patterns,
-              and the future of enterprise architecture
+              If you think about systems the same way, let's talk — architecture, AI integration, or where the two meet.
             </p>
             <a
               href="/contact"

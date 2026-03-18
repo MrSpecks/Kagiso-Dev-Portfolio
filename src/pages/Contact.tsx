@@ -10,8 +10,7 @@ import { useToast } from "@/hooks/use-toast";
 import FadeContent from "@/components/FadeContent";
 
 const Contact = () => {
-  // Define the Formspree endpoint URL directly
-  const FORM_ENDPOINT = "https://formspree.io/f/xldpnryl"; 
+  const FORM_ENDPOINT = import.meta.env.VITE_FORMSPREE_ENDPOINT as string;
 
   const [formData, setFormData] = useState({
     name: "",
@@ -116,8 +115,7 @@ const Contact = () => {
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-6">Get In Touch</h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Have a project in mind or want to collaborate? I'd love to hear from you. 
-            Let's discuss how we can work together.
+            Have a project in mind or want to collaborate? Tell me what you're building and let's see if there's a fit.
           </p>
         </div>
 
@@ -242,7 +240,7 @@ const Contact = () => {
               <h2 className="text-xl font-bold mb-4">Quick Response</h2>
               <p className="text-muted-foreground">
                 I typically respond to messages within 24 hours. For urgent matters, 
-                feel free to reach out via phone or LinkedIn.
+                reach out via phone or LinkedIn directly.
               </p>
             </Card>
           </div>
