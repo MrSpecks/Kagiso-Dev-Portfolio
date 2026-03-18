@@ -5,7 +5,7 @@ import {
   SiTypescript,
   SiTailwindcss,
   SiSupabase,
-  SiVite,
+  SiDocker,
 } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -15,7 +15,7 @@ const techIcons = [
   SiTypescript,
   SiTailwindcss,
   SiSupabase,
-  SiVite,
+  SiDocker,
 ];
 
 // Motivational micro-copy messages
