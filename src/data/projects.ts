@@ -1,12 +1,11 @@
 export const projects = [
     {
         id: 1,
-        title: "AI Document Intelligence Platform",
-        description: "A production-grade, SaaS-ready platform that ingests PDFs, DOCX, TXT, and images (with OCR fallback), segments them into semantically coherent chunks, and performs vectorization with pgvector to power precise retrieval. A carefully engineered RAG pipeline assembles grounded context and drives structured, JSON-ready insights for downstream workflows, wrapped in role-aware access, a credit-based usage model, and a modern Next.js UI. Designed for reliability and scale on Vercel with Supabase as the secure backbone, it turns unstructured documents into clear, actionable intelligence.",
-        tech_stack: ["Next.js", "TypeScript", "Supabase", "pgvector", "OpenRouter", "RAG"],
-        demo_url: "https://ai-document-intelligence-platform.vercel.app",
-        repo_url: "https://github.com/MrSpecks/AI-Document-Intelligence-Platform-v1",
-        screenshot_url: "/Document-int.png",
+        title: "Misaveni Pharmacy — Local Business Website",
+        description: "A production-ready brochure website built end-to-end for a real neighbourhood pharmacy in Etwatwa, Benoni, South Africa — brand tokens derived by pixel-sampling the client's own logo, a governed SDLC (ADRs, an alert register, an automated quality-gate runner wired into CI), and a live, accessible, mobile-first site with zero data collection by design. Real photography and WhatsApp-first contact replace forms and backend entirely.",
+        tech_stack: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Vercel"],
+        demo_url: "https://misaveni-pharmacy.vercel.app/",
+        screenshot_url: "/Misaveni-Pharmacy.png",
         category: "Web App"
     },
     {

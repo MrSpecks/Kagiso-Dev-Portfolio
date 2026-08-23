@@ -377,7 +377,7 @@ const Home = () => {
 </section>
 </FadeContent>
       
-      {/* === Coming Soon: AI Document Intelligence Platform === */}
+      {/* === Featured Build: Misaveni Pharmacy (Live) === */}
       <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
       <section className="py-20 bg-muted/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -387,25 +387,25 @@ const Home = () => {
               <Badge className="bg-primary text-primary-foreground text-xs px-2 py-0.5 animate-pulse">Live</Badge>
             </div>
             <p className="text-xl text-muted-foreground mt-3 max-w-3xl mx-auto">
-              AI Document Intelligence Platform — documents in, intelligence out. Grounded RAG, vector search, and a workspace built for real work.
+              Misaveni Pharmacy — a real local business, live on the web for the first time, built end-to-end from brand to deploy.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <Card className="glass-card overflow-hidden rounded-xl">
               <img
-                src={isDarkMode ? "/Document-int.png" : "/Document-int2.png"}
-                alt="AI Document Intelligence Platform"
+                src="/Misaveni-Pharmacy.png"
+                alt="Misaveni Pharmacy website homepage"
                 className="w-full h-72 md:h-full object-cover"
                 loading="lazy"
               />
             </Card>
             <Card className="glass-card p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-default">
-              <h3 className="text-2xl font-semibold mb-3">AI Document Intelligence Platform is now LIVE!</h3>
+              <h3 className="text-2xl font-semibold mb-3">Misaveni Pharmacy is now LIVE!</h3>
               <p className="text-muted-foreground leading-relaxed mb-4">
-                Transform unstructured documents into actionable intelligence. Precision retrieval meets intuitive design.
+                A neighbourhood pharmacy's first website — real brand tokens, a governed build process, and zero data collection by design. Built end-to-end, from client logo to production.
               </p>
-              <a href="https://ai-document-intelligence-platform.vercel.app/" target="_blank" rel="noopener noreferrer">
-                <Button variant="outline">Preview</Button>
+              <a href="https://misaveni-pharmacy.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <Button variant="outline">Visit Site</Button>
               </a>
             </Card>
           </div>
