@@ -12,7 +12,7 @@
 
 This isn't just another portfolio website—it's a **live demonstration of enterprise-grade AI engineering**. Built as both a professional showcase and technical proof-of-concept, this platform showcases mastery across the full modern development stack while delivering an interactive experience that recruiters, clients, and peers can engage with in real-time.
 
-The portfolio features a sophisticated **Retrieval-Augmented Generation (RAG) agent** that intelligently answers questions about Kagiso's work, projects, and expertise—demonstrating not just what he's built, but how he thinks about complex AI systems.
+The portfolio features a sophisticated **Retrieval-Augmented Generation (RAG) agent** that intelligently answers questions about my work, projects, and expertise—demonstrating not just what he's built, but how he thinks about complex AI systems.
 
 ---
 
