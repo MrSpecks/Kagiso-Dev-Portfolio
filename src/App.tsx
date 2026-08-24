@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Projects from "./pages/Projects";
 import Certifications from "./pages/Certifications";
-import Principles from "./pages/Principles";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import LoadingScreen from "./components/LoadingScreen";
@@ -65,7 +64,6 @@ const AppContent = () => (
         <Route path="/about" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/certifications" element={<Certifications />} />
-        <Route path="/principles" element={<Principles />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/policies/refund" element={<RefundPolicy />} />
         <Route path="/policies/cancellation" element={<CancellationPolicy />} />
