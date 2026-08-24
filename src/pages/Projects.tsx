@@ -31,7 +31,7 @@ export const Projects = () => {
 
   const getScreenshotUrl = (projectId: number, defaultUrl: string) => {
     if (projectId === 1) {
-      return "/Misaveni-Pharmacy.png";
+      return isDarkMode ? "/Document-int.png" : "/Document-int2.png";
     }
     return defaultUrl;
   };
@@ -74,21 +74,21 @@ export const Projects = () => {
                 </div>
 
                 {/* --- RAG Agent Technical Capabilities Section --- */}
-                {/* Teaser: Misaveni Pharmacy — Local Business Website (Live) */}
+                {/* Teaser: AI Document Intelligence Platform (Coming Soon) */}
                 <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0}>
                 <div className="project-card mb-16 mx-auto max-w-4xl">
                     <div className="flex items-center justify-between mb-4">
                         <div className="flex items-center space-x-3">
                             <Sparkles className="w-7 h-7 text-primary" />
-                            <h3 className="text-2xl font-bold text-primary">Misaveni Pharmacy — Local Business Website</h3>
+                            <h3 className="text-2xl font-bold text-primary">AI Document Intelligence Platform</h3>
                         </div>
                         <Badge variant="secondary" className="bg-foreground/5">LIVE!</Badge>
                     </div>
                     <p className="text-muted-foreground mb-4">
-                        A real neighbourhood pharmacy's first website, live and in the wild — brand tokens pixel-sampled from their own logo, a governed build process end to end, and zero data collection by design.
+                        My AI Document Intelligence Platform is Finally Live — documents go in, intelligence comes out. Expect grounded RAG analysis, vector search precision, and a workspace built for real teams.
                     </p>
                     <div className="relative overflow-hidden rounded-lg bg-muted">
-                        <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(/Misaveni-Pharmacy.png)` }} />
+                        <div className="w-full h-56 bg-cover bg-center" style={{ backgroundImage: `url(${isDarkMode ? "/Document-int.png" : "/Document-int2.png"})` }} />
                     </div>
                 </div>
                 </FadeContent>
@@ -240,10 +240,10 @@ export const Projects = () => {
                                 {/* Action Buttons */}
                                 <div className="flex gap-2 pt-2">
                                 {project.demo_url && (
-                                    <Button asChild variant="outline" size="sm" className={project.repo_url ? "w-1/2" : "w-full"}>
+                                    <Button asChild variant="outline" size="sm" className="w-1/2">
                                         <a href={project.demo_url} target="_blank" rel="noopener noreferrer" className="flex items-center">
                                             <ExternalLink className="mr-2 h-4 w-4" />
-                                            Live Demo
+                                            {project.title.includes("Document Intelligence") ? "Preview" : "Live Demo"}
                                         </a>
                                     </Button>
                                 )}
